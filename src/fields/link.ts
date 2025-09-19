@@ -2,6 +2,8 @@ import type { Field, GroupField } from 'payload'
 
 import deepMerge from '@/utilities/deepMerge'
 
+import { lucideIconOptions, iconPlacementOptions } from '../utilities/lucideIcons'
+
 export type LinkAppearances = 'default' | 'outline'
 
 export const appearanceOptions: Record<LinkAppearances, { label: string; value: string }> = {
@@ -134,6 +136,35 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
       options: appearanceOptionsToUse,
     })
   }
+
+  // Add icon and iconPlacement fields
+  const iconField: Field = {
+    name: 'icon',
+    type: 'select',
+    defaultValue: '',
+    options: lucideIconOptions,
+    admin: {
+      description: "Choose an icon to display with the link.",
+      width: '70%',
+    },
+  }
+
+  const iconPlacementField: Field = {
+    name: 'iconPlacement',
+    type: 'select',
+    defaultValue: 'right',
+    options: iconPlacementOptions,
+    admin: {
+      condition: (_, siblingData) => siblingData?.icon && siblingData?.icon !== '',
+      description: "Choose where to place the icon.",
+      width: '30%',
+    },
+  }
+
+  linkResult.fields.push({
+    type: 'row',
+    fields: [iconField, iconPlacementField],
+  })
 
   return deepMerge(linkResult, overrides)
 }

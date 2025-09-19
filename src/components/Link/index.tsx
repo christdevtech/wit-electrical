@@ -4,6 +4,8 @@ import Link from 'next/link'
 import React from 'react'
 
 import type { Page, Post } from '@/payload-types'
+import { lucideIcons } from '../../utilities/lucideIcons'
+import type { LucideIconName } from '../../utilities/lucideIcons'
 
 type CMSLinkType = {
   appearance?: 'inline' | ButtonProps['variant']
@@ -18,6 +20,8 @@ type CMSLinkType = {
   size?: ButtonProps['size'] | null
   type?: 'custom' | 'reference' | null
   url?: string | null
+  icon?: LucideIconName
+  iconPlacement?: 'left' | 'right'
 }
 
 export const CMSLink: React.FC<CMSLinkType> = (props) => {
@@ -31,6 +35,8 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
     reference,
     size: sizeFromProps,
     url,
+    icon,
+    iconPlacement = 'right',
   } = props
 
   const href =
@@ -45,21 +51,38 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   const size = appearance === 'link' ? 'clear' : sizeFromProps
   const newTabProps = newTab ? { rel: 'noopener noreferrer', target: '_blank' } : {}
 
+  const IconComponent = icon ? lucideIcons[icon] : null
+
+  const renderIcon = IconComponent ? (
+    <IconComponent className={cn('h-4 w-4', {
+      'h-5 w-5': size === 'lg',
+      'h-3 w-3': size === 'sm',
+    })} />
+  ) : null
+
+  const textContent = children || label
+
+  const content = (
+    <>
+      {renderIcon && iconPlacement === 'left' && <span className="mr-2">{renderIcon}</span>}
+      {textContent}
+      {renderIcon && iconPlacement === 'right' && <span className="ml-2">{renderIcon}</span>}
+    </>
+  )
+
   /* Ensure we don't break any styles set by richText */
   if (appearance === 'inline') {
     return (
-      <Link className={cn(className)} href={href || url || ''} {...newTabProps}>
-        {label && label}
-        {children && children}
+      <Link className={cn(className, 'flex items-center')} href={href || url || ''} {...newTabProps}>
+        {content}
       </Link>
     )
   }
 
   return (
     <Button asChild className={className} size={size} variant={appearance}>
-      <Link className={cn(className)} href={href || url || ''} {...newTabProps}>
-        {label && label}
-        {children && children}
+      <Link className={cn(className, 'flex items-center')} href={href || url || ''} {...newTabProps}>
+        {content}
       </Link>
     </Button>
   )

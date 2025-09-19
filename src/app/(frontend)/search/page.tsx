@@ -77,11 +77,11 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
           <div className="grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-12 gap-y-4 gap-x-4 lg:gap-y-8 lg:gap-x-8 xl:gap-x-8">
             {posts.docs.map((result: any, index: number) => (
               <div className="col-span-4" key={index}>
-                <Card
-                  className="h-full"
-                  doc={result.doc.value as CardPostData}
-                  relationTo={result.doc.relationTo as 'posts' | 'services'}
-                  showCategories
+                <Card 
+                  className="h-full" 
+                  doc={result.doc.value as CardPostData} 
+                  relationTo={result.doc.relationTo as 'posts' | 'services'} 
+                  showCategories 
                 />
               </div>
             ))}
@@ -96,6 +96,6 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
 
 export function generateMetadata(): Metadata {
   return {
-    title: `WIT Electrical search page`,
+    title: `Payload Website Template Search`,
   }
 }
