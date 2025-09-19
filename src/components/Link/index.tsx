@@ -20,8 +20,8 @@ type CMSLinkType = {
   size?: ButtonProps['size'] | null
   type?: 'custom' | 'reference' | null
   url?: string | null
-  icon?: LucideIconName
-  iconPlacement?: 'left' | 'right'
+  icon?: LucideIconName | null | ''
+  iconPlacement?: 'left' | 'right' | null | ''
 }
 
 export const CMSLink: React.FC<CMSLinkType> = (props) => {
@@ -51,13 +51,15 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   const size = appearance === 'link' ? 'clear' : sizeFromProps
   const newTabProps = newTab ? { rel: 'noopener noreferrer', target: '_blank' } : {}
 
-  const IconComponent = icon ? lucideIcons[icon] : null
+  const IconComponent = icon && icon in lucideIcons ? lucideIcons[icon] : null
 
   const renderIcon = IconComponent ? (
-    <IconComponent className={cn('h-4 w-4', {
-      'h-5 w-5': size === 'lg',
-      'h-3 w-3': size === 'sm',
-    })} />
+    <IconComponent
+      className={cn('h-4 w-4', {
+        'h-5 w-5': size === 'lg',
+        'h-3 w-3': size === 'sm',
+      })}
+    />
   ) : null
 
   const textContent = children || label
@@ -73,7 +75,11 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   /* Ensure we don't break any styles set by richText */
   if (appearance === 'inline') {
     return (
-      <Link className={cn(className, 'flex items-center')} href={href || url || ''} {...newTabProps}>
+      <Link
+        className={cn(className, 'flex items-center')}
+        href={href || url || ''}
+        {...newTabProps}
+      >
         {content}
       </Link>
     )
@@ -81,7 +87,11 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
 
   return (
     <Button asChild className={className} size={size} variant={appearance}>
-      <Link className={cn(className, 'flex items-center')} href={href || url || ''} {...newTabProps}>
+      <Link
+        className={cn(className, 'flex items-center')}
+        href={href || url || ''}
+        {...newTabProps}
+      >
         {content}
       </Link>
     </Button>

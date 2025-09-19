@@ -10,6 +10,24 @@ export const Header: GlobalConfig = {
   },
   fields: [
     {
+      name: 'lightModeLogo',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Light Mode Logo',
+      admin: {
+        description: 'Optional logo to display in light mode. If not provided, the default logo will be used.',
+      },
+    },
+    {
+      name: 'darkModeLogo',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Dark Mode Logo',
+      admin: {
+        description: 'Optional logo to display in dark mode. If not provided, the default logo will be used.',
+      },
+    },
+    {
       name: 'navItems',
       type: 'array',
       fields: [
