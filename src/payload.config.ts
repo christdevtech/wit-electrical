@@ -27,8 +27,8 @@ export default buildConfig({
       beforeLogin: ['@/components/BeforeLogin'],
       beforeDashboard: ['@/components/BeforeDashboard'],
       graphics: {
-        Icon: '@/components/Logo/Favicon',
-        Logo: '@/components/Logo/Logo',
+        Icon: '@/components/Logo/Favicon.tsx#Favicon',
+        Logo: '@/components/Logo/Logo.tsx#Logo',
       },
     },
     meta: {
