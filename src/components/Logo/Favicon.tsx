@@ -5,7 +5,7 @@ export const Favicon = () => {
     <Link href="/" className="block">
       {/* eslint-disable @next/next/no-img-element */}
       <img
-        src="/favicon.svg"
+        src="/favicon.png"
         alt="Favicon"
         width={193}
         height={34}
