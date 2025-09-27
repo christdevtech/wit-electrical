@@ -40,20 +40,20 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
       <div className="py-8 flex justify-between">
         <Link href="/">
           {isDarkMode && hasDarkModeLogo ? (
-            <Media 
-              resource={data.darkModeLogo} 
-              loading="eager" 
-              priority={true} 
-              alt="Dark Mode Logo" 
-              className="h-10 w-auto" 
+            <Media
+              resource={data.darkModeLogo}
+              loading="eager"
+              priority={true}
+              alt="Dark Mode Logo"
+              className="max-w-[9.375rem] w-full h-[34px]"
             />
-          ) : (!isDarkMode && hasLightModeLogo) ? (
-            <Media 
-              resource={data.lightModeLogo} 
-              loading="eager" 
-              priority={true} 
-              alt="Light Mode Logo" 
-              className="h-10 w-auto" 
+          ) : !isDarkMode && hasLightModeLogo ? (
+            <Media
+              resource={data.lightModeLogo}
+              loading="eager"
+              priority={true}
+              alt="Light Mode Logo"
+              className="max-w-[9.375rem] w-full h-[34px]"
             />
           ) : (
             <Logo loading="eager" priority="high" className="invert dark:invert-0" />
