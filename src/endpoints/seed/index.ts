@@ -290,7 +290,28 @@ export const seed = async ({
           {
             link: {
               type: 'custom',
-              label: 'Posts',
+              label: 'Home',
+              url: '/',
+            },
+          },
+          {
+            link: {
+              type: 'custom',
+              label: 'Services',
+              url: '/services',
+            },
+          },
+          {
+            link: {
+              type: 'custom',
+              label: 'About Us',
+              url: '/about',
+            },
+          },
+          {
+            link: {
+              type: 'custom',
+              label: 'Blog',
               url: '/posts',
             },
           },

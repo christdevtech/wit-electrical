@@ -20,15 +20,15 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
           link: {
             type: 'custom',
             appearance: 'default',
-            label: 'All posts',
-            url: '/posts',
+            label: 'Our Services',
+            url: '/services',
           },
         },
         {
           link: {
             type: 'custom',
             appearance: 'outline',
-            label: 'Contact',
+            label: 'Contact Us',
             url: '/contact',
           },
         },
@@ -47,7 +47,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
                   format: 0,
                   mode: 'normal',
                   style: '',
-                  text: 'WIT Electrical',
+                  text: 'WIT Electrical – Powering Your World Safely and Smartly',
                   version: 1,
                 },
               ],
@@ -61,39 +61,61 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
               type: 'paragraph',
               children: [
                 {
-                  type: 'link',
-                  children: [
-                    {
-                      type: 'text',
-                      detail: 0,
-                      format: 0,
-                      mode: 'normal',
-                      style: '',
-                      text: 'Visit the admin dashboard',
-                      version: 1,
-                    },
-                  ],
-                  direction: 'ltr',
-                  fields: {
-                    linkType: 'custom',
-                    newTab: false,
-                    url: '/admin',
-                  },
-                  format: '',
-                  indent: 0,
-                  version: 3,
+                  type: 'text',
+                  detail: 0,
+                  format: 0,
+                  mode: 'normal',
+                  style: '',
+                  text: "At WIT Electrical, we specialize in comprehensive electrical solutions for homes, offices, and commercial spaces. From installations and upgrades to emergency repairs and energy-efficient innovations, we ensure your property is safe, functional, and future-ready. In a world where power outages and surges are common, we protect what matters most—your family, business, and investments.",
+                  version: 1,
                 },
+              ],
+              direction: 'ltr',
+              format: '',
+              indent: 0,
+              version: 1,
+            },
+            {
+              type: 'paragraph',
+              children: [
+                {
+                  type: 'text',
+                  detail: 0,
+                  format: 1,
+                  mode: 'normal',
+                  style: '',
+                  text: "Ready to upgrade your electrical system? Contact us today for a free consultation. Power your potential with WIT Electrical.",
+                  version: 1,
+                },
+              ],
+              direction: 'ltr',
+              format: '',
+              indent: 0,
+              version: 1,
+            },
+            {
+              type: 'heading',
+              children: [
                 {
                   type: 'text',
                   detail: 0,
                   format: 0,
                   mode: 'normal',
                   style: '',
-                  text: " to begin managing this site's content. The code for this template is completely open-source and can be found ",
+                  text: "Our Services",
                   version: 1,
                 },
+              ],
+              direction: 'ltr',
+              format: '',
+              indent: 0,
+              tag: 'h2',
+              version: 1,
+            },
+            {
+              type: 'paragraph',
+              children: [
                 {
-                  type: 'link',
                   children: [
                     {
                       type: 'text',
