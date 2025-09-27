@@ -1,7 +1,7 @@
 {
   "name": "wit-electrical",
   "version": "1.0.0",
-  "description": "Website template for Payload",
+  "description": "Website for WIT Electrical",
   "license": "MIT",
   "type": "module",
   "scripts": {
