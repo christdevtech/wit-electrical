@@ -33,7 +33,6 @@ export default buildConfig({
     },
     meta: {
       title: 'Dashboard',
-      titleSuffix: ' | WIT Electrical',
       icons: [
         {
           url: `${process.env.NEXT_PUBLIC_SERVER_URL}/favicon.svg`,
