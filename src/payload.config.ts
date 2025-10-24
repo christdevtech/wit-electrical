@@ -27,15 +27,15 @@ export default buildConfig({
       beforeLogin: ['@/components/BeforeLogin'],
       beforeDashboard: ['@/components/BeforeDashboard'],
       graphics: {
-        Icon: '@/components/Logo/Favicon.tsx#Favicon',
-        Logo: '@/components/Logo/Logo.tsx#Logo',
+        Icon: '@/graphics/Logo',
+        Logo: '@/graphics/Logo',
       },
     },
     meta: {
       title: 'Dashboard',
       icons: [
         {
-          url: `${process.env.NEXT_PUBLIC_SERVER_URL}/favicon.svg`,
+          url: `${process.env.NEXT_PUBLIC_SERVER_URL}/favicon.png`,
         },
       ],
     },
