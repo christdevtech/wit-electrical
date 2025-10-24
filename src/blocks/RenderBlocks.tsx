@@ -9,6 +9,7 @@ import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { SwiperWithSideContent } from './SwiperWithSideText/Component'
 import { TestimonialsBlock } from './Testimonials/Component'
+import { AboutSummaryBlock } from '@/blocks/AboutSummary/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -18,6 +19,7 @@ const blockComponents = {
   mediaBlock: MediaBlock,
   swiperWithSideText: SwiperWithSideContent,
   testimonials: TestimonialsBlock,
+  aboutSummary: AboutSummaryBlock,
 }
 
 export const RenderBlocks: React.FC<{
@@ -34,7 +36,7 @@ export const RenderBlocks: React.FC<{
           const { blockType } = block
 
           if (blockType && blockType in blockComponents) {
-            const Block = blockComponents[blockType]
+            const Block = blockComponents[blockType as keyof typeof blockComponents]
 
             if (Block) {
               return (

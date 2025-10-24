@@ -180,6 +180,10 @@ export interface Page {
               | ({
                   relationTo: 'posts';
                   value: string | Post;
+                } | null)
+              | ({
+                  relationTo: 'services';
+                  value: string | Service;
                 } | null);
             url?: string | null;
             label: string;
@@ -559,6 +563,7 @@ export interface Page {
     | FormBlock
     | SwiperWithSideTextBlock
     | TestimonialsBlock
+    | AboutSummaryBlock
   )[];
   meta?: {
     title?: string | null;
@@ -762,6 +767,46 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services".
+ */
+export interface Service {
+  id: string;
+  title: string;
+  heroImage?: (string | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedServices?: (string | Service)[] | null;
+  categories?: (string | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (string | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "CallToActionBlock".
  */
 export interface CallToActionBlock {
@@ -793,6 +838,10 @@ export interface CallToActionBlock {
             | ({
                 relationTo: 'posts';
                 value: string | Post;
+              } | null)
+            | ({
+                relationTo: 'services';
+                value: string | Service;
               } | null);
           url?: string | null;
           label: string;
@@ -1201,6 +1250,10 @@ export interface ContentBlock {
             | ({
                 relationTo: 'posts';
                 value: string | Post;
+              } | null)
+            | ({
+                relationTo: 'services';
+                value: string | Service;
               } | null);
           url?: string | null;
           label: string;
@@ -1870,6 +1923,10 @@ export interface SwiperWithSideTextBlock {
                   | ({
                       relationTo: 'posts';
                       value: string | Post;
+                    } | null)
+                  | ({
+                      relationTo: 'services';
+                      value: string | Service;
                     } | null);
                 url?: string | null;
                 label: string;
@@ -2281,12 +2338,10 @@ export interface TestimonialsBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "services".
+ * via the `definition` "AboutSummaryBlock".
  */
-export interface Service {
-  id: string;
+export interface AboutSummaryBlock {
   title: string;
-  heroImage?: (string | null) | Media;
   content: {
     root: {
       type: string;
@@ -2302,22 +2357,393 @@ export interface Service {
     };
     [k: string]: unknown;
   };
-  relatedServices?: (string | Service)[] | null;
-  categories?: (string | Category)[] | null;
-  meta?: {
-    title?: string | null;
+  media?: (string | null) | Media;
+  imagePosition?: ('left' | 'right') | null;
+  enableLink?: boolean | null;
+  link?: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: string | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: string | Post;
+        } | null)
+      | ({
+          relationTo: 'services';
+          value: string | Service;
+        } | null);
+    url?: string | null;
+    label: string;
     /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     * Choose how the link should be rendered.
      */
-    image?: (string | null) | Media;
-    description?: string | null;
+    appearance?: ('default' | 'outline') | null;
+    /**
+     * Choose an icon to display with the link.
+     */
+    icon?:
+      | (
+          | ''
+          | 'Activity'
+          | 'Airplay'
+          | 'AlarmClock'
+          | 'AlertCircle'
+          | 'AlertOctagon'
+          | 'AlertTriangle'
+          | 'AlignCenter'
+          | 'AlignJustify'
+          | 'AlignLeft'
+          | 'AlignRight'
+          | 'Anchor'
+          | 'Aperture'
+          | 'Archive'
+          | 'ArrowBigDown'
+          | 'ArrowBigLeft'
+          | 'ArrowBigRight'
+          | 'ArrowBigUp'
+          | 'ArrowDown'
+          | 'ArrowLeft'
+          | 'ArrowRight'
+          | 'ArrowUp'
+          | 'Asterisk'
+          | 'AtSign'
+          | 'Award'
+          | 'Baby'
+          | 'BadgeCheck'
+          | 'Badge'
+          | 'Banknote'
+          | 'BarChart'
+          | 'BatteryCharging'
+          | 'BatteryFull'
+          | 'BatteryLow'
+          | 'BatteryMedium'
+          | 'Battery'
+          | 'Bell'
+          | 'Bike'
+          | 'Binary'
+          | 'Bluetooth'
+          | 'Bold'
+          | 'BookOpen'
+          | 'Book'
+          | 'Bookmark'
+          | 'Box'
+          | 'Briefcase'
+          | 'Brush'
+          | 'Bug'
+          | 'Building'
+          | 'Bus'
+          | 'Cable'
+          | 'Calendar'
+          | 'Camera'
+          | 'Car'
+          | 'Check'
+          | 'CheckCircle'
+          | 'ChevronDown'
+          | 'ChevronLeft'
+          | 'ChevronRight'
+          | 'ChevronUp'
+          | 'ChevronsUpDown'
+          | 'CircuitBoard'
+          | 'Clipboard'
+          | 'Clock'
+          | 'Cloud'
+          | 'Code'
+          | 'Coffee'
+          | 'Cog'
+          | 'Columns'
+          | 'Command'
+          | 'Compass'
+          | 'Computer'
+          | 'Contact'
+          | 'Contrast'
+          | 'Cookie'
+          | 'Copy'
+          | 'Cpu'
+          | 'CreditCard'
+          | 'Crop'
+          | 'Crosshair'
+          | 'Database'
+          | 'Delete'
+          | 'Disc'
+          | 'DollarSign'
+          | 'Download'
+          | 'DownloadCloud'
+          | 'Droplet'
+          | 'Edit'
+          | 'Euro'
+          | 'Eye'
+          | 'EyeOff'
+          | 'Factory'
+          | 'Fan'
+          | 'FastForward'
+          | 'Feather'
+          | 'File'
+          | 'Filter'
+          | 'Fingerprint'
+          | 'Flag'
+          | 'Flame'
+          | 'Flashlight'
+          | 'Folder'
+          | 'FormInput'
+          | 'Forward'
+          | 'Frame'
+          | 'Framer'
+          | 'Frown'
+          | 'Fuel'
+          | 'FunctionSquare'
+          | 'Gamepad'
+          | 'Gauge'
+          | 'Gavel'
+          | 'Gem'
+          | 'Ghost'
+          | 'Gift'
+          | 'GitBranch'
+          | 'GitCommit'
+          | 'GitMerge'
+          | 'GitPullRequest'
+          | 'Globe'
+          | 'Grid'
+          | 'GripHorizontal'
+          | 'GripVertical'
+          | 'Hammer'
+          | 'Hand'
+          | 'HandMetal'
+          | 'HardDrive'
+          | 'HardHat'
+          | 'Hash'
+          | 'Haze'
+          | 'Headphones'
+          | 'Heart'
+          | 'HelpCircle'
+          | 'Hexagon'
+          | 'Highlighter'
+          | 'History'
+          | 'Home'
+          | 'Hourglass'
+          | 'Image'
+          | 'Inbox'
+          | 'Infinity'
+          | 'Info'
+          | 'Italic'
+          | 'Key'
+          | 'Laptop'
+          | 'Layers'
+          | 'Layout'
+          | 'Library'
+          | 'LifeBuoy'
+          | 'Lightbulb'
+          | 'Link'
+          | 'List'
+          | 'Loader'
+          | 'Locate'
+          | 'Lock'
+          | 'LogIn'
+          | 'LogOut'
+          | 'Mail'
+          | 'Map'
+          | 'MapPin'
+          | 'Martini'
+          | 'Maximize'
+          | 'Medal'
+          | 'Megaphone'
+          | 'Meh'
+          | 'Menu'
+          | 'MessageCircle'
+          | 'MessageSquare'
+          | 'Mic'
+          | 'Minimize'
+          | 'Minus'
+          | 'Monitor'
+          | 'Moon'
+          | 'MoreHorizontal'
+          | 'MoreVertical'
+          | 'Mountain'
+          | 'MousePointer'
+          | 'Move'
+          | 'Music'
+          | 'Navigation'
+          | 'Network'
+          | 'Octagon'
+          | 'Option'
+          | 'Package'
+          | 'Palette'
+          | 'Paperclip'
+          | 'ParkingCircle'
+          | 'Pause'
+          | 'PenTool'
+          | 'Pencil'
+          | 'Percent'
+          | 'Phone'
+          | 'PhoneCall'
+          | 'PieChart'
+          | 'PiggyBank'
+          | 'Pilcrow'
+          | 'Pin'
+          | 'Pipette'
+          | 'Plane'
+          | 'Play'
+          | 'Plug'
+          | 'PlugZap'
+          | 'Plus'
+          | 'Pocket'
+          | 'Podcast'
+          | 'PoundSterling'
+          | 'Power'
+          | 'PowerOff'
+          | 'Printer'
+          | 'Puzzle'
+          | 'QrCode'
+          | 'Quote'
+          | 'Radio'
+          | 'RadioReceiver'
+          | 'RadioTower'
+          | 'Redo'
+          | 'RefreshCcw'
+          | 'RefreshCw'
+          | 'Regex'
+          | 'Repeat'
+          | 'Reply'
+          | 'Rewind'
+          | 'RotateCcw'
+          | 'RotateCw'
+          | 'Rss'
+          | 'Ruler'
+          | 'RussianRuble'
+          | 'Save'
+          | 'Scale'
+          | 'Scan'
+          | 'School'
+          | 'Scissors'
+          | 'ScreenShare'
+          | 'Scroll'
+          | 'Search'
+          | 'Send'
+          | 'SeparatorHorizontal'
+          | 'SeparatorVertical'
+          | 'Server'
+          | 'Settings'
+          | 'Share'
+          | 'Shield'
+          | 'Shirt'
+          | 'ShoppingBag'
+          | 'ShoppingCart'
+          | 'Shovel'
+          | 'ShowerHead'
+          | 'Shrink'
+          | 'Shrub'
+          | 'Shuffle'
+          | 'Sidebar'
+          | 'SkipBack'
+          | 'SkipForward'
+          | 'Skull'
+          | 'Slash'
+          | 'Sliders'
+          | 'Smartphone'
+          | 'Smile'
+          | 'Snowflake'
+          | 'SortAsc'
+          | 'SortDesc'
+          | 'Sparkles'
+          | 'Speaker'
+          | 'Square'
+          | 'Star'
+          | 'Sticker'
+          | 'StickyNote'
+          | 'StopCircle'
+          | 'Strikethrough'
+          | 'Sun'
+          | 'Sunrise'
+          | 'Sunset'
+          | 'Superscript'
+          | 'SwissFranc'
+          | 'SwitchCamera'
+          | 'Sword'
+          | 'Swords'
+          | 'Table'
+          | 'Tablet'
+          | 'Tag'
+          | 'Target'
+          | 'Tent'
+          | 'Terminal'
+          | 'TextCursor'
+          | 'TextCursorInput'
+          | 'ThumbsDown'
+          | 'ThumbsUp'
+          | 'Ticket'
+          | 'Timer'
+          | 'TimerOff'
+          | 'TimerReset'
+          | 'ToggleLeft'
+          | 'ToggleRight'
+          | 'Tornado'
+          | 'ToyBrick'
+          | 'Train'
+          | 'Trash'
+          | 'TreeDeciduous'
+          | 'TreePine'
+          | 'Trello'
+          | 'TrendingDown'
+          | 'TrendingUp'
+          | 'Trophy'
+          | 'Truck'
+          | 'Tv'
+          | 'Twitch'
+          | 'Twitter'
+          | 'Type'
+          | 'Underline'
+          | 'Undo'
+          | 'Unlink'
+          | 'Unlock'
+          | 'Upload'
+          | 'UploadCloud'
+          | 'Usb'
+          | 'User'
+          | 'UserCheck'
+          | 'UserMinus'
+          | 'UserPlus'
+          | 'UserX'
+          | 'Users'
+          | 'Utensils'
+          | 'Variable'
+          | 'Video'
+          | 'VideoOff'
+          | 'View'
+          | 'Voicemail'
+          | 'Volume'
+          | 'Volume1'
+          | 'Volume2'
+          | 'VolumeX'
+          | 'Wallet'
+          | 'Wand'
+          | 'Watch'
+          | 'Webcam'
+          | 'Wifi'
+          | 'WifiOff'
+          | 'Wind'
+          | 'WrapText'
+          | 'Wrench'
+          | 'X'
+          | 'XCircle'
+          | 'XOctagon'
+          | 'XSquare'
+          | 'Zap'
+          | 'ZapOff'
+          | 'ZoomIn'
+          | 'ZoomOut'
+        )
+      | null;
+    /**
+     * Choose where to place the icon.
+     */
+    iconPlacement?: ('left' | 'right') | null;
   };
-  publishedAt?: string | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'aboutSummary';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2623,6 +3049,7 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         swiperWithSideText?: T | SwiperWithSideTextBlockSelect<T>;
         testimonials?: T | TestimonialsBlockSelect<T>;
+        aboutSummary?: T | AboutSummaryBlockSelect<T>;
       };
   meta?:
     | T
@@ -2774,6 +3201,31 @@ export interface TestimonialsBlockSelect<T extends boolean = true> {
         image?: T;
         rating?: T;
         id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutSummaryBlock_select".
+ */
+export interface AboutSummaryBlockSelect<T extends boolean = true> {
+  title?: T;
+  content?: T;
+  media?: T;
+  imagePosition?: T;
+  enableLink?: T;
+  link?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+        appearance?: T;
+        icon?: T;
+        iconPlacement?: T;
       };
   id?: T;
   blockName?: T;
@@ -3251,6 +3703,10 @@ export interface Header {
             | ({
                 relationTo: 'posts';
                 value: string | Post;
+              } | null)
+            | ({
+                relationTo: 'services';
+                value: string | Service;
               } | null);
           url?: string | null;
           label: string;
@@ -3638,6 +4094,10 @@ export interface Footer {
             | ({
                 relationTo: 'posts';
                 value: string | Post;
+              } | null)
+            | ({
+                relationTo: 'services';
+                value: string | Service;
               } | null);
           url?: string | null;
           label: string;

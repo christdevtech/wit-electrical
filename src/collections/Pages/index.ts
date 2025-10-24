@@ -22,6 +22,7 @@ import {
 } from '@payloadcms/plugin-seo/fields'
 import { SwiperWithSideTextBlock } from '@/blocks/SwiperWithSideText/config'
 import { Testimonials } from '@/blocks/Testimonials/config'
+import { AboutSummary } from '@/blocks/AboutSummary/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -85,6 +86,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 FormBlock,
                 SwiperWithSideTextBlock,
                 Testimonials,
+                AboutSummary,
               ],
               required: true,
               admin: {
