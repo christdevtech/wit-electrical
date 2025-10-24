@@ -8,7 +8,7 @@ interface Props {
   theme?: string | null
 }
 
-export const Logo = (props: Props) => {
+export const Icon = (props: Props) => {
   const { loading: loadingFromProps, priority: priorityFromProps, className } = props
 
   const loading = loadingFromProps || 'lazy'
@@ -18,15 +18,15 @@ export const Logo = (props: Props) => {
     /* eslint-disable @next/next/no-img-element */
     <img
       alt="GSC Logo"
-      width={300}
-      height={113}
+      width={150}
+      height={150}
       loading={loading}
       fetchPriority={priority}
       decoding="async"
-      className={clsx('w-[300px] h-[113px]', className)}
-      src={'/logo.png'}
+      className={clsx('w-[150px] h-[150px]', 'object-contain')}
+      src={'/favicon.png'}
     />
   )
 }
 
-export default Logo
+export default Icon
