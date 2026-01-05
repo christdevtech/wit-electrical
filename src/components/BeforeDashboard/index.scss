@@ -1,7 +1,7 @@
 @import '~@payloadcms/ui/scss';
 
 .dashboard .before-dashboard {
-  margin-bottom: base(1.5);
+  // margin-bottom: base(1.5);
 
   &__banner {
     & h4 {
@@ -16,6 +16,10 @@
     & li {
       width: 100%;
     }
+  }
+  &__button {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   & a:hover {

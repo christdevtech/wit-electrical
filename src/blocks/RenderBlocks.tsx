@@ -10,6 +10,7 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { SwiperWithSideContent } from './SwiperWithSideText/Component'
 import { TestimonialsBlock } from './Testimonials/Component'
 import { AboutSummaryBlock } from '@/blocks/AboutSummary/Component'
+import { GridBlock } from '@/blocks/Grid/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -20,6 +21,7 @@ const blockComponents = {
   swiperWithSideText: SwiperWithSideContent,
   testimonials: TestimonialsBlock,
   aboutSummary: AboutSummaryBlock,
+  grid: GridBlock,
 }
 
 export const RenderBlocks: React.FC<{

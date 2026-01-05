@@ -23,6 +23,7 @@ import {
 import { SwiperWithSideTextBlock } from '@/blocks/SwiperWithSideText/config'
 import { Testimonials } from '@/blocks/Testimonials/config'
 import { AboutSummary } from '@/blocks/AboutSummary/config'
+import { Grid } from '@/blocks/Grid/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -87,6 +88,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 SwiperWithSideTextBlock,
                 Testimonials,
                 AboutSummary,
+                Grid,
               ],
               required: true,
               admin: {
