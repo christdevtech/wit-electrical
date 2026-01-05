@@ -6,16 +6,14 @@ import redirects from './redirects.js'
 const nextConfig = {
   images: {
     remotePatterns: [
-      ...[process.env.NEXT_PUBLIC_SERVER_URL, 'https://witelectrical.apps.christdev.com'].map(
-        (item) => {
-          const url = new URL(item)
+      ...[process.env.NEXT_PUBLIC_SERVER_URL, 'https://witelectrical.com'].map((item) => {
+        const url = new URL(item)
 
-          return {
-            hostname: url.hostname,
-            protocol: url.protocol.replace(':', ''),
-          }
-        },
-      ),
+        return {
+          hostname: url.hostname,
+          protocol: url.protocol.replace(':', ''),
+        }
+      }),
     ],
   },
   webpack: (webpackConfig) => {
@@ -29,6 +27,7 @@ const nextConfig = {
   },
   reactStrictMode: true,
   redirects,
+  output: 'standalone',
 }
 
 export default withPayload(nextConfig, { devBundleServerPackages: false })
