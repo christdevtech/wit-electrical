@@ -73,7 +73,8 @@ export interface Config {
     media: Media;
     categories: Category;
     users: User;
-    partners: Partner;
+    staff: Staff;
+    partnerships: Partnership;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -91,7 +92,8 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
-    partners: PartnersSelect<false> | PartnersSelect<true>;
+    staff: StaffSelect<false> | StaffSelect<true>;
+    partnerships: PartnershipsSelect<false> | PartnershipsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -2959,7 +2961,7 @@ export interface GridBlock {
         colSpanLg?: number | null;
         colSpanXl?: number | null;
         type: 'card' | 'media' | 'slider' | 'text' | 'stat' | 'testimonial' | 'partner';
-        partner?: (string | null) | Partner;
+        partner?: (string | null) | Staff;
         aspectRatio?:
           | ('aspect-[9/16]' | 'aspect-[3/4]' | 'aspect-[4/5]' | 'aspect-[5/6]' | 'aspect-square' | 'aspect-[2/3]')
           | null;
@@ -3404,9 +3406,9 @@ export interface GridBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "partners".
+ * via the `definition` "staff".
  */
-export interface Partner {
+export interface Staff {
   id: string;
   name: string;
   media: string | Media;
@@ -3437,6 +3439,19 @@ export interface Partner {
   founder?: boolean | null;
   slug?: string | null;
   slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partnerships".
+ */
+export interface Partnership {
+  id: string;
+  name: string;
+  link: string;
+  logo: string | Media;
+  backgroundColor?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -3643,8 +3658,12 @@ export interface PayloadLockedDocument {
         value: string | User;
       } | null)
     | ({
-        relationTo: 'partners';
-        value: string | Partner;
+        relationTo: 'staff';
+        value: string | Staff;
+      } | null)
+    | ({
+        relationTo: 'partnerships';
+        value: string | Partnership;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -4209,9 +4228,9 @@ export interface UsersSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "partners_select".
+ * via the `definition` "staff_select".
  */
-export interface PartnersSelect<T extends boolean = true> {
+export interface StaffSelect<T extends boolean = true> {
   name?: T;
   media?: T;
   content?: T;
@@ -4226,6 +4245,18 @@ export interface PartnersSelect<T extends boolean = true> {
   founder?: T;
   slug?: T;
   slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partnerships_select".
+ */
+export interface PartnershipsSelect<T extends boolean = true> {
+  name?: T;
+  link?: T;
+  logo?: T;
+  backgroundColor?: T;
   updatedAt?: T;
   createdAt?: T;
 }

@@ -90,7 +90,7 @@ export const Grid: Block = {
         {
           name: 'partner',
           type: 'relationship',
-          relationTo: 'partners',
+          relationTo: 'staff',
           required: true,
           admin: {
             condition: (_, siblingData) => siblingData?.type === 'partner',

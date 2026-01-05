@@ -1,5 +1,5 @@
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
-import { revalidateDelete, revalidatePartner } from './hooks/revalidatePartner'
+import { revalidateDelete, revalidateStaff } from './hooks/revalidateStaff'
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -12,8 +12,8 @@ import { anyone } from '@/access/anyone'
 import { authenticated } from '@/access/authenticated'
 import { slugField } from '@/fields/slug'
 
-export const Partners: CollectionConfig = {
-  slug: 'partners',
+export const Staff: CollectionConfig = {
+  slug: 'staff',
   access: {
     read: anyone,
     create: authenticated,
@@ -27,19 +27,19 @@ export const Partners: CollectionConfig = {
     //   url: ({ data, req }) =>
     //     generatePreviewPath({
     //       slug: data.slug as string,
-    //       collection: 'partners',
+    //       collection: 'staff',
     //       req,
     //     }),
     // },
     // preview: (data, { req }) =>
     //   generatePreviewPath({
     //     slug: data.slug as string,
-    //     collection: 'partners',
+    //     collection: 'staff',
     //     req,
     //   }),
   },
   hooks: {
-    afterChange: [revalidatePartner],
+    afterChange: [revalidateStaff],
     afterDelete: [revalidateDelete],
   },
   fields: [

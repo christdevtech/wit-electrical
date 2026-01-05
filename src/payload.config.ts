@@ -17,7 +17,8 @@ import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
-import { Partners } from './collections/Partners'
+import { Staff } from './collections/Staff'
+import { Partnerships } from './collections/Partnerships'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -72,7 +73,7 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.DATABASE_URI || '',
   }),
-  collections: [Pages, Posts, Services, Media, Categories, Users, Partners],
+  collections: [Pages, Posts, Services, Media, Categories, Users, Staff, Partnerships],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins: [
