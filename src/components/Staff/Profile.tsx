@@ -1,15 +1,15 @@
 import React from 'react'
-import type { Partner } from '@/payload-types'
+import type { Staff } from '@/payload-types'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
 import { cn } from '@/utilities/ui'
 
 type Props = {
-  partner: Partner
+  partner: Staff
   className?: string
 }
 
-export const PartnerProfile: React.FC<Props> = ({ partner, className }) => {
+export const StaffProfile: React.FC<Props> = ({ partner, className }) => {
   const { media, name, position, founder, content } = partner
 
   return (

@@ -2,18 +2,18 @@
 import React from 'react'
 import Link from 'next/link'
 import { cn } from '@/utilities/ui'
-import type { Partner } from '@/payload-types'
+import type { Staff } from '@/payload-types'
 import { Media } from '@/components/Media'
 import { ArrowRight } from 'lucide-react'
 
 type Props = {
-  partner: Partner
+  partner: Staff
   featured?: boolean
   className?: string
   aspectRatio?: string
 }
 
-export const PartnerCard: React.FC<Props> = ({
+export const StaffCard: React.FC<Props> = ({
   partner,
   featured,
   className,
@@ -23,7 +23,7 @@ export const PartnerCard: React.FC<Props> = ({
 
   return (
     <Link
-      href={`/partners/${slug}`}
+      href={`/staff/${slug}`}
       className={cn(
         'group relative flex flex-col bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 overflow-hidden h-full',
         className,

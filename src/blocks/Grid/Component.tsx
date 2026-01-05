@@ -13,7 +13,7 @@ import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
 import { CMSLink } from '@/components/Link'
 import { BlockWrapper } from '@/components/BlockWrapper'
-import { PartnerCard } from '@/components/Partner/Card'
+import { StaffCard } from '@/components/Staff/Card'
 
 type Props = GridBlockProps & {
   className?: string
@@ -182,12 +182,12 @@ export const GridBlock: React.FC<Props> = (props) => {
                     </div>
                   )}
 
-                  {item.type === 'partner' &&
-                    (item as any).partner &&
-                    typeof (item as any).partner === 'object' && (
+                  {item.type === 'staff' &&
+                    (item as any).staff &&
+                    typeof (item as any).staff === 'object' && (
                       <div className="w-full">
-                        <PartnerCard
-                          partner={(item as any).partner}
+                        <StaffCard
+                          partner={(item as any).staff}
                           // className="h-full"
                           aspectRatio={item.aspectRatio ?? 'aspect-[3/4]'}
                         />

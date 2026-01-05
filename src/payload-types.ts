@@ -2960,8 +2960,8 @@ export interface GridBlock {
         colSpanMd?: number | null;
         colSpanLg?: number | null;
         colSpanXl?: number | null;
-        type: 'card' | 'media' | 'slider' | 'text' | 'stat' | 'testimonial' | 'partner';
-        partner?: (string | null) | Staff;
+        type: 'card' | 'media' | 'slider' | 'text' | 'stat' | 'testimonial' | 'staff';
+        staff?: (string | null) | Staff;
         aspectRatio?:
           | ('aspect-[9/16]' | 'aspect-[3/4]' | 'aspect-[4/5]' | 'aspect-[5/6]' | 'aspect-square' | 'aspect-[2/3]')
           | null;
@@ -3999,7 +3999,7 @@ export interface GridBlockSelect<T extends boolean = true> {
         colSpanLg?: T;
         colSpanXl?: T;
         type?: T;
-        partner?: T;
+        staff?: T;
         aspectRatio?: T;
         cardTitle?: T;
         cardTitleSize?: T;
