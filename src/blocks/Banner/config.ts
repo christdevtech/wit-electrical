@@ -5,10 +5,13 @@ import {
   InlineToolbarFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
+import { backgroundField, blockIdField } from '@/fields/blockFields'
 
 export const Banner: Block = {
   slug: 'banner',
   fields: [
+    backgroundField,
+    blockIdField,
     {
       name: 'style',
       type: 'select',

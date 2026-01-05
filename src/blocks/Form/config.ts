@@ -6,11 +6,14 @@ import {
   InlineToolbarFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
+import { backgroundField, blockIdField } from '@/fields/blockFields'
 
 export const FormBlock: Block = {
   slug: 'formBlock',
   interfaceName: 'FormBlock',
   fields: [
+    backgroundField,
+    blockIdField,
     {
       name: 'form',
       type: 'relationship',

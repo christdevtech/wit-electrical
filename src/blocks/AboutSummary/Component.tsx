@@ -8,15 +8,44 @@ import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
 import { cn } from '@/utilities/ui'
+import { BlockWrapper } from '@/components/BlockWrapper'
 
-export const AboutSummaryBlock: React.FC<AboutSummaryProps & { id?: string }> = (props) => {
-  const { id, content, media, imagePosition = 'right', enableLink, link, title } = props
+type Props = AboutSummaryProps & {
+  id?: string
+  className?: string
+  backgroundVariant?: 'color' | 'image'
+  colorTheme?: string | null
+  backgroundImage?: any
+  blockId?: string | null
+}
+
+export const AboutSummaryBlock: React.FC<Props> = (props) => {
+  const {
+    id,
+    className,
+    backgroundVariant,
+    colorTheme,
+    backgroundImage,
+    blockId,
+    content,
+    media,
+    imagePosition = 'right',
+    enableLink,
+    link,
+    title,
+  } = props
 
   const hasImage = Boolean(media)
   const isRight = imagePosition === 'right'
 
   return (
-    <section id={`block-${id}`} className="my-16">
+    <BlockWrapper
+      backgroundVariant={backgroundVariant}
+      colorTheme={colorTheme}
+      backgroundImage={backgroundImage}
+      blockId={blockId ?? id}
+      className={className}
+    >
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -27,7 +56,6 @@ export const AboutSummaryBlock: React.FC<AboutSummaryProps & { id?: string }> = 
             'lg:grid-cols-2': hasImage,
           })}
         >
-          {/* Text column */}
           <div
             className={cn('order-1', {
               'lg:order-1': !hasImage || !isRight,
@@ -46,8 +74,6 @@ export const AboutSummaryBlock: React.FC<AboutSummaryProps & { id?: string }> = 
               </div>
             )}
           </div>
-
-          {/* Image column (optional) */}
           {hasImage && (
             <div
               className={cn(
@@ -67,6 +93,6 @@ export const AboutSummaryBlock: React.FC<AboutSummaryProps & { id?: string }> = 
           )}
         </motion.div>
       </div>
-    </section>
+    </BlockWrapper>
   )
 }

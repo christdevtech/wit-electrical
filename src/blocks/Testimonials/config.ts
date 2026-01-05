@@ -6,11 +6,14 @@ import {
   InlineToolbarFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
+import { backgroundField, blockIdField } from '@/fields/blockFields'
 
 export const Testimonials: Block = {
   slug: 'testimonials',
   interfaceName: 'TestimonialsBlock',
   fields: [
+    backgroundField,
+    blockIdField,
     {
       name: 'title',
       type: 'text',

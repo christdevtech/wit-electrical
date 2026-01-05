@@ -6,11 +6,14 @@ import {
   InlineToolbarFeature,
 } from '@payloadcms/richtext-lexical'
 import { Block } from 'payload'
+import { backgroundField, blockIdField } from '@/fields/blockFields'
 
 export const SwiperWithSideTextBlock: Block = {
   slug: 'swiperWithSideText',
   interfaceName: 'SwiperWithSideTextBlock',
   fields: [
+    backgroundField,
+    blockIdField,
     {
       name: 'title',
       type: 'text',

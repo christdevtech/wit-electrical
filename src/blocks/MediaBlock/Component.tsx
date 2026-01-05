@@ -1,12 +1,10 @@
 import type { StaticImageData } from 'next/image'
-
 import { cn } from '@/utilities/ui'
 import React from 'react'
 import RichText from '@/components/RichText'
-
 import type { MediaBlock as MediaBlockProps } from '@/payload-types'
-
 import { Media } from '../../components/Media'
+import { BlockWrapper } from '@/components/BlockWrapper'
 
 type Props = MediaBlockProps & {
   breakout?: boolean
@@ -16,6 +14,10 @@ type Props = MediaBlockProps & {
   imgClassName?: string
   staticImage?: StaticImageData
   disableInnerContainer?: boolean
+  backgroundVariant?: 'color' | 'image'
+  colorTheme?: string | null
+  backgroundImage?: any
+  blockId?: string | null
 }
 
 export const MediaBlock: React.FC<Props> = (props) => {
@@ -27,41 +29,49 @@ export const MediaBlock: React.FC<Props> = (props) => {
     media,
     staticImage,
     disableInnerContainer,
+    backgroundVariant,
+    colorTheme,
+    backgroundImage,
+    blockId,
   } = props
 
   let caption
   if (media && typeof media === 'object') caption = media.caption
 
   return (
-    <div
-      className={cn(
-        '',
-        {
-          container: enableGutter,
-        },
-        className,
-      )}
+    <BlockWrapper
+      backgroundVariant={backgroundVariant}
+      colorTheme={colorTheme}
+      backgroundImage={backgroundImage}
+      blockId={blockId}
+      className={className}
     >
-      {(media || staticImage) && (
-        <Media
-          imgClassName={cn('border border-border rounded-[0.8rem]', imgClassName)}
-          resource={media}
-          src={staticImage}
-        />
-      )}
-      {caption && (
-        <div
-          className={cn(
-            'mt-6',
-            {
-              container: !disableInnerContainer,
-            },
-            captionClassName,
-          )}
-        >
-          <RichText data={caption} enableGutter={false} />
-        </div>
-      )}
-    </div>
+      <div
+        className={cn('', {
+          container: enableGutter,
+        })}
+      >
+        {(media || staticImage) && (
+          <Media
+            imgClassName={cn('border border-border rounded-[0.8rem]', imgClassName)}
+            resource={media}
+            src={staticImage}
+          />
+        )}
+        {caption && (
+          <div
+            className={cn(
+              'mt-6',
+              {
+                container: !disableInnerContainer,
+              },
+              captionClassName,
+            )}
+          >
+            <RichText data={caption} enableGutter={false} />
+          </div>
+        )}
+      </div>
+    </BlockWrapper>
   )
 }

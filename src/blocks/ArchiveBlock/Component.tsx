@@ -6,13 +6,31 @@ import React from 'react'
 import RichText from '@/components/RichText'
 
 import { CollectionArchive } from '@/components/CollectionArchive'
+import { BlockWrapper } from '@/components/BlockWrapper'
 
 export const ArchiveBlock: React.FC<
   ArchiveBlockProps & {
     id?: string
+    className?: string
+    backgroundVariant?: 'color' | 'image'
+    colorTheme?: string | null
+    backgroundImage?: any
+    blockId?: string | null
   }
 > = async (props) => {
-  const { id, categories, introContent, limit: limitFromProps, populateBy, selectedDocs } = props
+  const {
+    id,
+    className,
+    backgroundVariant,
+    colorTheme,
+    backgroundImage,
+    blockId,
+    categories,
+    introContent,
+    limit: limitFromProps,
+    populateBy,
+    selectedDocs,
+  } = props
 
   const limit = limitFromProps || 3
 
@@ -53,13 +71,19 @@ export const ArchiveBlock: React.FC<
   }
 
   return (
-    <div className="my-16" id={`block-${id}`}>
+    <BlockWrapper
+      backgroundVariant={backgroundVariant}
+      colorTheme={colorTheme}
+      backgroundImage={backgroundImage}
+      blockId={blockId ?? id}
+      className={className}
+    >
       {introContent && (
         <div className="container mb-16">
           <RichText className="ms-0 max-w-[48rem]" data={introContent} enableGutter={false} />
         </div>
       )}
       <CollectionArchive docs={posts} relationTo="posts" />
-    </div>
+    </BlockWrapper>
   )
 }

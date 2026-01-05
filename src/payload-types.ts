@@ -810,6 +810,28 @@ export interface Service {
  * via the `definition` "CallToActionBlock".
  */
 export interface CallToActionBlock {
+  backgroundVariant: 'color' | 'image';
+  colorTheme?:
+    | (
+        | 'slate'
+        | 'gray'
+        | 'zinc'
+        | 'neutral'
+        | 'stone'
+        | 'blue'
+        | 'indigo'
+        | 'violet'
+        | 'emerald'
+        | 'teal'
+        | 'rose'
+        | 'default'
+      )
+    | null;
+  backgroundImage?: (string | null) | Media;
+  /**
+   * Enter a unique ID for this block to link to it (e.g., "about-us").
+   */
+  blockId?: string | null;
   richText?: {
     root: {
       type: string;
@@ -1220,6 +1242,28 @@ export interface CallToActionBlock {
  * via the `definition` "ContentBlock".
  */
 export interface ContentBlock {
+  backgroundVariant: 'color' | 'image';
+  colorTheme?:
+    | (
+        | 'slate'
+        | 'gray'
+        | 'zinc'
+        | 'neutral'
+        | 'stone'
+        | 'blue'
+        | 'indigo'
+        | 'violet'
+        | 'emerald'
+        | 'teal'
+        | 'rose'
+        | 'default'
+      )
+    | null;
+  backgroundImage?: (string | null) | Media;
+  /**
+   * Enter a unique ID for this block to link to it (e.g., "about-us").
+   */
+  blockId?: string | null;
   columns?:
     | {
         size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
@@ -1632,6 +1676,28 @@ export interface ContentBlock {
  * via the `definition` "MediaBlock".
  */
 export interface MediaBlock {
+  backgroundVariant: 'color' | 'image';
+  colorTheme?:
+    | (
+        | 'slate'
+        | 'gray'
+        | 'zinc'
+        | 'neutral'
+        | 'stone'
+        | 'blue'
+        | 'indigo'
+        | 'violet'
+        | 'emerald'
+        | 'teal'
+        | 'rose'
+        | 'default'
+      )
+    | null;
+  backgroundImage?: (string | null) | Media;
+  /**
+   * Enter a unique ID for this block to link to it (e.g., "about-us").
+   */
+  blockId?: string | null;
   media: string | Media;
   id?: string | null;
   blockName?: string | null;
@@ -1642,6 +1708,28 @@ export interface MediaBlock {
  * via the `definition` "ArchiveBlock".
  */
 export interface ArchiveBlock {
+  backgroundVariant: 'color' | 'image';
+  colorTheme?:
+    | (
+        | 'slate'
+        | 'gray'
+        | 'zinc'
+        | 'neutral'
+        | 'stone'
+        | 'blue'
+        | 'indigo'
+        | 'violet'
+        | 'emerald'
+        | 'teal'
+        | 'rose'
+        | 'default'
+      )
+    | null;
+  backgroundImage?: (string | null) | Media;
+  /**
+   * Enter a unique ID for this block to link to it (e.g., "about-us").
+   */
+  blockId?: string | null;
   introContent?: {
     root: {
       type: string;
@@ -1676,6 +1764,28 @@ export interface ArchiveBlock {
  * via the `definition` "FormBlock".
  */
 export interface FormBlock {
+  backgroundVariant: 'color' | 'image';
+  colorTheme?:
+    | (
+        | 'slate'
+        | 'gray'
+        | 'zinc'
+        | 'neutral'
+        | 'stone'
+        | 'blue'
+        | 'indigo'
+        | 'violet'
+        | 'emerald'
+        | 'teal'
+        | 'rose'
+        | 'default'
+      )
+    | null;
+  backgroundImage?: (string | null) | Media;
+  /**
+   * Enter a unique ID for this block to link to it (e.g., "about-us").
+   */
+  blockId?: string | null;
   form: string | Form;
   enableIntro?: boolean | null;
   introContent?: {
@@ -1876,6 +1986,28 @@ export interface Form {
  * via the `definition` "SwiperWithSideTextBlock".
  */
 export interface SwiperWithSideTextBlock {
+  backgroundVariant: 'color' | 'image';
+  colorTheme?:
+    | (
+        | 'slate'
+        | 'gray'
+        | 'zinc'
+        | 'neutral'
+        | 'stone'
+        | 'blue'
+        | 'indigo'
+        | 'violet'
+        | 'emerald'
+        | 'teal'
+        | 'rose'
+        | 'default'
+      )
+    | null;
+  backgroundImage?: (string | null) | Media;
+  /**
+   * Enter a unique ID for this block to link to it (e.g., "about-us").
+   */
+  blockId?: string | null;
   title?: string | null;
   description?: {
     root: {
@@ -2308,6 +2440,28 @@ export interface SwiperWithSideTextBlock {
  * via the `definition` "TestimonialsBlock".
  */
 export interface TestimonialsBlock {
+  backgroundVariant: 'color' | 'image';
+  colorTheme?:
+    | (
+        | 'slate'
+        | 'gray'
+        | 'zinc'
+        | 'neutral'
+        | 'stone'
+        | 'blue'
+        | 'indigo'
+        | 'violet'
+        | 'emerald'
+        | 'teal'
+        | 'rose'
+        | 'default'
+      )
+    | null;
+  backgroundImage?: (string | null) | Media;
+  /**
+   * Enter a unique ID for this block to link to it (e.g., "about-us").
+   */
+  blockId?: string | null;
   title?: string | null;
   testimonials?:
     | {
@@ -2341,6 +2495,28 @@ export interface TestimonialsBlock {
  * via the `definition` "AboutSummaryBlock".
  */
 export interface AboutSummaryBlock {
+  backgroundVariant: 'color' | 'image';
+  colorTheme?:
+    | (
+        | 'slate'
+        | 'gray'
+        | 'zinc'
+        | 'neutral'
+        | 'stone'
+        | 'blue'
+        | 'indigo'
+        | 'violet'
+        | 'emerald'
+        | 'teal'
+        | 'rose'
+        | 'default'
+      )
+    | null;
+  backgroundImage?: (string | null) | Media;
+  /**
+   * Enter a unique ID for this block to link to it (e.g., "about-us").
+   */
+  blockId?: string | null;
   title: string;
   content: {
     root: {
@@ -3070,6 +3246,10 @@ export interface PagesSelect<T extends boolean = true> {
  * via the `definition` "CallToActionBlock_select".
  */
 export interface CallToActionBlockSelect<T extends boolean = true> {
+  backgroundVariant?: T;
+  colorTheme?: T;
+  backgroundImage?: T;
+  blockId?: T;
   richText?: T;
   links?:
     | T
@@ -3096,6 +3276,10 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
  * via the `definition` "ContentBlock_select".
  */
 export interface ContentBlockSelect<T extends boolean = true> {
+  backgroundVariant?: T;
+  colorTheme?: T;
+  backgroundImage?: T;
+  blockId?: T;
   columns?:
     | T
     | {
@@ -3124,6 +3308,10 @@ export interface ContentBlockSelect<T extends boolean = true> {
  * via the `definition` "MediaBlock_select".
  */
 export interface MediaBlockSelect<T extends boolean = true> {
+  backgroundVariant?: T;
+  colorTheme?: T;
+  backgroundImage?: T;
+  blockId?: T;
   media?: T;
   id?: T;
   blockName?: T;
@@ -3133,6 +3321,10 @@ export interface MediaBlockSelect<T extends boolean = true> {
  * via the `definition` "ArchiveBlock_select".
  */
 export interface ArchiveBlockSelect<T extends boolean = true> {
+  backgroundVariant?: T;
+  colorTheme?: T;
+  backgroundImage?: T;
+  blockId?: T;
   introContent?: T;
   populateBy?: T;
   relationTo?: T;
@@ -3147,6 +3339,10 @@ export interface ArchiveBlockSelect<T extends boolean = true> {
  * via the `definition` "FormBlock_select".
  */
 export interface FormBlockSelect<T extends boolean = true> {
+  backgroundVariant?: T;
+  colorTheme?: T;
+  backgroundImage?: T;
+  blockId?: T;
   form?: T;
   enableIntro?: T;
   introContent?: T;
@@ -3158,6 +3354,10 @@ export interface FormBlockSelect<T extends boolean = true> {
  * via the `definition` "SwiperWithSideTextBlock_select".
  */
 export interface SwiperWithSideTextBlockSelect<T extends boolean = true> {
+  backgroundVariant?: T;
+  colorTheme?: T;
+  backgroundImage?: T;
+  blockId?: T;
   title?: T;
   description?: T;
   slides?:
@@ -3192,6 +3392,10 @@ export interface SwiperWithSideTextBlockSelect<T extends boolean = true> {
  * via the `definition` "TestimonialsBlock_select".
  */
 export interface TestimonialsBlockSelect<T extends boolean = true> {
+  backgroundVariant?: T;
+  colorTheme?: T;
+  backgroundImage?: T;
+  blockId?: T;
   title?: T;
   testimonials?:
     | T
@@ -3210,6 +3414,10 @@ export interface TestimonialsBlockSelect<T extends boolean = true> {
  * via the `definition` "AboutSummaryBlock_select".
  */
 export interface AboutSummaryBlockSelect<T extends boolean = true> {
+  backgroundVariant?: T;
+  colorTheme?: T;
+  backgroundImage?: T;
+  blockId?: T;
   title?: T;
   content?: T;
   media?: T;
@@ -4549,6 +4757,28 @@ export interface TaskSchedulePublish {
  * via the `definition` "BannerBlock".
  */
 export interface BannerBlock {
+  backgroundVariant: 'color' | 'image';
+  colorTheme?:
+    | (
+        | 'slate'
+        | 'gray'
+        | 'zinc'
+        | 'neutral'
+        | 'stone'
+        | 'blue'
+        | 'indigo'
+        | 'violet'
+        | 'emerald'
+        | 'teal'
+        | 'rose'
+        | 'default'
+      )
+    | null;
+  backgroundImage?: (string | null) | Media;
+  /**
+   * Enter a unique ID for this block to link to it (e.g., "about-us").
+   */
+  blockId?: string | null;
   style: 'info' | 'warning' | 'error' | 'success';
   content: {
     root: {

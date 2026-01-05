@@ -7,11 +7,14 @@ import {
   LinkFeature,
 } from '@payloadcms/richtext-lexical'
 import { link } from '@/fields/link'
+import { backgroundField, blockIdField } from '@/fields/blockFields'
 
 export const AboutSummary: Block = {
   slug: 'aboutSummary',
   interfaceName: 'AboutSummaryBlock',
   fields: [
+    backgroundField,
+    blockIdField,
     {
       name: 'title',
       type: 'text',

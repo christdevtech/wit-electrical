@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { EffectCreative } from 'swiper/modules'
+import { EffectCreative, Autoplay } from 'swiper/modules'
 import { Media } from '@/components/Media'
 import { CMSLink } from '@/components/Link'
 import RichText from '@/components/RichText'
@@ -30,7 +30,7 @@ export const SwiperClient: React.FC<SwiperClientProps> = ({ slides }) => {
         },
       }}
       loop={true}
-      modules={[EffectCreative]}
+      modules={[EffectCreative, Autoplay]}
       className="mySwiper"
       autoplay={{
         delay: 3000,

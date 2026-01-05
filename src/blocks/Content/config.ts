@@ -8,6 +8,7 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 import { link } from '@/fields/link'
+import { backgroundField, blockIdField } from '@/fields/blockFields'
 
 const columnFields: Field[] = [
   {
@@ -67,6 +68,8 @@ export const Content: Block = {
   slug: 'content',
   interfaceName: 'ContentBlock',
   fields: [
+    backgroundField,
+    blockIdField,
     {
       name: 'columns',
       type: 'array',
