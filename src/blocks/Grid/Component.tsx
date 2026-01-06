@@ -17,6 +17,7 @@ import { StaffCard } from '@/components/Staff/Card'
 
 type Props = GridBlockProps & {
   className?: string
+  imageTextColor?: 'white' | 'black' | null
 }
 
 const titleSizeMap: Record<string, string> = {
@@ -36,6 +37,7 @@ export const GridBlock: React.FC<Props> = (props) => {
     backgroundVariant,
     colorTheme,
     backgroundImage,
+    imageTextColor,
     items = [],
     className,
     gridColumns = 4,
@@ -49,6 +51,7 @@ export const GridBlock: React.FC<Props> = (props) => {
       backgroundVariant={backgroundVariant}
       colorTheme={colorTheme}
       backgroundImage={backgroundImage}
+      imageTextColor={imageTextColor}
       blockId={blockId}
       className={className}
     >

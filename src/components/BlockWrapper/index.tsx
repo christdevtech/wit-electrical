@@ -7,6 +7,7 @@ type Props = {
   backgroundVariant?: 'color' | 'image'
   colorTheme?: string | null
   backgroundImage?: any
+  imageTextColor?: 'white' | 'black' | null
   blockId?: string | null
   className?: string
   children: React.ReactNode
@@ -16,15 +17,22 @@ export const BlockWrapper: React.FC<Props> = ({
   backgroundVariant,
   colorTheme,
   backgroundImage,
+  imageTextColor,
   blockId,
   className,
   children,
 }) => {
   const bgClass = backgroundVariant === 'color' ? gradientByTheme[colorTheme || 'default'] : ''
+  const textClass =
+    backgroundVariant === 'image'
+      ? imageTextColor === 'black'
+        ? 'text-black'
+        : 'text-white'
+      : ''
 
   return (
     <div
-      className={cn(bgClass, 'relative overflow-hidden', className)}
+      className={cn(bgClass, textClass, 'relative overflow-hidden', className)}
       id={blockId ? `block-${blockId}` : undefined}
     >
       {backgroundVariant === 'image' && backgroundImage && typeof backgroundImage === 'object' && (

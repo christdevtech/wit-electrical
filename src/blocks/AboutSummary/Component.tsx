@@ -16,6 +16,7 @@ type Props = AboutSummaryProps & {
   backgroundVariant?: 'color' | 'image'
   colorTheme?: string | null
   backgroundImage?: any
+  imageTextColor?: 'white' | 'black' | null
   blockId?: string | null
 }
 
@@ -26,6 +27,7 @@ export const AboutSummaryBlock: React.FC<Props> = (props) => {
     backgroundVariant,
     colorTheme,
     backgroundImage,
+    imageTextColor,
     blockId,
     content,
     media,
@@ -43,6 +45,7 @@ export const AboutSummaryBlock: React.FC<Props> = (props) => {
       backgroundVariant={backgroundVariant}
       colorTheme={colorTheme}
       backgroundImage={backgroundImage}
+      imageTextColor={imageTextColor}
       blockId={blockId ?? id}
       className={className}
     >

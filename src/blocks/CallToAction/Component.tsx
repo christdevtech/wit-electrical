@@ -9,6 +9,7 @@ type Props = CTABlockProps & {
   backgroundVariant?: 'color' | 'image'
   colorTheme?: string | null
   backgroundImage?: any
+  imageTextColor?: 'white' | 'black' | null
   blockId?: string | null
 }
 
@@ -19,6 +20,7 @@ export const CallToActionBlock: React.FC<Props> = ({
   backgroundVariant,
   colorTheme,
   backgroundImage,
+  imageTextColor,
   blockId,
 }) => {
   return (
@@ -26,6 +28,7 @@ export const CallToActionBlock: React.FC<Props> = ({
       backgroundVariant={backgroundVariant}
       colorTheme={colorTheme}
       backgroundImage={backgroundImage}
+      imageTextColor={imageTextColor}
       blockId={blockId}
       className={className}
     >

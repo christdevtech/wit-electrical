@@ -8,7 +8,9 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { cn } from '@/utilities/ui'
 import { BlockWrapper } from '@/components/BlockWrapper'
 
-export const ContactBlock: React.FC<Props & { className?: string }> = ({
+export const ContactBlock: React.FC<
+  Props & { className?: string; imageTextColor?: 'white' | 'black' | null }
+> = ({
   title,
   address,
   phone,
@@ -16,6 +18,7 @@ export const ContactBlock: React.FC<Props & { className?: string }> = ({
   backgroundVariant,
   colorTheme,
   backgroundImage,
+  imageTextColor,
   blockId,
   className,
 }) => {
@@ -43,13 +46,14 @@ export const ContactBlock: React.FC<Props & { className?: string }> = ({
       backgroundVariant={backgroundVariant}
       colorTheme={colorTheme}
       backgroundImage={backgroundImage}
+      imageTextColor={imageTextColor}
       blockId={blockId}
       className={className}
     >
       <section className="container">
         <div className="text-center mb-10">
-          {title && <h2 className="text-3xl md:text-4xl font-bold text-foreground">{title}</h2>}
-          <p className="text-muted-foreground mt-2">Reach us through any of the channels below</p>
+          {title && <h2 className="text-3xl md:text-4xl font-bold">{title}</h2>}
+          <p className="mt-2">Reach us through any of the channels below</p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

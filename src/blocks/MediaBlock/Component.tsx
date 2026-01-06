@@ -17,6 +17,7 @@ type Props = MediaBlockProps & {
   backgroundVariant?: 'color' | 'image'
   colorTheme?: string | null
   backgroundImage?: any
+  imageTextColor?: 'white' | 'black' | null
   blockId?: string | null
 }
 
@@ -32,6 +33,7 @@ export const MediaBlock: React.FC<Props> = (props) => {
     backgroundVariant,
     colorTheme,
     backgroundImage,
+    imageTextColor,
     blockId,
   } = props
 
@@ -43,6 +45,7 @@ export const MediaBlock: React.FC<Props> = (props) => {
       backgroundVariant={backgroundVariant}
       colorTheme={colorTheme}
       backgroundImage={backgroundImage}
+      imageTextColor={imageTextColor}
       blockId={blockId}
       className={className}
     >

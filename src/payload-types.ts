@@ -836,6 +836,10 @@ export interface CallToActionBlock {
     | null;
   backgroundImage?: (string | null) | Media;
   /**
+   * Choose the text color to use over the background image to ensure readability.
+   */
+  imageTextColor?: ('white' | 'black') | null;
+  /**
    * Enter a unique ID for this block to link to it (e.g., "about-us").
    */
   blockId?: string | null;
@@ -1267,6 +1271,10 @@ export interface ContentBlock {
       )
     | null;
   backgroundImage?: (string | null) | Media;
+  /**
+   * Choose the text color to use over the background image to ensure readability.
+   */
+  imageTextColor?: ('white' | 'black') | null;
   /**
    * Enter a unique ID for this block to link to it (e.g., "about-us").
    */
@@ -1702,6 +1710,10 @@ export interface MediaBlock {
     | null;
   backgroundImage?: (string | null) | Media;
   /**
+   * Choose the text color to use over the background image to ensure readability.
+   */
+  imageTextColor?: ('white' | 'black') | null;
+  /**
    * Enter a unique ID for this block to link to it (e.g., "about-us").
    */
   blockId?: string | null;
@@ -1733,6 +1745,10 @@ export interface ArchiveBlock {
       )
     | null;
   backgroundImage?: (string | null) | Media;
+  /**
+   * Choose the text color to use over the background image to ensure readability.
+   */
+  imageTextColor?: ('white' | 'black') | null;
   /**
    * Enter a unique ID for this block to link to it (e.g., "about-us").
    */
@@ -1789,6 +1805,10 @@ export interface FormBlock {
       )
     | null;
   backgroundImage?: (string | null) | Media;
+  /**
+   * Choose the text color to use over the background image to ensure readability.
+   */
+  imageTextColor?: ('white' | 'black') | null;
   /**
    * Enter a unique ID for this block to link to it (e.g., "about-us").
    */
@@ -2011,6 +2031,10 @@ export interface SwiperWithSideTextBlock {
       )
     | null;
   backgroundImage?: (string | null) | Media;
+  /**
+   * Choose the text color to use over the background image to ensure readability.
+   */
+  imageTextColor?: ('white' | 'black') | null;
   /**
    * Enter a unique ID for this block to link to it (e.g., "about-us").
    */
@@ -2466,6 +2490,10 @@ export interface TestimonialsBlock {
     | null;
   backgroundImage?: (string | null) | Media;
   /**
+   * Choose the text color to use over the background image to ensure readability.
+   */
+  imageTextColor?: ('white' | 'black') | null;
+  /**
    * Enter a unique ID for this block to link to it (e.g., "about-us").
    */
   blockId?: string | null;
@@ -2520,6 +2548,10 @@ export interface AboutSummaryBlock {
       )
     | null;
   backgroundImage?: (string | null) | Media;
+  /**
+   * Choose the text color to use over the background image to ensure readability.
+   */
+  imageTextColor?: ('white' | 'black') | null;
   /**
    * Enter a unique ID for this block to link to it (e.g., "about-us").
    */
@@ -2951,6 +2983,10 @@ export interface GridBlock {
       )
     | null;
   backgroundImage?: (string | null) | Media;
+  /**
+   * Choose the text color to use over the background image to ensure readability.
+   */
+  imageTextColor?: ('white' | 'black') | null;
   /**
    * Enter a unique ID for this block to link to it (e.g., "about-us").
    */
@@ -3468,6 +3504,10 @@ export interface MissionVisionBlock {
     | null;
   backgroundImage?: (string | null) | Media;
   /**
+   * Choose the text color to use over the background image to ensure readability.
+   */
+  imageTextColor?: ('white' | 'black') | null;
+  /**
    * Enter a unique ID for this block to link to it (e.g., "about-us").
    */
   blockId?: string | null;
@@ -3559,6 +3599,10 @@ export interface ContactBlock {
       )
     | null;
   backgroundImage?: (string | null) | Media;
+  /**
+   * Choose the text color to use over the background image to ensure readability.
+   */
+  imageTextColor?: ('white' | 'black') | null;
   /**
    * Enter a unique ID for this block to link to it (e.g., "about-us").
    */
@@ -3938,6 +3982,7 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
   backgroundVariant?: T;
   colorTheme?: T;
   backgroundImage?: T;
+  imageTextColor?: T;
   blockId?: T;
   richText?: T;
   links?:
@@ -3968,6 +4013,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
   backgroundVariant?: T;
   colorTheme?: T;
   backgroundImage?: T;
+  imageTextColor?: T;
   blockId?: T;
   columns?:
     | T
@@ -4000,6 +4046,7 @@ export interface MediaBlockSelect<T extends boolean = true> {
   backgroundVariant?: T;
   colorTheme?: T;
   backgroundImage?: T;
+  imageTextColor?: T;
   blockId?: T;
   media?: T;
   id?: T;
@@ -4013,6 +4060,7 @@ export interface ArchiveBlockSelect<T extends boolean = true> {
   backgroundVariant?: T;
   colorTheme?: T;
   backgroundImage?: T;
+  imageTextColor?: T;
   blockId?: T;
   introContent?: T;
   populateBy?: T;
@@ -4031,6 +4079,7 @@ export interface FormBlockSelect<T extends boolean = true> {
   backgroundVariant?: T;
   colorTheme?: T;
   backgroundImage?: T;
+  imageTextColor?: T;
   blockId?: T;
   form?: T;
   enableIntro?: T;
@@ -4046,6 +4095,7 @@ export interface SwiperWithSideTextBlockSelect<T extends boolean = true> {
   backgroundVariant?: T;
   colorTheme?: T;
   backgroundImage?: T;
+  imageTextColor?: T;
   blockId?: T;
   title?: T;
   description?: T;
@@ -4084,6 +4134,7 @@ export interface TestimonialsBlockSelect<T extends boolean = true> {
   backgroundVariant?: T;
   colorTheme?: T;
   backgroundImage?: T;
+  imageTextColor?: T;
   blockId?: T;
   title?: T;
   testimonials?:
@@ -4106,6 +4157,7 @@ export interface AboutSummaryBlockSelect<T extends boolean = true> {
   backgroundVariant?: T;
   colorTheme?: T;
   backgroundImage?: T;
+  imageTextColor?: T;
   blockId?: T;
   title?: T;
   content?: T;
@@ -4135,6 +4187,7 @@ export interface GridBlockSelect<T extends boolean = true> {
   backgroundVariant?: T;
   colorTheme?: T;
   backgroundImage?: T;
+  imageTextColor?: T;
   blockId?: T;
   gridColumns?: T;
   items?:
@@ -4189,6 +4242,7 @@ export interface MissionVisionBlockSelect<T extends boolean = true> {
   backgroundVariant?: T;
   colorTheme?: T;
   backgroundImage?: T;
+  imageTextColor?: T;
   blockId?: T;
   missionVisionTitle?: T;
   mainDescription?: T;
@@ -4210,6 +4264,7 @@ export interface ContactBlockSelect<T extends boolean = true> {
   backgroundVariant?: T;
   colorTheme?: T;
   backgroundImage?: T;
+  imageTextColor?: T;
   blockId?: T;
   title?: T;
   description?: T;
@@ -5590,6 +5645,10 @@ export interface BannerBlock {
       )
     | null;
   backgroundImage?: (string | null) | Media;
+  /**
+   * Choose the text color to use over the background image to ensure readability.
+   */
+  imageTextColor?: ('white' | 'black') | null;
   /**
    * Enter a unique ID for this block to link to it (e.g., "about-us").
    */

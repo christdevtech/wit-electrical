@@ -10,6 +10,7 @@ import { BlockWrapper } from '@/components/BlockWrapper'
 
 type Props = {
   className?: string
+  imageTextColor?: 'white' | 'black' | null
 } & MissionVisionBlock
 
 export const MissionVisionBlockComponent: React.FC<Props> = ({
@@ -26,6 +27,7 @@ export const MissionVisionBlockComponent: React.FC<Props> = ({
   backgroundVariant,
   colorTheme,
   backgroundImage,
+  imageTextColor,
   blockId,
 }) => {
   const isStacked = layout === 'stacked'
@@ -36,6 +38,7 @@ export const MissionVisionBlockComponent: React.FC<Props> = ({
       backgroundVariant={backgroundVariant}
       colorTheme={colorTheme}
       backgroundImage={backgroundImage}
+      imageTextColor={imageTextColor}
       blockId={blockId}
       className={className}
     >

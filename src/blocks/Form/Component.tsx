@@ -27,6 +27,7 @@ export const FormBlock: React.FC<
     backgroundVariant?: 'color' | 'image'
     colorTheme?: string | null
     backgroundImage?: any
+    imageTextColor?: 'white' | 'black' | null
     blockId?: string | null
   } & FormBlockType
 > = (props) => {
@@ -36,6 +37,7 @@ export const FormBlock: React.FC<
     backgroundVariant,
     colorTheme,
     backgroundImage,
+    imageTextColor,
     blockId,
     enableIntro,
     form: formFromProps,
@@ -130,6 +132,7 @@ export const FormBlock: React.FC<
       backgroundVariant={backgroundVariant}
       colorTheme={colorTheme}
       backgroundImage={backgroundImage}
+      imageTextColor={imageTextColor}
       blockId={blockId ?? id}
       className={className}
     >

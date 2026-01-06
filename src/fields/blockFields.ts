@@ -45,6 +45,21 @@ export const backgroundField: Field = {
         width: '50%',
       },
     },
+    {
+      name: 'imageTextColor',
+      type: 'select',
+      admin: {
+        condition: (_, siblingData) => siblingData?.backgroundVariant === 'image',
+        width: '50%',
+        description:
+          'Choose the text color to use over the background image to ensure readability.',
+      },
+      options: [
+        { label: 'Light (white)', value: 'white' },
+        { label: 'Dark (black)', value: 'black' },
+      ],
+      defaultValue: 'white',
+    },
   ],
 }
 

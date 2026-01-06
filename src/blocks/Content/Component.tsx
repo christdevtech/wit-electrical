@@ -10,11 +10,20 @@ type Props = ContentBlockProps & {
   backgroundVariant?: 'color' | 'image'
   colorTheme?: string | null
   backgroundImage?: any
+  imageTextColor?: 'white' | 'black' | null
   blockId?: string | null
 }
 
 export const ContentBlock: React.FC<Props> = (props) => {
-  const { columns, className, backgroundVariant, colorTheme, backgroundImage, blockId } = props
+  const {
+    columns,
+    className,
+    backgroundVariant,
+    colorTheme,
+    backgroundImage,
+    imageTextColor,
+    blockId,
+  } = props
 
   const colsSpanClasses = {
     full: '12',
@@ -28,6 +37,7 @@ export const ContentBlock: React.FC<Props> = (props) => {
       backgroundVariant={backgroundVariant}
       colorTheme={colorTheme}
       backgroundImage={backgroundImage}
+      imageTextColor={imageTextColor}
       blockId={blockId}
       className={className}
     >

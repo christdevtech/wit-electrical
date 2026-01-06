@@ -9,17 +9,19 @@ type Props = SwiperWithSideTextBlock & {
   backgroundVariant?: 'color' | 'image'
   colorTheme?: string | null
   backgroundImage?: any
+  imageTextColor?: 'white' | 'black' | null
   blockId?: string | null
 }
 
 export const SwiperWithSideContent: React.FC<Props> = (props) => {
-  const { slides, title, description, className, backgroundVariant, colorTheme, backgroundImage, blockId } = props
+  const { slides, title, description, className, backgroundVariant, colorTheme, backgroundImage, imageTextColor, blockId } = props
 
   return (
     <BlockWrapper
       backgroundVariant={backgroundVariant}
       colorTheme={colorTheme}
       backgroundImage={backgroundImage}
+      imageTextColor={imageTextColor}
       blockId={blockId}
       className={className}
     >

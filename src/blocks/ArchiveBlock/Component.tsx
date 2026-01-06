@@ -15,6 +15,7 @@ export const ArchiveBlock: React.FC<
     backgroundVariant?: 'color' | 'image'
     colorTheme?: string | null
     backgroundImage?: any
+    imageTextColor?: 'white' | 'black' | null
     blockId?: string | null
   }
 > = async (props) => {
@@ -24,6 +25,7 @@ export const ArchiveBlock: React.FC<
     backgroundVariant,
     colorTheme,
     backgroundImage,
+    imageTextColor,
     blockId,
     categories,
     introContent,
@@ -75,6 +77,7 @@ export const ArchiveBlock: React.FC<
       backgroundVariant={backgroundVariant}
       colorTheme={colorTheme}
       backgroundImage={backgroundImage}
+      imageTextColor={imageTextColor}
       blockId={blockId ?? id}
       className={className}
     >
