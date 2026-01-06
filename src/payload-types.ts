@@ -569,6 +569,8 @@ export interface Page {
     | TestimonialsBlock
     | AboutSummaryBlock
     | GridBlock
+    | MissionVisionBlock
+    | ContactBlock
   )[];
   meta?: {
     title?: string | null;
@@ -3444,6 +3446,148 @@ export interface Staff {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MissionVisionBlock".
+ */
+export interface MissionVisionBlock {
+  backgroundVariant: 'color' | 'image';
+  colorTheme?:
+    | (
+        | 'slate'
+        | 'gray'
+        | 'zinc'
+        | 'neutral'
+        | 'stone'
+        | 'blue'
+        | 'indigo'
+        | 'violet'
+        | 'emerald'
+        | 'teal'
+        | 'rose'
+        | 'default'
+      )
+    | null;
+  backgroundImage?: (string | null) | Media;
+  /**
+   * Enter a unique ID for this block to link to it (e.g., "about-us").
+   */
+  blockId?: string | null;
+  /**
+   * The title for the mission & vision section
+   */
+  missionVisionTitle: string;
+  mainDescription?: string | null;
+  /**
+   * The title for the mission section
+   */
+  missionTitle: string;
+  /**
+   * Rich text content for the mission statement
+   */
+  missionContent: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Optional image to display with the mission section
+   */
+  missionImage?: (string | null) | Media;
+  /**
+   * The title for the vision section
+   */
+  visionTitle: string;
+  /**
+   * Rich text content for the vision statement
+   */
+  visionContent: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Optional image to display with the vision section
+   */
+  visionImage?: (string | null) | Media;
+  /**
+   * Choose how to display the mission and vision sections
+   */
+  layout: 'sideBySide' | 'stacked';
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'missionVision';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactBlock".
+ */
+export interface ContactBlock {
+  backgroundVariant: 'color' | 'image';
+  colorTheme?:
+    | (
+        | 'slate'
+        | 'gray'
+        | 'zinc'
+        | 'neutral'
+        | 'stone'
+        | 'blue'
+        | 'indigo'
+        | 'violet'
+        | 'emerald'
+        | 'teal'
+        | 'rose'
+        | 'default'
+      )
+    | null;
+  backgroundImage?: (string | null) | Media;
+  /**
+   * Enter a unique ID for this block to link to it (e.g., "about-us").
+   */
+  blockId?: string | null;
+  title?: string | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  address: string;
+  phone: string;
+  email: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contactBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "partnerships".
  */
 export interface Partnership {
@@ -3769,6 +3913,8 @@ export interface PagesSelect<T extends boolean = true> {
         testimonials?: T | TestimonialsBlockSelect<T>;
         aboutSummary?: T | AboutSummaryBlockSelect<T>;
         grid?: T | GridBlockSelect<T>;
+        missionVision?: T | MissionVisionBlockSelect<T>;
+        contactBlock?: T | ContactBlockSelect<T>;
       };
   meta?:
     | T
@@ -4032,6 +4178,44 @@ export interface GridBlockSelect<T extends boolean = true> {
         role?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MissionVisionBlock_select".
+ */
+export interface MissionVisionBlockSelect<T extends boolean = true> {
+  backgroundVariant?: T;
+  colorTheme?: T;
+  backgroundImage?: T;
+  blockId?: T;
+  missionVisionTitle?: T;
+  mainDescription?: T;
+  missionTitle?: T;
+  missionContent?: T;
+  missionImage?: T;
+  visionTitle?: T;
+  visionContent?: T;
+  visionImage?: T;
+  layout?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactBlock_select".
+ */
+export interface ContactBlockSelect<T extends boolean = true> {
+  backgroundVariant?: T;
+  colorTheme?: T;
+  backgroundImage?: T;
+  blockId?: T;
+  title?: T;
+  description?: T;
+  address?: T;
+  phone?: T;
+  email?: T;
   id?: T;
   blockName?: T;
 }

@@ -75,9 +75,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         <button
           aria-label="Open menu"
           className="md:hidden inline-flex items-center justify-center p-2 rounded-md border border-primary/30 text-primary"
-          onClick={openMenu}
+          onClick={isMenuOpen ? closeMenu : openMenu}
         >
-          <Menu className="w-6 h-6" />
+          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
@@ -117,9 +117,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           <button
             aria-label="Close menu"
             className="inline-flex items-center justify-center p-2 rounded-md border border-primary/30 text-primary"
-            onClick={closeMenu}
+            onClick={isMenuOpen ? closeMenu : openMenu}
           >
-            <X className="w-6 h-6" />
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
