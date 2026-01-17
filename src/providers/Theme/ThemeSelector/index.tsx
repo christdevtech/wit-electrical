@@ -31,7 +31,7 @@ export const ThemeSelector: React.FC = () => {
   return (
     <button
       onClick={() => onThemeChange(value === 'dark' ? 'light' : 'dark')}
-      className="flex items-center justify-center p-2 rounded-full hover:bg-neutral-200/50 dark:hover:bg-neutral-800 transition-colors border border-transparent focus:outline-none focus:ring-2 focus:ring-primary text-primary"
+      className="fixed bottom-4 left-4 z-50 flex items-center justify-center p-2 rounded-full bg-white/30 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-lg hover:bg-white/50 dark:hover:bg-black/50 transition-all focus:outline-none focus:ring-2 focus:ring-primary text-primary"
       aria-label="Toggle theme"
       data-theme={isDark ? 'dark' : 'light'}
     >
