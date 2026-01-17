@@ -1248,6 +1248,7 @@ export interface CallToActionBlock {
         id?: string | null;
       }[]
     | null;
+  inlineBlock?: boolean | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'cta';
@@ -4019,6 +4020,7 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  inlineBlock?: T;
   id?: T;
   blockName?: T;
 }

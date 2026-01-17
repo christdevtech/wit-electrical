@@ -37,6 +37,11 @@ export const CallToAction: Block = {
         maxRows: 2,
       },
     }),
+    {
+      name: 'inlineBlock',
+      type: 'checkbox',
+      defaultValue: false,
+    },
   ],
   labels: {
     plural: 'Calls to Action',

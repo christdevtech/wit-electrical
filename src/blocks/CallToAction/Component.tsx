@@ -3,6 +3,7 @@ import type { CallToActionBlock as CTABlockProps } from '@/payload-types'
 import RichText from '@/components/RichText'
 import { CMSLink } from '@/components/Link'
 import { BlockWrapper } from '@/components/BlockWrapper'
+import { cn } from '@/utilities/ui'
 
 type Props = CTABlockProps & {
   className?: string
@@ -22,6 +23,7 @@ export const CallToActionBlock: React.FC<Props> = ({
   backgroundImage,
   imageTextColor,
   blockId,
+  inlineBlock,
 }) => {
   return (
     <BlockWrapper
@@ -32,7 +34,7 @@ export const CallToActionBlock: React.FC<Props> = ({
       blockId={blockId}
       className={className}
     >
-      <div className="container">
+      <div className={cn('container', { 'py-8': inlineBlock })}>
         <div className="flex flex-col gap-8 md:flex-row md:justify-between md:items-center">
           <div className="max-w-[48rem] flex items-center">
             {richText && <RichText className="mb-0" data={richText} enableGutter={false} />}
