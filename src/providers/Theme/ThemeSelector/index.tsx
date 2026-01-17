@@ -1,16 +1,9 @@
 'use client'
 
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
+import { Moon, Sun } from 'lucide-react'
 import React, { useState } from 'react'
 
-import type { Theme } from './types'
-
+import { cn } from '@/utilities/ui'
 import { useTheme } from '..'
 import { themeLocalStorageKey } from './types'
 
@@ -18,7 +11,7 @@ export const ThemeSelector: React.FC = () => {
   const { setTheme } = useTheme()
   const [value, setValue] = useState('')
 
-  const onThemeChange = (themeToSet: Theme & 'auto') => {
+  const onThemeChange = (themeToSet: 'light' | 'dark' | 'auto') => {
     if (themeToSet === 'auto') {
       setTheme(null)
       setValue('auto')
@@ -33,19 +26,29 @@ export const ThemeSelector: React.FC = () => {
     setValue(preference ?? 'auto')
   }, [])
 
+  const isDark = value === 'dark'
+
   return (
-    <Select onValueChange={onThemeChange} value={value}>
-      <SelectTrigger
-        aria-label="Select a theme"
-        className="w-auto bg-transparent gap-2 pl-0 md:pl-3 border-none"
-      >
-        <SelectValue placeholder="Theme" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectItem value="auto">Auto</SelectItem>
-        <SelectItem value="light">Light</SelectItem>
-        <SelectItem value="dark">Dark</SelectItem>
-      </SelectContent>
-    </Select>
+    <button
+      onClick={() => onThemeChange(value === 'dark' ? 'light' : 'dark')}
+      className="flex items-center justify-center p-2 rounded-full hover:bg-neutral-200/50 dark:hover:bg-neutral-800 transition-colors border border-transparent focus:outline-none focus:ring-2 focus:ring-primary text-primary"
+      aria-label="Toggle theme"
+      data-theme={isDark ? 'dark' : 'light'}
+    >
+      <div className="relative w-5 h-5 flex items-center justify-center">
+        <Sun
+          className={cn(
+            'absolute w-5 h-5 transition-all text-yellow-500 fill-yellow-500',
+            isDark ? '-rotate-90 scale-0' : 'rotate-0 scale-100',
+          )}
+        />
+        <Moon
+          className={cn(
+            'absolute w-5 h-5 transition-all text-primary fill-primary',
+            isDark ? 'rotate-0 scale-100' : 'rotate-90 scale-0',
+          )}
+        />
+      </div>
+    </button>
   )
 }
