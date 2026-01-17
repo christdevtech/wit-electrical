@@ -33,16 +33,7 @@ export default async function Page() {
     <div className="pb-24">
       <PageClient />
       <ArchiveHero type="services" />
-
-      <div className="container mb-8 mt-16">
-        <PageRange
-          collection="services"
-          currentPage={services.page}
-          limit={12}
-          totalDocs={services.totalDocs}
-        />
-      </div>
-
+      <div className="mt-16"></div>
       <CollectionArchive docs={services.docs} relationTo="services" />
 
       <div className="container">
