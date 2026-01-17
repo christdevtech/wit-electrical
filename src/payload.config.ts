@@ -14,6 +14,7 @@ import { Services } from './collections/Services'
 import { Users } from './collections/Users'
 import { Footer } from './Footer/config'
 import { Header } from './Header/config'
+import { ArchiveHero } from './ArchiveHero/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
@@ -75,7 +76,7 @@ export default buildConfig({
   }),
   collections: [Pages, Posts, Services, Media, Categories, Users, Staff, Partnerships],
   cors: [getServerSideURL()].filter(Boolean),
-  globals: [Header, Footer],
+  globals: [Header, Footer, ArchiveHero],
   plugins: [
     ...plugins,
     // storage-adapter-placeholder

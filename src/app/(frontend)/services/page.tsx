@@ -11,6 +11,8 @@ import PageClient from './page.client'
 export const dynamic = 'force-static'
 export const revalidate = 600
 
+import { ArchiveHero } from '@/heros/ArchiveHero'
+
 export default async function Page() {
   const payload = await getPayload({ config: configPromise })
 
@@ -28,16 +30,11 @@ export default async function Page() {
   })
 
   return (
-    <div className="pt-24 pb-24">
+    <div className="pb-24">
       <PageClient />
-      <div className="container mb-16">
-        <div className="prose dark:prose-invert max-w-none">
-          <h1>Our Services</h1>
-          <p className="text-lg">Explore our range of professional electrical services.</p>
-        </div>
-      </div>
+      <ArchiveHero type="services" />
 
-      <div className="container mb-8">
+      <div className="container mb-8 mt-16">
         <PageRange
           collection="services"
           currentPage={services.page}

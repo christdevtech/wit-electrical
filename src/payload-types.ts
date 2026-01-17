@@ -112,10 +112,12 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
+    'archive-hero': ArchiveHero;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    'archive-hero': ArchiveHeroSelect<false> | ArchiveHeroSelect<true>;
   };
   locale: null;
   user: User & {
@@ -5574,6 +5576,25 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "archive-hero".
+ */
+export interface ArchiveHero {
+  id: string;
+  servicesHero: {
+    title: string;
+    description?: string | null;
+    heroImage?: (string | null) | Media;
+  };
+  postsHero: {
+    title: string;
+    description?: string | null;
+    heroImage?: (string | null) | Media;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -5619,6 +5640,29 @@ export interface FooterSelect<T extends boolean = true> {
               iconPlacement?: T;
             };
         id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "archive-hero_select".
+ */
+export interface ArchiveHeroSelect<T extends boolean = true> {
+  servicesHero?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        heroImage?: T;
+      };
+  postsHero?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        heroImage?: T;
       };
   updatedAt?: T;
   createdAt?: T;
