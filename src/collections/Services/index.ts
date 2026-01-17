@@ -11,9 +11,15 @@ import {
 
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
+import { Archive } from '../../blocks/ArchiveBlock/config'
 import { Banner } from '../../blocks/Banner/config'
+import { CallToAction } from '../../blocks/CallToAction/config'
 import { Code } from '../../blocks/Code/config'
+import { Content } from '../../blocks/Content/config'
+import { FormBlock } from '../../blocks/Form/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
+import { SwiperWithSideTextBlock } from '../../blocks/SwiperWithSideText/config'
+import { Testimonials } from '../../blocks/Testimonials/config'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateService, revalidateServiceDelete } from './hooks/revalidateService'
 
@@ -79,7 +85,18 @@ export const Services: CollectionConfig = {
                   return [
                     ...rootFeatures,
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-                    BlocksFeature({ blocks: [Banner, Code, MediaBlock] }),
+                    BlocksFeature({
+                      blocks: [
+                        Banner,
+                        CallToAction,
+                        Code,
+                        Content,
+                        FormBlock,
+                        MediaBlock,
+                        SwiperWithSideTextBlock,
+                        Testimonials,
+                      ],
+                    }),
                     FixedToolbarFeature(),
                     InlineToolbarFeature(),
                     HorizontalRuleFeature(),

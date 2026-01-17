@@ -17,15 +17,32 @@ import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component'
 import type {
   BannerBlock as BannerBlockProps,
   CallToActionBlock as CTABlockProps,
+  ContentBlock as ContentBlockProps,
+  FormBlock as FormBlockProps,
   MediaBlock as MediaBlockProps,
+  SwiperWithSideTextBlock as SwiperWithSideTextBlockProps,
+  TestimonialsBlock as TestimonialsBlockProps,
 } from '@/payload-types'
 import { BannerBlock } from '@/blocks/Banner/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
+import { ContentBlock } from '@/blocks/Content/Component'
+import { FormBlock } from '@/blocks/Form/Component'
+import { SwiperWithSideContent } from '@/blocks/SwiperWithSideText/Component'
+import { TestimonialsBlock } from '@/blocks/Testimonials/Component'
 import { cn } from '@/utilities/ui'
 
 type NodeTypes =
   | DefaultNodeTypes
-  | SerializedBlockNode<CTABlockProps | MediaBlockProps | BannerBlockProps | CodeBlockProps>
+  | SerializedBlockNode<
+      | CTABlockProps
+      | MediaBlockProps
+      | BannerBlockProps
+      | CodeBlockProps
+      | ContentBlockProps
+      | FormBlockProps
+      | SwiperWithSideTextBlockProps
+      | TestimonialsBlockProps
+    >
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { value, relationTo } = linkNode.fields.doc!
@@ -53,6 +70,24 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
     ),
     code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,
     cta: ({ node }) => <CallToActionBlock {...node.fields} />,
+    content: ({ node }) => <ContentBlock {...node.fields} />,
+    formBlock: ({ node }) => {
+      const { form } = node.fields
+      if (typeof form === 'string') {
+        return null
+      }
+      return (
+        <FormBlock
+          {...node.fields}
+          enableIntro={Boolean(node.fields.enableIntro)}
+          introContent={node.fields.introContent || undefined}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          form={form as any}
+        />
+      )
+    },
+    swiperWithSideText: ({ node }) => <SwiperWithSideContent {...node.fields} />,
+    testimonials: ({ node }) => <TestimonialsBlock {...node.fields} />,
   },
 })
 
