@@ -37,7 +37,10 @@ export const SwiperClient: React.FC<SwiperClientProps> = ({ slides }) => {
       }}
     >
       {slides?.map((slide, index) => (
-        <SwiperSlide key={`slide-${index}`} className="bg-white rounded-xl overflow-hidden">
+        <SwiperSlide
+          key={`slide-${index}`}
+          className="bg-card text-foreground rounded-xl overflow-hidden"
+        >
           <div className="grid md:grid-cols-2">
             <div className="h-[50dvh] overflow-hidden relative">
               <Media resource={slide.image} fill imgClassName="object-cover" />

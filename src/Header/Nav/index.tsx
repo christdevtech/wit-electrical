@@ -40,6 +40,7 @@ export const HeaderNav: React.FC<{ data: HeaderType; mobile?: boolean; className
             {...link}
             appearance={undefined}
             className={cn(
+              'text-primary',
               mobile
                 ? 'text-lg p-2 rounded'
                 : 'text-base font-medium px-2 border-b-2 border-transparent hover:border-primary hover:no-underline rounded-none transition-colors duration-200', // Added base desktop styles
