@@ -576,6 +576,7 @@ export interface Page {
     | GridBlock
     | MissionVisionBlock
     | ContactBlock
+    | ServiceCardBlock
   )[];
   meta?: {
     title?: string | null;
@@ -3639,6 +3640,68 @@ export interface ContactBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServiceCardBlock".
+ */
+export interface ServiceCardBlock {
+  backgroundVariant: 'color' | 'image';
+  colorTheme?:
+    | (
+        | 'slate'
+        | 'gray'
+        | 'zinc'
+        | 'neutral'
+        | 'stone'
+        | 'blue'
+        | 'indigo'
+        | 'violet'
+        | 'emerald'
+        | 'teal'
+        | 'rose'
+        | 'default'
+      )
+    | null;
+  backgroundImage?: (string | null) | Media;
+  /**
+   * Choose the text color to use over the background image to ensure readability.
+   */
+  imageTextColor?: ('white' | 'black') | null;
+  /**
+   * Enter a unique ID for this block to link to it (e.g., "about-us").
+   */
+  blockId?: string | null;
+  introContent?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  populateBy?: ('collection' | 'selection') | null;
+  limit?: number | null;
+  selectedDocs?:
+    | {
+        relationTo: 'services';
+        value: string | Service;
+      }[]
+    | null;
+  /**
+   * Choose the visual style for the service cards.
+   */
+  cardStyle?: ('standard' | 'sharp' | 'glass') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'serviceCardBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "partnerships".
  */
 export interface Partnership {
@@ -3979,6 +4042,7 @@ export interface PagesSelect<T extends boolean = true> {
         grid?: T | GridBlockSelect<T>;
         missionVision?: T | MissionVisionBlockSelect<T>;
         contactBlock?: T | ContactBlockSelect<T>;
+        serviceCardBlock?: T | ServiceCardBlockSelect<T>;
       };
   meta?:
     | T
@@ -4292,6 +4356,24 @@ export interface ContactBlockSelect<T extends boolean = true> {
   address?: T;
   phone?: T;
   email?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServiceCardBlock_select".
+ */
+export interface ServiceCardBlockSelect<T extends boolean = true> {
+  backgroundVariant?: T;
+  colorTheme?: T;
+  backgroundImage?: T;
+  imageTextColor?: T;
+  blockId?: T;
+  introContent?: T;
+  populateBy?: T;
+  limit?: T;
+  selectedDocs?: T;
+  cardStyle?: T;
   id?: T;
   blockName?: T;
 }

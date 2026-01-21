@@ -26,6 +26,7 @@ import { AboutSummary } from '@/blocks/AboutSummary/config'
 import { Grid } from '@/blocks/Grid/config'
 import { MissionVision } from '@/blocks/MissionVision/config'
 import { ContactBlock as ContactBlockConfig } from '@/blocks/ContactBlock/config'
+import { ServiceCardBlock } from '@/blocks/ServiceCardBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -93,6 +94,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 Grid,
                 MissionVision,
                 ContactBlockConfig,
+                ServiceCardBlock,
               ],
               required: true,
               admin: {
