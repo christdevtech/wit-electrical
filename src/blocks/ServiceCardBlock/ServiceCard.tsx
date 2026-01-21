@@ -20,11 +20,9 @@ export const ServiceCard: React.FC<Props> = ({ service, style }) => {
     <>
       <div className="relative aspect-[4/3] w-full overflow-hidden">
         {image && (
-          <Media
-            resource={image}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-          />
+          <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-105">
+            <Media resource={image} fill className="object-cover" />
+          </div>
         )}
       </div>
       <div className="flex flex-col gap-3 p-6">

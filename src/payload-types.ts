@@ -3669,6 +3669,7 @@ export interface ServiceCardBlock {
    * Enter a unique ID for this block to link to it (e.g., "about-us").
    */
   blockId?: string | null;
+  introTitle?: string | null;
   introContent?: {
     root: {
       type: string;
@@ -4369,6 +4370,7 @@ export interface ServiceCardBlockSelect<T extends boolean = true> {
   backgroundImage?: T;
   imageTextColor?: T;
   blockId?: T;
+  introTitle?: T;
   introContent?: T;
   populateBy?: T;
   limit?: T;

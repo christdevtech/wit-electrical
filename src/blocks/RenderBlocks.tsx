@@ -12,6 +12,7 @@ import { TestimonialsBlock } from './Testimonials/Component'
 import { AboutSummaryBlock } from '@/blocks/AboutSummary/Component'
 import { GridBlock } from '@/blocks/Grid/Component'
 import { ContactBlock as ContactBlockComponent } from '@/blocks/ContactBlock/Component'
+import { ServiceCardBlock } from './ServiceCardBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -24,6 +25,7 @@ const blockComponents = {
   aboutSummary: AboutSummaryBlock,
   grid: GridBlock,
   contactBlock: ContactBlockComponent,
+  serviceCardBlock: ServiceCardBlock,
 }
 
 export const RenderBlocks: React.FC<{

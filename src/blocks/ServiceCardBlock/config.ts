@@ -15,6 +15,12 @@ export const ServiceCardBlock: Block = {
     backgroundField,
     blockIdField,
     {
+      name: 'introTitle',
+      type: 'text',
+      label: 'Intro Title',
+      defaultValue: 'Our Services',
+    },
+    {
       name: 'introContent',
       type: 'richText',
       editor: lexicalEditor({

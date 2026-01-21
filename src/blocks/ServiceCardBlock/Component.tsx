@@ -26,6 +26,7 @@ export const ServiceCardBlock: React.FC<
     backgroundImage,
     imageTextColor,
     blockId,
+    introTitle,
     introContent,
     populateBy,
     limit: limitFromProps,
@@ -72,9 +73,10 @@ export const ServiceCardBlock: React.FC<
       className={className}
     >
       <div className="container">
-        {introContent && (
-          <div className="mb-8 max-w-2xl">
-            <RichText data={introContent} enableGutter={false} />
+        {(introTitle || introContent) && (
+          <div className="mb-12 text-center mx-auto max-w-3xl">
+            {introTitle && <h2 className="text-3xl md:text-4xl font-bold mb-4">{introTitle}</h2>}
+            {introContent && <RichText data={introContent} enableGutter={false} />}
           </div>
         )}
 
