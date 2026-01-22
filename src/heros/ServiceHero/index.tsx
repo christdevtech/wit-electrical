@@ -11,7 +11,7 @@ export const ServiceHero: React.FC<{
   const { categories, heroImage, publishedAt, title } = service
 
   return (
-    <div className="relative -mt-[10.4rem] flex items-end">
+    <div className="relative -mt-[10.6rem] md:-mt-[10.4rem] flex items-end">
       <div className="container z-10 relative lg:grid lg:grid-cols-[1fr_48rem_1fr] text-white pb-8">
         <div className="col-start-1 col-span-1 md:col-start-2 md:col-span-2">
           <div className="">

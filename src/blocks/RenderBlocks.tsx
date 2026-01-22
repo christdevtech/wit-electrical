@@ -13,6 +13,10 @@ import { AboutSummaryBlock } from '@/blocks/AboutSummary/Component'
 import { GridBlock } from '@/blocks/Grid/Component'
 import { ContactBlock as ContactBlockComponent } from '@/blocks/ContactBlock/Component'
 import { ServiceCardBlock } from './ServiceCardBlock/Component'
+import { LogoShowcaseBlockComponent } from './LogoShowcase/Component'
+import { StaffShowcaseBlockComponent } from './StaffShowcase/Component'
+import { FounderNoteBlockComponent } from './FounderNote/Component'
+import { MissionVisionBlockComponent } from './MissionVision/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -26,6 +30,10 @@ const blockComponents = {
   grid: GridBlock,
   contactBlock: ContactBlockComponent,
   serviceCardBlock: ServiceCardBlock,
+  logoShowcase: LogoShowcaseBlockComponent,
+  staffShowcase: StaffShowcaseBlockComponent,
+  founderNote: FounderNoteBlockComponent,
+  missionVision: MissionVisionBlockComponent,
 }
 
 export const RenderBlocks: React.FC<{

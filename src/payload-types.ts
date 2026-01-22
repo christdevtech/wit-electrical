@@ -577,6 +577,9 @@ export interface Page {
     | MissionVisionBlock
     | ContactBlock
     | ServiceCardBlock
+    | LogoShowcaseBlock
+    | StaffShowcaseBlock
+    | FounderNoteBlock
   )[];
   meta?: {
     title?: string | null;
@@ -3703,6 +3706,181 @@ export interface ServiceCardBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LogoShowcaseBlock".
+ */
+export interface LogoShowcaseBlock {
+  backgroundVariant: 'color' | 'image';
+  colorTheme?:
+    | (
+        | 'slate'
+        | 'gray'
+        | 'zinc'
+        | 'neutral'
+        | 'stone'
+        | 'blue'
+        | 'indigo'
+        | 'violet'
+        | 'emerald'
+        | 'teal'
+        | 'rose'
+        | 'default'
+      )
+    | null;
+  backgroundImage?: (string | null) | Media;
+  /**
+   * Choose the text color to use over the background image to ensure readability.
+   */
+  imageTextColor?: ('white' | 'black') | null;
+  /**
+   * Enter a unique ID for this block to link to it (e.g., "about-us").
+   */
+  blockId?: string | null;
+  title?: string | null;
+  logos?:
+    | {
+        logo: string | Media;
+        url?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Duration for one complete loop in seconds. Lower is faster.
+   */
+  animationSpeed?: number | null;
+  /**
+   * Minimum number of logos required to enable scrolling animation.
+   */
+  threshold?: number | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'logoShowcase';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StaffShowcaseBlock".
+ */
+export interface StaffShowcaseBlock {
+  backgroundVariant: 'color' | 'image';
+  colorTheme?:
+    | (
+        | 'slate'
+        | 'gray'
+        | 'zinc'
+        | 'neutral'
+        | 'stone'
+        | 'blue'
+        | 'indigo'
+        | 'violet'
+        | 'emerald'
+        | 'teal'
+        | 'rose'
+        | 'default'
+      )
+    | null;
+  backgroundImage?: (string | null) | Media;
+  /**
+   * Choose the text color to use over the background image to ensure readability.
+   */
+  imageTextColor?: ('white' | 'black') | null;
+  /**
+   * Enter a unique ID for this block to link to it (e.g., "about-us").
+   */
+  blockId?: string | null;
+  title?: string | null;
+  description?: string | null;
+  staff?:
+    | {
+        photo: string | Media;
+        name: string;
+        position: string;
+        /**
+         * Brief description about the staff member
+         */
+        bio?: string | null;
+        socialLinks?:
+          | {
+              platform: 'linkedin' | 'twitter' | 'email' | 'website';
+              url: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  layout?: ('grid' | 'carousel') | null;
+  cardsPerRow?: ('3' | '4') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'staffShowcase';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FounderNoteBlock".
+ */
+export interface FounderNoteBlock {
+  backgroundVariant: 'color' | 'image';
+  colorTheme?:
+    | (
+        | 'slate'
+        | 'gray'
+        | 'zinc'
+        | 'neutral'
+        | 'stone'
+        | 'blue'
+        | 'indigo'
+        | 'violet'
+        | 'emerald'
+        | 'teal'
+        | 'rose'
+        | 'default'
+      )
+    | null;
+  backgroundImage?: (string | null) | Media;
+  /**
+   * Choose the text color to use over the background image to ensure readability.
+   */
+  imageTextColor?: ('white' | 'black') | null;
+  /**
+   * Enter a unique ID for this block to link to it (e.g., "about-us").
+   */
+  blockId?: string | null;
+  sectionTitle?: string | null;
+  /**
+   * Brief intro text before the founder card
+   */
+  sectionDescription?: string | null;
+  founderPhoto: string | Media;
+  founderName: string;
+  founderPosition: string;
+  /**
+   * The founder's message, quote, or story
+   */
+  founderMessage: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Optional signature image to display at the bottom of the message
+   */
+  signatureImage?: (string | null) | Media;
+  imagePosition?: ('left' | 'right') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'founderNote';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "partnerships".
  */
 export interface Partnership {
@@ -4044,6 +4222,9 @@ export interface PagesSelect<T extends boolean = true> {
         missionVision?: T | MissionVisionBlockSelect<T>;
         contactBlock?: T | ContactBlockSelect<T>;
         serviceCardBlock?: T | ServiceCardBlockSelect<T>;
+        logoShowcase?: T | LogoShowcaseBlockSelect<T>;
+        staffShowcase?: T | StaffShowcaseBlockSelect<T>;
+        founderNote?: T | FounderNoteBlockSelect<T>;
       };
   meta?:
     | T
@@ -4376,6 +4557,83 @@ export interface ServiceCardBlockSelect<T extends boolean = true> {
   limit?: T;
   selectedDocs?: T;
   cardStyle?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LogoShowcaseBlock_select".
+ */
+export interface LogoShowcaseBlockSelect<T extends boolean = true> {
+  backgroundVariant?: T;
+  colorTheme?: T;
+  backgroundImage?: T;
+  imageTextColor?: T;
+  blockId?: T;
+  title?: T;
+  logos?:
+    | T
+    | {
+        logo?: T;
+        url?: T;
+        id?: T;
+      };
+  animationSpeed?: T;
+  threshold?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StaffShowcaseBlock_select".
+ */
+export interface StaffShowcaseBlockSelect<T extends boolean = true> {
+  backgroundVariant?: T;
+  colorTheme?: T;
+  backgroundImage?: T;
+  imageTextColor?: T;
+  blockId?: T;
+  title?: T;
+  description?: T;
+  staff?:
+    | T
+    | {
+        photo?: T;
+        name?: T;
+        position?: T;
+        bio?: T;
+        socialLinks?:
+          | T
+          | {
+              platform?: T;
+              url?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  layout?: T;
+  cardsPerRow?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FounderNoteBlock_select".
+ */
+export interface FounderNoteBlockSelect<T extends boolean = true> {
+  backgroundVariant?: T;
+  colorTheme?: T;
+  backgroundImage?: T;
+  imageTextColor?: T;
+  blockId?: T;
+  sectionTitle?: T;
+  sectionDescription?: T;
+  founderPhoto?: T;
+  founderName?: T;
+  founderPosition?: T;
+  founderMessage?: T;
+  signatureImage?: T;
+  imagePosition?: T;
   id?: T;
   blockName?: T;
 }
