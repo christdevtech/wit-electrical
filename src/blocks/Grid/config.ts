@@ -114,7 +114,7 @@ export const Grid: Block = {
           name: 'cardTitle',
           type: 'text',
           admin: { condition: (_, siblingData) => siblingData?.type === 'card' },
-          defaultValue: 'Welcome to Kinsmen Advocates Law Firm.',
+          defaultValue: 'Welcome to Wit Electrical.',
         },
         {
           name: 'cardTitleSize',

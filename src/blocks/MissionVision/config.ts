@@ -28,7 +28,7 @@ export const MissionVision: Block = {
       name: 'mainDescription',
       type: 'text',
       defaultValue:
-        "Kinsmen Advocates is a premier law firm headquartered in Buea, the vibrant capital of Cameroon's South West Region, with a branch office in Douala, the nation's bustling economic hub. Known for delivering world-class legal services, we cater to a diverse clientele of local and international individuals, corporations, and organizations. Renowned for our responsiveness and commitment to excellence, we continuously refine our approach to ensure exceptional results that align with the highest global standards.",
+        'At WIT Electrical, we specialize in comprehensive electrical solutions for homes, offices, and commercial spaces. From installations and upgrades to emergency repairs and energy-efficient innovations, we ensure your property is safe, functional, and future-ready. In a world where power outages and surges are common, we protect what matters most—your family, business, and investments.',
     },
     {
       name: 'missionTitle',
@@ -69,7 +69,7 @@ export const MissionVision: Block = {
                   format: 0,
                   mode: 'normal',
                   style: '',
-                  text: 'To provide innovative legal solutions and outstanding representation through a results-driven team committed to excellence, professionalism, and integrity.',
+                  text: 'To provide safe, reliable, and innovative electrical solutions for homes, offices, and commercial spaces. We use top-grade materials, adhere to safety codes, and deliver craftsmanship that prevents hazards, saves you money, and ensures your property is future-ready.',
                   version: 1,
                 },
               ],
@@ -135,7 +135,7 @@ export const MissionVision: Block = {
                   format: 0,
                   mode: 'normal',
                   style: '',
-                  text: 'To be the leading law firm of choice in all areas of our practice, recognized for our unwavering dedication to achieving exceptional outcomes and fostering long-term client relationships.',
+                  text: 'To be your trusted power guardians—protecting families from risks, helping businesses avoid costly interruptions, and promoting sustainability through energy-efficient designs. We create reliable, value-adding systems that let you thrive without worry, ensuring long-term peace of mind, lower costs, and a brighter future.',
                   version: 1,
                 },
               ],

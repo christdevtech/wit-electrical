@@ -1,321 +1,48 @@
-# WIT Electrical
-
-This is the official [WIT Electrical](https://github.com/payloadcms/payload/blob/main/templates/website). Use it to power websites, blogs, or portfolios from small to enterprise. This repo includes a fully-working backend, enterprise-grade admin panel, and a beautifully designed, production-ready website.
-
-This template is right for you if you are working on:
-
-- A personal or enterprise-grade website, blog, or portfolio
-- A content publishing platform with a fully featured publication workflow
-- Exploring the capabilities of Payload
-
-Core features:
-
-- [Pre-configured Payload Config](#how-it-works)
-- [Authentication](#users-authentication)
-- [Access Control](#access-control)
-- [Layout Builder](#layout-builder)
-- [Draft Preview](#draft-preview)
-- [Live Preview](#live-preview)
-- [On-demand Revalidation](#on-demand-revalidation)
-- [SEO](#seo)
-- [Search](#search)
-- [Redirects](#redirects)
-- [Jobs and Scheduled Publishing](#jobs-and-scheduled-publish)
-- [Website](#website)
-
-## Quick Start
-
-To spin up this example locally, follow these steps:
-
-### Clone
-
-If you have not done so already, you need to have standalone copy of this repo on your machine. If you've already cloned this repo, skip to [Development](#development).
-
-#### Method 1 (recommended)
-
-Go to Payload Cloud and [clone this template](https://payloadcms.com/new/clone/website). This will create a new repository on your GitHub account with this template's code which you can then clone to your own machine.
-
-#### Method 2
-
-Use the `create-payload-app` CLI to clone this template directly to your machine:
-
-```bash
-pnpx create-payload-app my-project -t website
-```
-
-#### Method 3
-
-Use the `git` CLI to clone this template directly to your machine:
-
-```bash
-git clone -n --depth=1 --filter=tree:0 https://github.com/payloadcms/payload my-project && cd my-project && git sparse-checkout set --no-cone templates/website && git checkout && rm -rf .git && git init && git add . && git mv -f templates/website/{.,}* . && git add . && git commit -m "Initial commit"
-```
-
-### Development
-
-1. First [clone the repo](#clone) if you have not done so already
-1. `cd my-project && cp .env.example .env` to copy the example environment variables
-1. `pnpm install && pnpm dev` to install dependencies and start the dev server
-1. open `http://localhost:3000` to open the app in your browser
-
-That's it! Changes made in `./src` will be reflected in your app. Follow the on-screen instructions to login and create your first admin user. Then check out [Production](#production) once you're ready to build and serve your app, and [Deployment](#deployment) when you're ready to go live.
-
-## How it works
-
-The Payload config is tailored specifically to the needs of most websites. It is pre-configured in the following ways:
-
-### Collections
-
-See the [Collections](https://payloadcms.com/docs/configuration/collections) docs for details on how to extend this functionality.
-
-- #### Users (Authentication)
-
-  Users are auth-enabled collections that have access to the admin panel and unpublished content. See [Access Control](#access-control) for more details.
-
-  For additional help, see the official [Auth Example](https://github.com/payloadcms/payload/tree/main/examples/auth) or the [Authentication](https://payloadcms.com/docs/authentication/overview#authentication-overview) docs.
-
-- #### Posts
-
-  Posts are used to generate blog posts, news articles, or any other type of content that is published over time. All posts are layout builder enabled so you can generate unique layouts for each post using layout-building blocks, see [Layout Builder](#layout-builder) for more details. Posts are also draft-enabled so you can preview them before publishing them to your website, see [Draft Preview](#draft-preview) for more details.
-
-- #### Pages
-
-  All pages are layout builder enabled so you can generate unique layouts for each page using layout-building blocks, see [Layout Builder](#layout-builder) for more details. Pages are also draft-enabled so you can preview them before publishing them to your website, see [Draft Preview](#draft-preview) for more details.
-
-- #### Media
-
-  This is the uploads enabled collection used by pages, posts, and projects to contain media like images, videos, downloads, and other assets. It features pre-configured sizes, focal point and manual resizing to help you manage your pictures.
-
-- #### Categories
-
-  A taxonomy used to group posts together. Categories can be nested inside of one another, for example "News > Technology". See the official [Payload Nested Docs Plugin](https://payloadcms.com/docs/plugins/nested-docs) for more details.
-
-### Globals
-
-See the [Globals](https://payloadcms.com/docs/configuration/globals) docs for details on how to extend this functionality.
-
-- `Header`
-
-  The data required by the header on your front-end like nav links.
-
-- `Footer`
-
-  Same as above but for the footer of your site.
-
-## Access control
-
-Basic access control is setup to limit access to various content based based on publishing status.
-
-- `users`: Users can access the admin panel and create or edit content.
-- `posts`: Everyone can access published posts, but only users can create, update, or delete them.
-- `pages`: Everyone can access published pages, but only users can create, update, or delete them.
-
-For more details on how to extend this functionality, see the [Payload Access Control](https://payloadcms.com/docs/access-control/overview#access-control) docs.
-
-## Layout Builder
-
-Create unique page layouts for any type of content using a powerful layout builder. This template comes pre-configured with the following layout building blocks:
-
-- Hero
-- Content
-- Media
-- Call To Action
-- Archive
-
-Each block is fully designed and built into the front-end website that comes with this template. See [Website](#website) for more details.
-
-## Lexical editor
-
-A deep editorial experience that allows complete freedom to focus just on writing content without breaking out of the flow with support for Payload blocks, media, links and other features provided out of the box. See [Lexical](https://payloadcms.com/docs/rich-text/overview) docs.
-
-## Draft Preview
-
-All posts and pages are draft-enabled so you can preview them before publishing them to your website. To do this, these collections use [Versions](https://payloadcms.com/docs/configuration/collections#versions) with `drafts` set to `true`. This means that when you create a new post, project, or page, it will be saved as a draft and will not be visible on your website until you publish it. This also means that you can preview your draft before publishing it to your website. To do this, we automatically format a custom URL which redirects to your front-end to securely fetch the draft version of your content.
-
-Since the front-end of this template is statically generated, this also means that pages, posts, and projects will need to be regenerated as changes are made to published documents. To do this, we use an `afterChange` hook to regenerate the front-end when a document has changed and its `_status` is `published`.
-
-For more details on how to extend this functionality, see the official [Draft Preview Example](https://github.com/payloadcms/payload/tree/examples/draft-preview).
-
-## Live preview
-
-In addition to draft previews you can also enable live preview to view your end resulting page as you're editing content with full support for SSR rendering. See [Live preview docs](https://payloadcms.com/docs/live-preview/overview) for more details.
-
-## On-demand Revalidation
-
-We've added hooks to collections and globals so that all of your pages, posts, footer, or header changes will automatically be updated in the frontend via on-demand revalidation supported by Nextjs.
-
-> Note: if an image has been changed, for example it's been cropped, you will need to republish the page it's used on in order to be able to revalidate the Nextjs image cache.
-
-## SEO
-
-This template comes pre-configured with the official [Payload SEO Plugin](https://payloadcms.com/docs/plugins/seo) for complete SEO control from the admin panel. All SEO data is fully integrated into the front-end website that comes with this template. See [Website](#website) for more details.
-
-## Search
-
-This template also pre-configured with the official [Payload Search Plugin](https://payloadcms.com/docs/plugins/search) to showcase how SSR search features can easily be implemented into Next.js with Payload. See [Website](#website) for more details.
-
-## Redirects
-
-If you are migrating an existing site or moving content to a new URL, you can use the `redirects` collection to create a proper redirect from old URLs to new ones. This will ensure that proper request status codes are returned to search engines and that your users are not left with a broken link. This template comes pre-configured with the official [Payload Redirects Plugin](https://payloadcms.com/docs/plugins/redirects) for complete redirect control from the admin panel. All redirects are fully integrated into the front-end website that comes with this template. See [Website](#website) for more details.
-
-## Jobs and Scheduled Publish
-
-We have configured [Scheduled Publish](https://payloadcms.com/docs/versions/drafts#scheduled-publish) which uses the [jobs queue](https://payloadcms.com/docs/jobs-queue/jobs) in order to publish or unpublish your content on a scheduled time. The tasks are run on a cron schedule and can also be run as a separate instance if needed.
-
-> Note: When deployed on Vercel, depending on the plan tier, you may be limited to daily cron only.
-
-## Website
-
-This template includes a beautifully designed, production-ready front-end built with the [Next.js App Router](https://nextjs.org), served right alongside your Payload app in a instance. This makes it so that you can deploy both your backend and website where you need it.
-
-Core features:
-
-- [Next.js App Router](https://nextjs.org)
-- [TypeScript](https://www.typescriptlang.org)
-- [React Hook Form](https://react-hook-form.com)
-- [Payload Admin Bar](https://github.com/payloadcms/payload/tree/main/packages/admin-bar)
-- [TailwindCSS styling](https://tailwindcss.com/)
-- [shadcn/ui components](https://ui.shadcn.com/)
-- User Accounts and Authentication
-- Fully featured blog
-- Publication workflow
-- Dark mode
-- Pre-made layout building blocks
-- SEO
-- Search
-- Redirects
-- Live preview
-
-### Cache
-
-Although Next.js includes a robust set of caching strategies out of the box, Payload Cloud proxies and caches all files through Cloudflare using the [Official Cloud Plugin](https://www.npmjs.com/package/@payloadcms/payload-cloud). This means that Next.js caching is not needed and is disabled by default. If you are hosting your app outside of Payload Cloud, you can easily reenable the Next.js caching mechanisms by removing the `no-store` directive from all fetch requests in `./src/app/_api` and then removing all instances of `export const dynamic = 'force-dynamic'` from pages files, such as `./src/app/(pages)/[slug]/page.tsx`. For more details, see the official [Next.js Caching Docs](https://nextjs.org/docs/app/building-your-application/caching).
-
-## Development
-
-To spin up this example locally, follow the [Quick Start](#quick-start). Then [Seed](#seed) the database with a few pages, posts, and projects.
-
-### Working with Postgres
-
-Postgres and other SQL-based databases follow a strict schema for managing your data. In comparison to our MongoDB adapter, this means that there's a few extra steps to working with Postgres.
-
-Note that often times when making big schema changes you can run the risk of losing data if you're not manually migrating it.
-
-#### Local development
-
-Ideally we recommend running a local copy of your database so that schema updates are as fast as possible. By default the Postgres adapter has `push: true` for development environments. This will let you add, modify and remove fields and collections without needing to run any data migrations.
-
-If your database is pointed to production you will want to set `push: false` otherwise you will risk losing data or having your migrations out of sync.
-
-#### Migrations
-
-[Migrations](https://payloadcms.com/docs/database/migrations) are essentially SQL code versions that keeps track of your schema. When deploy with Postgres you will need to make sure you create and then run your migrations.
-
-Locally create a migration
-
-```bash
-pnpm payload migrate:create
-```
-
-This creates the migration files you will need to push alongside with your new configuration.
-
-On the server after building and before running `pnpm start` you will want to run your migrations
-
-```bash
-pnpm payload migrate
-```
-
-This command will check for any migrations that have not yet been run and try to run them and it will keep a record of migrations that have been run in the database.
-
-### Docker
-
-Alternatively, you can use [Docker](https://www.docker.com) to spin up this template locally. To do so, follow these steps:
-
-1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
-1. Next run `docker-compose up`
-1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
-
-That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
-
-### Seed
-
-To seed the database with a few pages, posts, and projects you can click the 'seed database' link from the admin panel.
-
-The seed script will also create a demo user for demonstration purposes only:
-
-- Demo Author
-  - Email: `demo-author@payloadcms.com`
-  - Password: `password`
-
-> NOTICE: seeding the database is destructive because it drops your current database to populate a fresh one from the seed template. Only run this command if you are starting a new project or can afford to lose your current data.
-
-## Production
-
-To run Payload in production, you need to build and start the Admin panel. To do so, follow these steps:
-
-1. Invoke the `next build` script by running `pnpm build` or `npm run build` in your project root. This creates a `.next` directory with a production-ready admin bundle.
-1. Finally run `pnpm start` or `npm run start` to run Node in production and serve Payload from the `.build` directory.
-1. When you're ready to go live, see Deployment below for more details.
-
-### Deploying to Payload Cloud
-
-The easiest way to deploy your project is to use [Payload Cloud](https://payloadcms.com/new/import), a one-click hosting solution to deploy production-ready instances of your Payload apps directly from your GitHub repo.
-
-### Deploying to Vercel
-
-This template can also be deployed to Vercel for free. You can get started by choosing the Vercel DB adapter during the setup of the template or by manually installing and configuring it:
-
-```bash
-pnpm add @payloadcms/db-vercel-postgres
-```
-
-```ts
-// payload.config.ts
-import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
-
-export default buildConfig({
-  // ...
-  db: vercelPostgresAdapter({
-    pool: {
-      connectionString: process.env.POSTGRES_URL || '',
-    },
-  }),
-  // ...
-```
-
-We also support Vercel's blob storage:
-
-```bash
-pnpm add @payloadcms/storage-vercel-blob
-```
-
-```ts
-// payload.config.ts
-import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
-
-export default buildConfig({
-  // ...
-  plugins: [
-    vercelBlobStorage({
-      collections: {
-        [Media.slug]: true,
-      },
-      token: process.env.BLOB_READ_WRITE_TOKEN || '',
-    }),
-  ],
-  // ...
-```
-
-There is also a simplified [one click deploy](https://github.com/payloadcms/payload/tree/templates/with-vercel-postgres) to Vercel should you need it.
-
-### Self-hosting
-
-Before deploying your app, you need to:
-
-1. Ensure your app builds and serves in production. See [Production](#production) for more details.
-2. You can then deploy Payload as you would any other Node.js or Next.js application either directly on a VPS, DigitalOcean's Apps Platform, via Coolify or more. More guides coming soon.
-
-You can also deploy your app manually, check out the [deployment documentation](https://payloadcms.com/docs/production/deployment) for full details.
-
-## Questions
-
-If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
+Website Structure for WIT ELECTRICAL
+Based on the provided document, I've extracted and organized the content relevant to the second website (WIT ELECTRICAL), which appears to be an electrical services company offering installations, maintenance, repairs, and related solutions. The content consists of 9 detailed service articles, each designed to be persuasive, emphasizing safety, reliability, efficiency, and emotional appeal. These are positioned as core service pages.
+The document notes that each article exceeds 1,000 characters and is ready for use. It also mentions potential expansion to blog topics (e.g., "Signs Your Home Needs Rewiring", "How to Save on Electricity Bills"), but no actual content for those is provided in the document. Therefore, I've focused on the available material and suggested a placeholder for a Blog section if expansion is desired.
+I've assigned the content to logical website sections for a typical service-based site:
+• Home Page: A welcoming overview compiled from recurring themes like safety, reliability, and powering homes/businesses in Cameroon (e.g., references to power grid issues like NEPA).
+• About Us: A synthesized description drawing from the service articles' shared philosophy.
+• Services: The 9 articles, presented as individual service pages or a services list with full content.
+• Blog/Articles: Placeholder based on the document's suggestion; no content provided.
+• Contact: No specific contacts are listed in the WIT ELECTRICAL section, but earlier document references (e.g., +237681553714) could be inferred as shared. I've noted this and suggested a generic form.
+Content is kept intact, with minor formatting for readability (e.g., preserving lists and emphasis).
+Home Page
+Use this as an introductory landing page to engage visitors. Compile from common themes across services: safety, reliability, modern solutions, and protection against Cameroon's unreliable power grid.
+Welcome Message: WIT Electrical – Powering Your World Safely and Smartly. At WIT Electrical, we specialize in comprehensive electrical solutions for homes, offices, and commercial spaces. From installations and upgrades to emergency repairs and energy-efficient innovations, we ensure your property is safe, functional, and future-ready. In a world where power outages and surges are common, we protect what matters most—your family, business, and investments. Our expert team uses top-grade materials, adheres to safety codes, and delivers craftsmanship that prevents hazards and saves you money. Don't let electrical issues disrupt your life; choose WIT Electrical for peace of mind and reliable power.
+Featured Call-to-Action: Ready to upgrade your electrical system? Contact us today for a free consultation. Power your potential with WIT Electrical.
+Quick Links Teaser:
+• Discover our services: Home installations, commercial setups, maintenance, and more.
+• Learn how we safeguard against voltage spikes, blackouts, and outdated wiring.
+• Stay lit, stay safe—explore energy-efficient and smart home solutions.
+About Us
+Synthesize from the service articles' emphasis on safety, professionalism, and customer-focused solutions.
+Company Overview: WIT Electrical is your trusted partner for all electrical needs in Cameroon. We believe every space—whether a cosy home, bustling office, or commercial hub—deserves safe, efficient, and modern power systems. Our team of expert electricians prioritises your safety, using high-quality materials and complying with regulations to prevent hazards such as fires, surges, and downtime. We understand the challenges of unreliable grids (like frequent NEPA failures), so we offer solutions that keep you powered through blackouts, reduce bills, and enhance comfort. From basic wiring to smart automations, we don't just fix problems—we create reliable, value-adding systems that let you thrive without worry.
+Our Philosophy: We appeal to what matters: protecting families from risks, helping businesses avoid costly interruptions, and promoting sustainability through energy-efficient designs. Our work is clean, discreet, and tailored to your needs, blending functionality with aesthetics. With WIT Electrical, you're investing in long-term peace of mind, lower costs, and a brighter future. We're not just electricians—we're your power guardians.
+Services
+Present as a dedicated services page with the 9 articles. Use a table for easy navigation and enumeration.
+Service Title Content
+Home Electrical Installations At WIT Electrical, we believe your home should be a sanctuary safe, functional, and powered to meet your daily needs. Whether you're building from scratch, renovating, or upgrading your electrical system, our expert electricians are ready to provide safe, durable, and modern electrical installations tailored to your unique space. From proper wiring, lighting systems, and sockets to appliance setups and safety controls, we ensure your home is wired for peace of mind. Poor installations can put your family at risk, but with WIT Electrical, you benefit from top-grade materials, adherence to safety codes, and skilled craftsmanship that adds long-term value to your property. We don’t just wire houses we create safe homes where your loved ones can thrive without power-related worries. When you choose WIT Electrical, you’re investing in a future free from power failure headaches and safety fears. Our team listens to your needs, recommends the best solutions, and executes with professionalism. Make the smart choice power your home safely and reliably with WIT Electrical.
+Office & Commercial Electrical Setup Your business depends on reliable power every light, every device, every second counts. WIT Electrical specializes in commercial-grade electrical installations that support modern workspaces, retail outlets, clinics, schools, and hospitality centers. Whether you’re setting up new premises or upgrading existing facilities, we deliver efficient layouts, energy-saving lighting, secure wiring, and backup systems that help your business stay functional and compliant. A well-installed system not only reduces power bills but also prevents costly downtimes and potential hazards. We understand that in commercial spaces, image matters. That’s why our work is clean, organized, and discreet no messy wiring or unfinished edges. We focus on aesthetics as much as safety and function. From start to finish, WIT Electrical brings your vision to life with the precision and care your brand deserves. Power your business potential with professional-grade installations from WIT Electrical.
+Electrical Maintenance Services Most electrical failures don’t just happen they build up over time due to neglect. WIT Electrical offers routine maintenance services that help prevent faults, prolong equipment lifespan, and keep your systems running at optimal performance. We handle scheduled inspections, load testing, breaker checks, grounding tests, and more to detect and fix issues before they escalate. Whether you're managing a home or a business, regular maintenance saves you from emergency costs, downtimes, and safety risks. Regular maintenance also ensures you remain compliant with electrical safety regulations, which is crucial for schools, clinics, businesses, and even rental properties. WIT Electrical works with you to set up a custom maintenance plan that suits your operations and budget. Our mission is to help you sleep better at night, knowing your wiring, panels, and appliances are professionally cared for. Stay safe and save money schedule a check-up today.
+Emergency Electrical Repairs Electrical emergencies are unpredictable and dangerous but WIT Electrical is always ready. From sudden power failures and frequent tripping to overheating panels and burnt outlets, we respond with urgency and precision. Our team is equipped to diagnose faults quickly and restore power without cutting corners. In homes, we prioritize family safety. In businesses, we reduce interruptions that cost you money. Every second counts during an electrical emergency, and having a trusted partner can make all the difference. We know that a blackout at night or a blown circuit during business hours can lead to chaos. That’s why our emergency service is fast, courteous, and effective. We arrive with the right tools, the right attitude, and a solution-focused mindset. Our goal is not just to fix your issue but to give you peace of mind that you’re protected moving forward. We’re just one call away when your power is at risk.
+Electrical Panel Upgrades & Load Management Outdated electrical panels are time bombs waiting to explode. If you’re noticing flickering lights, burnt smells, or appliances tripping the breakers, your panel may be overloaded. WIT Electrical offers complete panel upgrades and load assessments to match today’s energy demands. We install new breaker systems, manage balanced load distribution, and create room for future expansion. With our services, your property becomes safer, smarter, and more energy-efficient. Today’s homes and businesses run more electronics than ever before TVs, fridges, heaters, computers, and industrial machines all need stable power. If your panel is decades old, you’re gambling with your property. WIT Electrical gives you the confidence that your system is future-ready. Whether it’s a residential box or a commercial three-phase setup, we bring it up to modern standards. Don’t wait for a breakdown upgrade for safety and performance.
+Generator Installation & Maintenance Cameroon’s power supply isn’t always reliable, but your life doesn’t have to stop when the grid goes off. WIT Electrical provides generator installations and maintenance services that keep your home or business powered through blackouts. We advise on the right generator size, install smart changeover switches, and ensure your system runs efficiently through regular servicing. Whether you need backup power for a clinic, office, or home, we have a solution designed for long-term reliability. Our maintenance plans ensure your generator starts when you need it most. We handle oil changes, battery checks, load tests, and fuel system evaluations. No more surprises when NEPA fails you’ll be ready. Partner with WIT Electrical and take control of your power supply no matter what the grid says. Be prepared when the grid goes off. Stay lit with WIT Electrical.
+Energy-Efficient Lighting Solutions Lighting should enhance your space not drain your wallet. WIT Electrical specializes in energy-efficient lighting systems that combine functionality, design, and sustainability. We help homes and businesses switch from traditional bulbs to LED lights, install motion sensors in corridors, and automate daylight usage in offices. These upgrades cut your electricity bills, reduce maintenance costs, and create brighter, healthier spaces. With energy prices rising, every watt counts. Smart lighting doesn’t just save money it also improves comfort, productivity, and environmental impact. Whether you’re a landlord trying to reduce service charges or a family looking to cut bills, WIT Electrical designs a solution that works. Let your lights work smarter, not harder.
+Surge Protection and Voltage Stabilization Voltage spikes can destroy your electronics within seconds. WIT Electrical protects your investments with high-grade surge protectors and stabilizers tailored to your load. We evaluate your power setup and install devices that shield your TVs, fridges, computers, and industrial equipment. Whether you’re in a residential area or commercial zone, voltage fluctuations are common and costly. Imagine waking up to a burnt TV or losing a refrigerator full of food all because of a voltage surge. We prevent those losses before they happen. Our solutions are affordable, long-lasting, and custom-fit to your power system. Don’t let the grid destroy what you’ve worked hard for. Protect your investment defend your devices with WIT Electrical.
+Smart Home Installations Step into the future with WIT Electrical’s smart home systems. Control your lights, fans, and sockets with a tap on your phone or voice command. Whether it’s automating security lights or programming energy-saving routines, we make your home work for you. Smart systems reduce energy waste, increase comfort, and add a modern touch to any home. Our team designs safe, user-friendly setups that are easy to use for every member of the family. With smart technology, you can create lighting moods, schedule appliances, or check your house remotely—even while on vacation. WIT Electrical brings tomorrow’s convenience into your home today. It’s not about luxury—it’s about living smarter, safer, and simpler. Live smarter—switch to the future with WIT Electrical.
+Blog/Articles
+The document mentions potential blog topics (e.g., "Signs Your Home Needs Rewiring", "How to Save on Electricity Bills", etc.) and offers to expand them in a similar high-quality style. However, no actual content is provided. Suggest a placeholder section.
+Blog Overview: Explore our blog for tips on electrical safety, energy savings, and maintenance. Upcoming topics include:
+• Signs Your Home Needs Rewiring
+• How to Save on Electricity Bills
+• And more!
+(If expanded content is needed, generate based on the service style or request further details. Currently, no articles are available in the document.)
+Contact
+No dedicated contact info is provided in the WIT ELECTRICAL section, but it may share with WIT CONSULTANCY (e.g., +237681553714 from earlier articles). Suggest a generic setup.
+Contact Information:
+• Phone/WhatsApp: +237681553714 (inferred from shared document context)
+• Email: [Placeholder: info@witelectrical.com]
+• General Inquiry: Fill out our contact form for quotes, consultations, or emergencies. We're available 24/7 for repairs. Power issues? Reach out today!
+This structure creates a professional, user-friendly website focused on services. If blog content needs generation or additional details (e.g., images, SEO), let me know!
