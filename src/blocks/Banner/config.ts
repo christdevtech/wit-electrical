@@ -34,6 +34,35 @@ export const Banner: Block = {
       }),
       label: false,
       required: true,
+      defaultValue: {
+        root: {
+          type: 'root',
+          direction: 'ltr',
+          format: '',
+          indent: 0,
+          version: 1,
+          children: [
+            {
+              type: 'paragraph',
+              direction: 'ltr',
+              format: '',
+              indent: 0,
+              version: 1,
+              children: [
+                {
+                  type: 'text',
+                  text: 'Emergency Electrical Services Available 24/7. We respond with urgency and precision to keep your home and business safe.',
+                  mode: 'normal',
+                  detail: 0,
+                  format: 1,
+                  style: '',
+                  version: 1,
+                },
+              ],
+            },
+          ],
+        },
+      },
     },
   ],
   interfaceName: 'BannerBlock',

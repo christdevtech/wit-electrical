@@ -30,6 +30,54 @@ export const CallToAction: Block = {
         },
       }),
       label: false,
+      defaultValue: {
+        root: {
+          type: 'root',
+          direction: 'ltr',
+          format: '',
+          indent: 0,
+          version: 1,
+          children: [
+            {
+              type: 'heading',
+              tag: 'h2',
+              direction: 'ltr',
+              format: '',
+              indent: 0,
+              version: 1,
+              children: [
+                {
+                  type: 'text',
+                  text: 'Ready to Upgrade Your Electrical System?',
+                  mode: 'normal',
+                  detail: 0,
+                  format: 0,
+                  style: '',
+                  version: 1,
+                },
+              ],
+            },
+            {
+              type: 'paragraph',
+              direction: 'ltr',
+              format: '',
+              indent: 0,
+              version: 1,
+              children: [
+                {
+                  type: 'text',
+                  text: 'Contact us today for a free consultation. Power your potential with WIT Electrical.',
+                  mode: 'normal',
+                  detail: 0,
+                  format: 0,
+                  style: '',
+                  version: 1,
+                },
+              ],
+            },
+          ],
+        },
+      },
     },
     linkGroup({
       appearances: ['default', 'outline'],

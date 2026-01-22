@@ -17,7 +17,7 @@ export const SwiperWithSideTextBlock: Block = {
     {
       name: 'title',
       type: 'text',
-      defaultValue: 'This is the Title',
+      defaultValue: 'Why Choose WIT Electrical',
     },
     {
       name: 'description',

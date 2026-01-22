@@ -18,6 +18,7 @@ export const Testimonials: Block = {
       name: 'title',
       type: 'text',
       label: 'Section Title',
+      defaultValue: 'What Our Clients Say',
     },
     {
       name: 'testimonials',
