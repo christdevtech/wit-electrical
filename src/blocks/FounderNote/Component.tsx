@@ -36,7 +36,7 @@ export const FounderNoteBlockComponent: React.FC<Props> = ({
       colorTheme={colorTheme}
       backgroundImage={backgroundImage}
       blockId={blockId}
-      className={className}
+      className={cn(className, 'pb-0 md:pb-0 lg:pb-0 xl:pb-0')}
     >
       <div className="w-full">
         {/* Header Section */}
