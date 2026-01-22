@@ -7,7 +7,7 @@ import { BlockWrapper } from '@/components/BlockWrapper'
 import RichText from '@/components/RichText'
 import { cn } from '@/utilities/ui'
 import { motion } from 'framer-motion'
-import { Quote } from 'lucide-react'
+import { Star } from 'lucide-react'
 
 type Props = {
   className?: string
@@ -22,13 +22,13 @@ export const FounderNoteBlockComponent: React.FC<Props> = ({
   founderPosition,
   founderMessage,
   signatureImage,
-  imagePosition = 'left',
+  imagePosition = 'right',
   backgroundVariant,
   colorTheme,
   backgroundImage,
   blockId,
 }) => {
-  const isImageLeft = imagePosition === 'left'
+  const isImageRight = imagePosition === 'right'
 
   return (
     <BlockWrapper
@@ -40,144 +40,154 @@ export const FounderNoteBlockComponent: React.FC<Props> = ({
     >
       <div className="container mx-auto px-4 py-16">
         {/* Header Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
-        >
+        {(sectionTitle || sectionDescription) && (
           <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="mx-auto mb-4 h-1 w-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
-          />
-          {sectionTitle && (
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              {sectionTitle}
-            </h2>
-          )}
-          {sectionDescription && (
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              {sectionDescription}
-            </p>
-          )}
-        </motion.div>
+            transition={{ duration: 0.6 }}
+            className="mb-12 text-center"
+          >
+            {sectionTitle && (
+              <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                {sectionTitle}
+              </h2>
+            )}
+            {sectionDescription && (
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                {sectionDescription}
+              </p>
+            )}
+          </motion.div>
+        )}
 
-        {/* Founder Card */}
+        {/* Founder Testimonial Card */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative max-w-6xl mx-auto"
+          className="relative max-w-7xl mx-auto"
         >
           <div
             className={cn(
-              'relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-blue-950/30 dark:via-purple-950/30 dark:to-pink-950/30',
-              'border-2 border-transparent',
-              'shadow-2xl hover:shadow-3xl transition-all duration-500',
-              'backdrop-blur-sm',
-              // Gradient border effect
-              'before:absolute before:inset-0 before:-z-10 before:rounded-3xl',
-              'before:bg-gradient-to-r before:from-blue-500 before:via-purple-500 before:to-pink-500',
-              'before:p-[2px] before:content-[""]',
+              'grid grid-cols-1 lg:grid-cols-2 overflow-hidden rounded-3xl shadow-2xl',
+              'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900',
+              isImageRight ? '' : 'lg:grid-flow-dense',
             )}
           >
-            {/* Background Decorative Elements */}
-            <div className="absolute -right-12 -top-12 h-48 w-48 rounded-full bg-blue-400/10 blur-3xl" />
-            <div className="absolute -left-12 -bottom-12 h-48 w-48 rounded-full bg-purple-400/10 blur-3xl" />
-
-            <div
+            {/* Quote/Message Section - Dark Navy Background */}
+            <motion.div
+              initial={{ opacity: 0, x: isImageRight ? -30 : 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
               className={cn(
-                'relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 p-8 lg:p-12',
-                isImageLeft ? 'lg:grid-flow-col' : 'lg:grid-flow-col-dense',
+                'relative p-8 md:p-12 lg:p-16 flex flex-col justify-center',
+                'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900',
+                'order-2 lg:order-1',
+                !isImageRight && 'lg:col-start-2 lg:order-2',
               )}
             >
-              {/* Image Section */}
-              <motion.div
-                initial={{ opacity: 0, x: isImageLeft ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className={cn('relative', !isImageLeft && 'lg:col-start-2')}
-              >
-                <div className="relative h-full min-h-[400px] overflow-hidden rounded-2xl shadow-xl">
-                  {/* Quote icon decoration */}
-                  <div className="absolute top-4 left-4 z-10 p-3 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-full shadow-lg">
-                    <Quote className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                  </div>
+              {/* Large Quote Mark */}
+              <div className="mb-6">
+                <svg
+                  className="w-12 h-12 md:w-16 md:h-16 text-blue-400/40"
+                  fill="currentColor"
+                  viewBox="0 0 32 32"
+                >
+                  <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14h-6c0-2.2 1.8-4 4-4V8zm16 0c-3.3 0-6 2.7-6 6v10h10V14h-6c0-2.2 1.8-4 4-4V8z" />
+                </svg>
+              </div>
 
-                  {founderPhoto && typeof founderPhoto !== 'string' && (
-                    <Media
-                      resource={founderPhoto}
-                      className="h-full w-full object-cover"
-                      imgClassName="h-full w-full object-cover"
-                    />
-                  )}
-
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              {/* Message/Quote */}
+              <div className="prose prose-lg prose-invert max-w-none mb-8">
+                <div className="text-white/90 text-lg md:text-xl leading-relaxed">
+                  <RichText data={founderMessage} enableGutter={false} />
                 </div>
-              </motion.div>
+              </div>
 
-              {/* Content Section */}
+              {/* Star Rating */}
+              <div className="flex gap-1 mb-6">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+
+              {/* Signature */}
+              {signatureImage && typeof signatureImage !== 'string' ? (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.8, duration: 0.6 }}
+                >
+                  <Media
+                    resource={signatureImage}
+                    className="h-12 w-auto opacity-80 invert"
+                    imgClassName="h-12 w-auto object-contain object-left"
+                  />
+                </motion.div>
+              ) : (
+                <p className="text-xl md:text-2xl font-serif italic text-white/80">{founderName}</p>
+              )}
+            </motion.div>
+
+            {/* Image Section with Glassmorphism Overlay */}
+            <motion.div
+              initial={{ opacity: 0, x: isImageRight ? 30 : -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className={cn(
+                'relative min-h-[400px] lg:min-h-[600px]',
+                'order-1 lg:order-2',
+                isImageRight ? 'lg:col-start-2' : 'lg:col-start-1 lg:order-1',
+              )}
+            >
+              {/* Photo */}
+              {founderPhoto && typeof founderPhoto !== 'string' && (
+                <Media
+                  resource={founderPhoto}
+                  className="absolute inset-0 h-full w-full object-cover"
+                  imgClassName="absolute inset-0 h-full w-full object-cover"
+                />
+              )}
+
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
+              {/* Glassmorphism Name Card - Bottom */}
               <motion.div
-                initial={{ opacity: 0, x: isImageLeft ? 30 : -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className={cn(
-                  'flex flex-col justify-center',
-                  isImageLeft ? 'lg:col-start-2' : 'lg:col-start-1',
-                )}
+                transition={{ delay: 0.6, duration: 0.6 }}
+                className="absolute bottom-8 left-8 right-8 md:bottom-12 md:left-12 md:right-12"
               >
-                {/* Name and Position */}
-                <div className="mb-6">
-                  <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-                    {founderName}
-                  </h3>
-                  <p className="text-lg font-medium text-blue-600 dark:text-blue-400">
+                <div
+                  className={cn(
+                    'backdrop-blur-md bg-white/10 dark:bg-black/20',
+                    'border border-white/20',
+                    'rounded-2xl p-6 md:p-8',
+                    'shadow-2xl',
+                  )}
+                >
+                  {/* Label */}
+                  <p className="text-xs md:text-sm font-semibold tracking-widest text-white/70 uppercase mb-2">
                     {founderPosition}
                   </p>
+
+                  {/* Name */}
+                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">
+                    {founderName}
+                  </h3>
+
+                  {/* Optional subtitle/motto from position */}
+                  {/* You could add another field for this if needed */}
                 </div>
-
-                {/* Message */}
-                <div className="prose prose-lg max-w-none dark:prose-invert mb-6">
-                  <div className="text-gray-700 dark:text-gray-300">
-                    <RichText data={founderMessage} enableGutter={false} />
-                  </div>
-                </div>
-
-                {/* Signature */}
-                {signatureImage && typeof signatureImage !== 'string' && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.8, duration: 0.6 }}
-                    className="mt-4"
-                  >
-                    <Media
-                      resource={signatureImage}
-                      className="h-16 w-auto grayscale opacity-60 dark:invert"
-                      imgClassName="h-16 w-auto object-contain object-left"
-                    />
-                  </motion.div>
-                )}
-
-                {/* Decorative accent */}
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 1, duration: 0.6 }}
-                  className="mt-6 h-1 w-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
-                />
               </motion.div>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>

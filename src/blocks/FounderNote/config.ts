@@ -38,6 +38,7 @@ export const FounderNote: Block = {
       name: 'founderName',
       type: 'text',
       required: true,
+      defaultValue: 'Eng. Abel B. B. Tabi',
       label: 'Founder Name',
     },
     {
