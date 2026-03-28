@@ -6,7 +6,11 @@ import redirects from './redirects.js'
 const nextConfig = {
   images: {
     remotePatterns: [
-      ...[process.env.NEXT_PUBLIC_SERVER_URL, 'https://witelectrical.com'].map((item) => {
+      ...[
+        process.env.NEXT_PUBLIC_SERVER_URL,
+        'https://witelectrical.com',
+        'https://www.witelectrical.com',
+      ].map((item) => {
         const url = new URL(item)
 
         return {
