@@ -1,0 +1,101 @@
+.custom-icon-picker {
+  margin-bottom: 2rem;
+
+  .icon-picker-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    .icon-search-input {
+      flex: 1;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--theme-elevation-200);
+      background: var(--theme-elevation-50);
+      border-radius: var(--border-radius-m);
+      color: var(--theme-text);
+      font-size: 14px;
+
+      &:focus {
+        outline: 1px solid var(--theme-elevation-800);
+      }
+    }
+
+    .clear-icon-btn {
+      padding: 0.5rem 1rem;
+      background: var(--theme-error-200);
+      color: var(--theme-error-800);
+      border: none;
+      border-radius: var(--border-radius-m);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 500;
+
+      &:hover {
+        background: var(--theme-error-300);
+      }
+    }
+  }
+
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 0.5rem;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid var(--theme-elevation-200);
+    border-radius: var(--border-radius-m);
+    background: var(--theme-elevation-0);
+
+    /* Clean scrollbar */
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--theme-elevation-200);
+      border-radius: 4px;
+    }
+
+    .icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 0.5rem;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: var(--border-radius-s);
+      cursor: pointer;
+      color: var(--theme-text);
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: var(--theme-elevation-100);
+      }
+
+      &.selected {
+        background: var(--theme-elevation-200);
+        border-color: var(--theme-elevation-800);
+        color: var(--theme-elevation-1000);
+      }
+
+      .icon-name {
+        font-size: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+        color: var(--theme-elevation-500);
+      }
+
+      &.empty-state {
+        .empty-text {
+          font-size: 14px;
+          color: var(--theme-elevation-400);
+        }
+      }
+    }
+  }
+}

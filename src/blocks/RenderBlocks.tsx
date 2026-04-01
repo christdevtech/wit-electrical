@@ -17,6 +17,10 @@ import { LogoShowcaseBlockComponent } from './LogoShowcase/Component'
 import { StaffShowcaseBlockComponent } from './StaffShowcase/Component'
 import { FounderNoteBlockComponent } from './FounderNote/Component'
 import { MissionVisionBlockComponent } from './MissionVision/Component'
+import { KineticHeroComponent } from '@/blocks/KineticHero/Component'
+import { TechServiceCardsComponent } from '@/blocks/TechServiceCards/Component'
+import { FeaturesChecklistComponent } from '@/blocks/FeaturesChecklist/Component'
+import { EmergencyPulseComponent } from '@/blocks/EmergencyPulse/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -34,6 +38,10 @@ const blockComponents = {
   staffShowcase: StaffShowcaseBlockComponent,
   founderNote: FounderNoteBlockComponent,
   missionVision: MissionVisionBlockComponent,
+  kineticHero: KineticHeroComponent,
+  techServiceCards: TechServiceCardsComponent,
+  featuresChecklist: FeaturesChecklistComponent,
+  emergencyPulse: EmergencyPulseComponent,
 }
 
 export const RenderBlocks: React.FC<{
@@ -50,11 +58,10 @@ export const RenderBlocks: React.FC<{
           const { blockType } = block
 
           if (blockType && blockType in blockComponents) {
-            const Block = blockComponents[blockType as keyof typeof blockComponents]
+            const Block = blockComponents[blockType as keyof typeof blockComponents] as any
 
             if (Block) {
               return (
-                // @ts-expect-error there may be some mismatch between the expected types here
                 <Block {...block} className="py-8 md:py-10 lg:py-12 xl:py-16" key={index} />
               )
             }

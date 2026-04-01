@@ -146,6 +146,9 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
     admin: {
       description: "Choose an icon to display with the link.",
       width: '70%',
+      components: {
+        Field: '@/components/Payload/IconPicker#IconPickerField',
+      },
     },
   }
 

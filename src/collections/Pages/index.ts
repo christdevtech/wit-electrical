@@ -30,6 +30,10 @@ import { ServiceCardBlock } from '@/blocks/ServiceCardBlock/config'
 import { LogoShowcase } from '@/blocks/LogoShowcase/config'
 import { StaffShowcase } from '@/blocks/StaffShowcase/config'
 import { FounderNote } from '@/blocks/FounderNote/config'
+import { KineticHeroBlock } from '@/blocks/KineticHero/config'
+import { TechServiceCardsBlock } from '@/blocks/TechServiceCards/config'
+import { FeaturesChecklistBlock } from '@/blocks/FeaturesChecklist/config'
+import { EmergencyPulseBlock } from '@/blocks/EmergencyPulse/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -101,6 +105,10 @@ export const Pages: CollectionConfig<'pages'> = {
                 LogoShowcase,
                 StaffShowcase,
                 FounderNote,
+                KineticHeroBlock,
+                TechServiceCardsBlock,
+                FeaturesChecklistBlock,
+                EmergencyPulseBlock,
               ],
               required: true,
               admin: {
