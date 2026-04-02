@@ -7,6 +7,7 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 import { backgroundField, blockIdField } from '@/fields/blockFields'
+import { link } from '@/fields/link'
 
 export const FormBlock: Block = {
   slug: 'formBlock',
@@ -21,9 +22,60 @@ export const FormBlock: Block = {
       required: true,
     },
     {
+      name: 'layout',
+      type: 'radio',
+      options: [
+        { label: 'Default', value: 'default' },
+        { label: 'Split Sidebar', value: 'splitSidebar' },
+      ],
+      defaultValue: 'default',
+    },
+    {
+      name: 'sidebarTitle',
+      type: 'text',
+      admin: {
+        condition: (_, siblingData) => siblingData.layout === 'splitSidebar',
+      },
+      defaultValue: 'Request a Service Quote',
+    },
+    {
+      name: 'sidebarDescription',
+      type: 'textarea',
+      admin: {
+        condition: (_, siblingData) => siblingData.layout === 'splitSidebar',
+      },
+      defaultValue: 'Fill out the form below and we will get back to you as soon as possible.',
+    },
+    {
+      name: 'sidebarContacts',
+      type: 'array',
+      admin: {
+        condition: (_, siblingData) => siblingData.layout === 'splitSidebar',
+      },
+      fields: [
+        {
+          name: 'icon',
+          type: 'select',
+          options: [{ label: 'Activity', value: 'Activity' }],
+          admin: {
+            components: {
+              Field: '@/components/Payload/IconPicker#IconPickerField',
+            },
+          },
+        },
+        link({
+          appearances: false,
+          disableLabel: false,
+        }),
+      ],
+    },
+    {
       name: 'enableIntro',
       type: 'checkbox',
       label: 'Enable Intro Content',
+      admin: {
+        condition: (_, siblingData) => siblingData.layout === 'default',
+      },
     },
     {
       name: 'introContent',
