@@ -40,6 +40,7 @@ export const Partnerships: CollectionConfig = {
       name: 'backgroundColor',
       type: 'text',
       defaultValue: '#FFFFFF',
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validate: (value: any) => {
         if (value && !/^#[0-9A-F]{6}$/i.test(value)) {
           return 'Please enter a valid hex color (e.g. #FFFFFF)'

@@ -41,7 +41,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   const openMenu = () => setIsMenuOpen(true)
 
   // Determine which logo to display based on theme and available uploads
-  const isDarkMode = theme === 'dark'
+
   const hasLightModeLogo = data?.lightModeLogo && typeof data.lightModeLogo === 'object'
   const hasDarkModeLogo = data?.darkModeLogo && typeof data.darkModeLogo === 'object'
 

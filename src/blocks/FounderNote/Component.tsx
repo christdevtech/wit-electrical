@@ -7,7 +7,6 @@ import { BlockWrapper } from '@/components/BlockWrapper'
 import RichText from '@/components/RichText'
 import { cn } from '@/utilities/ui'
 import { motion } from 'framer-motion'
-import { Star } from 'lucide-react'
 
 type Props = {
   className?: string

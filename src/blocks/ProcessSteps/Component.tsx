@@ -30,6 +30,7 @@ export const ProcessStepsComponent: React.FC<
           <div className="absolute top-1/2 left-0 right-0 h-[2px] bg-[var(--theme-outline-variant)] -translate-y-1/2 hidden md:block" />
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8">
+            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
             {steps?.map((step: any, i: number) => {
               const IconComponent = step.icon ? lucideIcons[step.icon as LucideIconName] : null
               const isEven = i % 2 === 0

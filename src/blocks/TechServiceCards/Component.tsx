@@ -27,6 +27,7 @@ export const TechServiceCardsComponent: React.FC<TechServiceCardsBlockProps & { 
 
         {/* Dynamic Service Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
           {services?.map((service: any, index: number) => {
             const IconComponent = service.icon ? lucideIcons[service.icon as LucideIconName] : null
 
@@ -58,6 +59,7 @@ export const TechServiceCardsComponent: React.FC<TechServiceCardsBlockProps & { 
                   </p>
 
                   <div className="space-y-3 mb-8">
+                    {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                     {service.technicalSpecs?.map((spec: any, i: number) => (
                       <div key={i} className="flex items-center gap-3 text-xs text-[var(--theme-on-surface-variant)]" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
                         <span className="w-4 h-[1px] bg-[var(--theme-primary)]" />

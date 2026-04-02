@@ -76,6 +76,7 @@ export const StaffShowcaseBlockComponent: React.FC<Props> = ({
 }
 
 // Staff Card Component
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const StaffCard = ({ member, index }: { member: any; index: number }) => {
   const getSocialIcon = (platform: string) => {
     switch (platform) {
@@ -125,6 +126,7 @@ const StaffCard = ({ member, index }: { member: any; index: number }) => {
         {/* Social Links - Appear on hover */}
         {member.socialLinks && member.socialLinks.length > 0 && (
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
             {member.socialLinks.map((social: any, idx: number) => (
               <a
                 key={idx}

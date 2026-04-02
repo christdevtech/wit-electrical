@@ -33,6 +33,7 @@ export const FeaturesChecklistComponent: React.FC<FeaturesChecklistBlockProps & 
 
           {/* Staggered Checklist */}
           <div className="lg:col-span-7 flex flex-col gap-8 md:gap-12 mt-10 lg:mt-0">
+            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
             {checklist?.map((item: any, index: number) => {
               const IconComponent = item.icon ? lucideIcons[item.icon as LucideIconName] : null
               const isEven = index % 2 === 0

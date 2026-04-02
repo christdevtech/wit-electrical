@@ -70,6 +70,7 @@ export const RenderBlocks: React.FC<{
           const { blockType } = block
 
           if (blockType && blockType in blockComponents) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const Block = blockComponents[blockType as keyof typeof blockComponents] as any
 
             if (Block) {

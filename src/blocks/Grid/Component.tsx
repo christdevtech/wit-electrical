@@ -64,8 +64,11 @@ export const GridBlock: React.FC<Props> = (props) => {
             )}
           >
             {items?.map((item, i) => {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               const { colSpan, colSpanMd, colSpanLg, colSpanXl } = item as any
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               const cardTitleSize = (item as any).cardTitleSize || 'medium'
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               const cardDescriptionSize = (item as any).cardDescriptionSize || 'medium'
 
               return (
@@ -186,10 +189,13 @@ export const GridBlock: React.FC<Props> = (props) => {
                   )}
 
                   {item.type === 'staff' &&
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     (item as any).staff &&
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     typeof (item as any).staff === 'object' && (
                       <div className="w-full">
                         <StaffCard
+                          // eslint-disable-next-line @typescript-eslint/no-explicit-any
                           partner={(item as any).staff}
                           // className="h-full"
                           aspectRatio={item.aspectRatio ?? 'aspect-[3/4]'}

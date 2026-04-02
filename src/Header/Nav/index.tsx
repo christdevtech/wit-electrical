@@ -28,7 +28,7 @@ export const HeaderNav: React.FC<{ data: HeaderType; mobile?: boolean; className
         const href =
           type === 'reference' && typeof reference?.value === 'object' && reference.value.slug
             ? `${reference?.relationTo !== 'pages' ? `/${reference?.relationTo}` : ''}/${
-                (reference.value as any).slug
+                (reference.value as { slug: string }).slug
               }`
             : url
 

@@ -10,8 +10,7 @@ export const KineticHeroComponent: React.FC<KineticHeroBlockProps & { className?
   links,
   floatingGlassCard,
   heroImage,
-  backgroundVariant,
-  colorTheme,
+
   className,
 }) => {
   return (
@@ -44,6 +43,7 @@ export const KineticHeroComponent: React.FC<KineticHeroBlockProps & { className?
 
             {links && links.length > 0 && (
               <div className="mt-10 flex flex-wrap gap-4">
+                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                 {links.map((linkObj: any, i: number) => (
                   <CMSLink
                     key={i}

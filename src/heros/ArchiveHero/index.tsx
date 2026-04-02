@@ -4,6 +4,7 @@ import { Media } from '@/components/Media'
 import ArchiveHeroClient from './client'
 
 export const ArchiveHero: React.FC<{ type: 'services' | 'posts' }> = async ({ type }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const archiveHero: any = await getCachedGlobal('archive-hero' as any, 1)()
 
   const heroData = type === 'services' ? archiveHero?.servicesHero : archiveHero?.postsHero

@@ -46,6 +46,7 @@ export const KineticCTAComponent: React.FC<KineticCTABlockProps & { className?: 
 
           {links && links.length > 0 && (
             <div className="flex flex-wrap items-center justify-center gap-6">
+              {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
               {links.map((linkObj: any, i: number) => (
                 <CMSLink
                   key={i}

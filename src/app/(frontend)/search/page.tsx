@@ -1,6 +1,6 @@
 import type { Metadata } from 'next/types'
 
-import { CollectionArchive } from '@/components/CollectionArchive'
+
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
@@ -75,6 +75,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       {posts.totalDocs > 0 ? (
         <div className="container">
           <div className="grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-12 gap-y-4 gap-x-4 lg:gap-y-8 lg:gap-x-8 xl:gap-x-8">
+            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
             {posts.docs.map((result: any, index: number) => (
               <div className="col-span-4" key={index}>
                 <Card

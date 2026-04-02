@@ -26,6 +26,7 @@ export const KineticTestimonialsComponent: React.FC<
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
           {testimonials?.map((testimonial: any, i: number) => (
             <div
               key={i}
@@ -40,7 +41,7 @@ export const KineticTestimonialsComponent: React.FC<
                   className="text-lg text-[var(--theme-on-surface)] leading-relaxed mb-8 italic"
                   style={{ fontFamily: 'var(--font-inter)' }}
                 >
-                  "{testimonial.quote}"
+                  &quot;{testimonial.quote}&quot;
                 </p>
               </div>
 

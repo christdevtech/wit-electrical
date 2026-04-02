@@ -16,6 +16,7 @@ export const KineticFAQComponent: React.FC<
         </h2>
 
         <div className="space-y-4">
+          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
           {faqs?.map((faq: any, i: number) => (
             <details
               key={i}

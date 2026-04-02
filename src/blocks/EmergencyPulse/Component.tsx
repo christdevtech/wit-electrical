@@ -50,7 +50,7 @@ export const EmergencyPulseComponent: React.FC<
 
           {links && links.length > 0 && (
             <div className="shrink-0 flex items-center gap-4">
-              {links.map((linkObj: any, i: number) => (
+              {links.map((linkObj: { link: any }, i: number) => (
                 <CMSLink
                   key={i}
                   {...linkObj.link}

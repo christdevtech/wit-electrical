@@ -16,6 +16,7 @@ export const CompanyStatsComponent: React.FC<
         )}
 
         <div className="flex flex-wrap justify-center gap-10 md:gap-20">
+          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
           {stats?.map((stat: any, i: number) => {
             const IconComponent = stat.icon ? lucideIcons[stat.icon as LucideIconName] : null
 

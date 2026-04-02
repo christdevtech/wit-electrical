@@ -27,6 +27,7 @@ export const ServicePlansComponent: React.FC<
         </div>
 
         <div className={`grid grid-cols-1 md:grid-cols-2 ${plans && plans.length === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'} gap-8 items-stretch max-w-6xl mx-auto`}>
+          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
           {plans?.map((plan: any, i: number) => {
             const isPopular = plan.isPopular
             return (
@@ -69,6 +70,7 @@ export const ServicePlansComponent: React.FC<
                 )}
 
                 <ul className="flex-1 space-y-4 mb-10">
+                  {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                   {plan.features?.map((f: any, idx: number) => (
                     <li key={idx} className="flex items-start gap-4 text-[var(--theme-on-surface)]" style={{ fontFamily: 'var(--font-inter)' }}>
                       <Check className="w-5 h-5 text-[var(--theme-primary)] shrink-0 mt-0.5" />

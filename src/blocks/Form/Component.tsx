@@ -11,7 +11,7 @@ import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical
 import { fields } from './fields'
 import { getClientSideURL } from '@/utilities/getURL'
 import { BlockWrapper } from '@/components/BlockWrapper'
-import { Width } from './Width'
+
 import { lucideIcons, LucideIconName } from '@/utilities/lucideIcons'
 import { CMSLink } from '@/components/Link'
 
@@ -24,6 +24,7 @@ export type FormBlockType = {
   layout?: 'default' | 'splitSidebar'
   sidebarTitle?: string
   sidebarDescription?: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   sidebarContacts?: any[]
 }
 
@@ -33,6 +34,7 @@ export const FormBlock: React.FC<
     className?: string
     backgroundVariant?: 'color' | 'image'
     colorTheme?: string | null
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     backgroundImage?: any
     imageTextColor?: 'white' | 'black' | null
     blockId?: string | null
@@ -142,7 +144,8 @@ export const FormBlock: React.FC<
         {formFromProps &&
           formFromProps.fields &&
           formFromProps.fields?.map((field, index) => {
-            const Field: React.FC<any> = fields?.[field.blockType as keyof typeof fields]
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const Field: React.FC<any> = fields?.[field.blockType as keyof typeof fields] as unknown as React.FC<any>
             if (Field) {
               return (
                 <Field

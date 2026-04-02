@@ -88,7 +88,7 @@ import {
   Euro,
   EyeOff,
   Eye,
-  Facebook,
+
   Factory,
   Fan,
   FastForward,
@@ -252,8 +252,7 @@ import {
   SkipBack,
   SkipForward,
   Skull,
-  Slack,
-  Slash,
+
   Sliders,
   Smartphone,
   Smile,
@@ -602,7 +601,6 @@ export const lucideIcons = {
   SkipBack,
   SkipForward,
   Skull,
-  Slash,
   Sliders,
   Smartphone,
   Smile,
