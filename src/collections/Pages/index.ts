@@ -34,6 +34,12 @@ import { KineticHeroBlock } from '@/blocks/KineticHero/config'
 import { TechServiceCardsBlock } from '@/blocks/TechServiceCards/config'
 import { FeaturesChecklistBlock } from '@/blocks/FeaturesChecklist/config'
 import { EmergencyPulseBlock } from '@/blocks/EmergencyPulse/config'
+import { KineticTestimonialsBlock } from '@/blocks/KineticTestimonials/config'
+import { KineticFAQBlock } from '@/blocks/KineticFAQ/config'
+import { ServicePlansBlock } from '@/blocks/ServicePlans/config'
+import { ProcessStepsBlock } from '@/blocks/ProcessSteps/config'
+import { KineticCTABlock } from '@/blocks/KineticCTA/config'
+import { CompanyStatsBlock } from '@/blocks/CompanyStats/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -109,6 +115,12 @@ export const Pages: CollectionConfig<'pages'> = {
                 TechServiceCardsBlock,
                 FeaturesChecklistBlock,
                 EmergencyPulseBlock,
+                KineticTestimonialsBlock,
+                KineticFAQBlock,
+                ServicePlansBlock,
+                ProcessStepsBlock,
+                KineticCTABlock,
+                CompanyStatsBlock,
               ],
               required: true,
               admin: {

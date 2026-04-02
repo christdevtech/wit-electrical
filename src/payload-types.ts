@@ -584,6 +584,12 @@ export interface Page {
     | TechServiceCardsBlock
     | FeaturesChecklistBlock
     | EmergencyPulseBlock
+    | KineticTestimonialsBlock
+    | KineticFAQBlock
+    | ServicePlansBlock
+    | ProcessStepsBlock
+    | KineticCTABlock
+    | CompanyStatsBlock
   )[];
   meta?: {
     title?: string | null;
@@ -4852,6 +4858,1048 @@ export interface EmergencyPulseBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "KineticTestimonialsBlock".
+ */
+export interface KineticTestimonialsBlock {
+  backgroundVariant: 'color' | 'image';
+  colorTheme?:
+    | (
+        | 'slate'
+        | 'gray'
+        | 'zinc'
+        | 'neutral'
+        | 'stone'
+        | 'blue'
+        | 'indigo'
+        | 'violet'
+        | 'emerald'
+        | 'teal'
+        | 'rose'
+        | 'default'
+      )
+    | null;
+  backgroundImage?: (string | null) | Media;
+  /**
+   * Choose the text color to use over the background image to ensure readability.
+   */
+  imageTextColor?: ('white' | 'black') | null;
+  /**
+   * Enter a unique ID for this block to link to it (e.g., "about-us").
+   */
+  blockId?: string | null;
+  sectionTitle: string;
+  subtitle?: string | null;
+  testimonials?:
+    | {
+        quote: string;
+        authorName: string;
+        authorRole: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'kineticTestimonials';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "KineticFAQBlock".
+ */
+export interface KineticFAQBlock {
+  backgroundVariant: 'color' | 'image';
+  colorTheme?:
+    | (
+        | 'slate'
+        | 'gray'
+        | 'zinc'
+        | 'neutral'
+        | 'stone'
+        | 'blue'
+        | 'indigo'
+        | 'violet'
+        | 'emerald'
+        | 'teal'
+        | 'rose'
+        | 'default'
+      )
+    | null;
+  backgroundImage?: (string | null) | Media;
+  /**
+   * Choose the text color to use over the background image to ensure readability.
+   */
+  imageTextColor?: ('white' | 'black') | null;
+  /**
+   * Enter a unique ID for this block to link to it (e.g., "about-us").
+   */
+  blockId?: string | null;
+  title: string;
+  faqs?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'kineticFAQ';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServicePlansBlock".
+ */
+export interface ServicePlansBlock {
+  backgroundVariant: 'color' | 'image';
+  colorTheme?:
+    | (
+        | 'slate'
+        | 'gray'
+        | 'zinc'
+        | 'neutral'
+        | 'stone'
+        | 'blue'
+        | 'indigo'
+        | 'violet'
+        | 'emerald'
+        | 'teal'
+        | 'rose'
+        | 'default'
+      )
+    | null;
+  backgroundImage?: (string | null) | Media;
+  /**
+   * Choose the text color to use over the background image to ensure readability.
+   */
+  imageTextColor?: ('white' | 'black') | null;
+  /**
+   * Enter a unique ID for this block to link to it (e.g., "about-us").
+   */
+  blockId?: string | null;
+  title: string;
+  subtitle?: string | null;
+  plans?:
+    | {
+        name: string;
+        /**
+         * E.g., "Custom", "20,000 XAF/mo", etc.
+         */
+        price?: string | null;
+        description?: string | null;
+        isPopular?: boolean | null;
+        features?:
+          | {
+              feature: string;
+              id?: string | null;
+            }[]
+          | null;
+        actionLink: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null)
+            | ({
+                relationTo: 'services';
+                value: string | Service;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+          /**
+           * Choose an icon to display with the link.
+           */
+          icon?:
+            | (
+                | ''
+                | 'Activity'
+                | 'Airplay'
+                | 'AlarmClock'
+                | 'AlertCircle'
+                | 'AlertOctagon'
+                | 'AlertTriangle'
+                | 'AlignCenter'
+                | 'AlignJustify'
+                | 'AlignLeft'
+                | 'AlignRight'
+                | 'Anchor'
+                | 'Aperture'
+                | 'Archive'
+                | 'ArrowBigDown'
+                | 'ArrowBigLeft'
+                | 'ArrowBigRight'
+                | 'ArrowBigUp'
+                | 'ArrowDown'
+                | 'ArrowLeft'
+                | 'ArrowRight'
+                | 'ArrowUp'
+                | 'Asterisk'
+                | 'AtSign'
+                | 'Award'
+                | 'Baby'
+                | 'BadgeCheck'
+                | 'Badge'
+                | 'Banknote'
+                | 'BarChart'
+                | 'BatteryCharging'
+                | 'BatteryFull'
+                | 'BatteryLow'
+                | 'BatteryMedium'
+                | 'Battery'
+                | 'Bell'
+                | 'Bike'
+                | 'Binary'
+                | 'Bluetooth'
+                | 'Bold'
+                | 'BookOpen'
+                | 'Book'
+                | 'Bookmark'
+                | 'Box'
+                | 'Briefcase'
+                | 'Brush'
+                | 'Bug'
+                | 'Building'
+                | 'Bus'
+                | 'Cable'
+                | 'Calendar'
+                | 'Camera'
+                | 'Car'
+                | 'Check'
+                | 'CheckCircle'
+                | 'ChevronDown'
+                | 'ChevronLeft'
+                | 'ChevronRight'
+                | 'ChevronUp'
+                | 'ChevronsUpDown'
+                | 'CircuitBoard'
+                | 'Clipboard'
+                | 'Clock'
+                | 'Cloud'
+                | 'Code'
+                | 'Coffee'
+                | 'Cog'
+                | 'Columns'
+                | 'Command'
+                | 'Compass'
+                | 'Computer'
+                | 'Contact'
+                | 'Contrast'
+                | 'Cookie'
+                | 'Copy'
+                | 'Cpu'
+                | 'CreditCard'
+                | 'Crop'
+                | 'Crosshair'
+                | 'Database'
+                | 'Delete'
+                | 'Disc'
+                | 'DollarSign'
+                | 'Download'
+                | 'DownloadCloud'
+                | 'Droplet'
+                | 'Edit'
+                | 'Euro'
+                | 'Eye'
+                | 'EyeOff'
+                | 'Factory'
+                | 'Fan'
+                | 'FastForward'
+                | 'Feather'
+                | 'File'
+                | 'Filter'
+                | 'Fingerprint'
+                | 'Flag'
+                | 'Flame'
+                | 'Flashlight'
+                | 'Folder'
+                | 'FormInput'
+                | 'Forward'
+                | 'Frame'
+                | 'Framer'
+                | 'Frown'
+                | 'Fuel'
+                | 'FunctionSquare'
+                | 'Gamepad'
+                | 'Gauge'
+                | 'Gavel'
+                | 'Gem'
+                | 'Ghost'
+                | 'Gift'
+                | 'GitBranch'
+                | 'GitCommit'
+                | 'GitMerge'
+                | 'GitPullRequest'
+                | 'Globe'
+                | 'Grid'
+                | 'GripHorizontal'
+                | 'GripVertical'
+                | 'Hammer'
+                | 'Hand'
+                | 'HandMetal'
+                | 'HardDrive'
+                | 'HardHat'
+                | 'Hash'
+                | 'Haze'
+                | 'Headphones'
+                | 'Heart'
+                | 'HelpCircle'
+                | 'Hexagon'
+                | 'Highlighter'
+                | 'History'
+                | 'Home'
+                | 'Hourglass'
+                | 'Image'
+                | 'Inbox'
+                | 'Infinity'
+                | 'Info'
+                | 'Italic'
+                | 'Key'
+                | 'Laptop'
+                | 'Layers'
+                | 'Layout'
+                | 'Library'
+                | 'LifeBuoy'
+                | 'Lightbulb'
+                | 'Link'
+                | 'List'
+                | 'Loader'
+                | 'Locate'
+                | 'Lock'
+                | 'LogIn'
+                | 'LogOut'
+                | 'Mail'
+                | 'Map'
+                | 'MapPin'
+                | 'Martini'
+                | 'Maximize'
+                | 'Medal'
+                | 'Megaphone'
+                | 'Meh'
+                | 'Menu'
+                | 'MessageCircle'
+                | 'MessageSquare'
+                | 'Mic'
+                | 'Minimize'
+                | 'Minus'
+                | 'Monitor'
+                | 'Moon'
+                | 'MoreHorizontal'
+                | 'MoreVertical'
+                | 'Mountain'
+                | 'MousePointer'
+                | 'Move'
+                | 'Music'
+                | 'Navigation'
+                | 'Network'
+                | 'Octagon'
+                | 'Option'
+                | 'Package'
+                | 'Palette'
+                | 'Paperclip'
+                | 'ParkingCircle'
+                | 'Pause'
+                | 'PenTool'
+                | 'Pencil'
+                | 'Percent'
+                | 'Phone'
+                | 'PhoneCall'
+                | 'PieChart'
+                | 'PiggyBank'
+                | 'Pilcrow'
+                | 'Pin'
+                | 'Pipette'
+                | 'Plane'
+                | 'Play'
+                | 'Plug'
+                | 'PlugZap'
+                | 'Plus'
+                | 'Pocket'
+                | 'Podcast'
+                | 'PoundSterling'
+                | 'Power'
+                | 'PowerOff'
+                | 'Printer'
+                | 'Puzzle'
+                | 'QrCode'
+                | 'Quote'
+                | 'Radio'
+                | 'RadioReceiver'
+                | 'RadioTower'
+                | 'Redo'
+                | 'RefreshCcw'
+                | 'RefreshCw'
+                | 'Regex'
+                | 'Repeat'
+                | 'Reply'
+                | 'Rewind'
+                | 'RotateCcw'
+                | 'RotateCw'
+                | 'Rss'
+                | 'Ruler'
+                | 'RussianRuble'
+                | 'Save'
+                | 'Scale'
+                | 'Scan'
+                | 'School'
+                | 'Scissors'
+                | 'ScreenShare'
+                | 'Scroll'
+                | 'Search'
+                | 'Send'
+                | 'SeparatorHorizontal'
+                | 'SeparatorVertical'
+                | 'Server'
+                | 'Settings'
+                | 'Share'
+                | 'Shield'
+                | 'Shirt'
+                | 'ShoppingBag'
+                | 'ShoppingCart'
+                | 'Shovel'
+                | 'ShowerHead'
+                | 'Shrink'
+                | 'Shrub'
+                | 'Shuffle'
+                | 'Sidebar'
+                | 'SkipBack'
+                | 'SkipForward'
+                | 'Skull'
+                | 'Slash'
+                | 'Sliders'
+                | 'Smartphone'
+                | 'Smile'
+                | 'Snowflake'
+                | 'SortAsc'
+                | 'SortDesc'
+                | 'Sparkles'
+                | 'Speaker'
+                | 'Square'
+                | 'Star'
+                | 'Sticker'
+                | 'StickyNote'
+                | 'StopCircle'
+                | 'Strikethrough'
+                | 'Sun'
+                | 'Sunrise'
+                | 'Sunset'
+                | 'Superscript'
+                | 'SwissFranc'
+                | 'SwitchCamera'
+                | 'Sword'
+                | 'Swords'
+                | 'Table'
+                | 'Tablet'
+                | 'Tag'
+                | 'Target'
+                | 'Tent'
+                | 'Terminal'
+                | 'TextCursor'
+                | 'TextCursorInput'
+                | 'ThumbsDown'
+                | 'ThumbsUp'
+                | 'Ticket'
+                | 'Timer'
+                | 'TimerOff'
+                | 'TimerReset'
+                | 'ToggleLeft'
+                | 'ToggleRight'
+                | 'Tornado'
+                | 'ToyBrick'
+                | 'Train'
+                | 'Trash'
+                | 'TreeDeciduous'
+                | 'TreePine'
+                | 'Trello'
+                | 'TrendingDown'
+                | 'TrendingUp'
+                | 'Trophy'
+                | 'Truck'
+                | 'Tv'
+                | 'Twitch'
+                | 'Twitter'
+                | 'Type'
+                | 'Underline'
+                | 'Undo'
+                | 'Unlink'
+                | 'Unlock'
+                | 'Upload'
+                | 'UploadCloud'
+                | 'Usb'
+                | 'User'
+                | 'UserCheck'
+                | 'UserMinus'
+                | 'UserPlus'
+                | 'UserX'
+                | 'Users'
+                | 'Utensils'
+                | 'Variable'
+                | 'Video'
+                | 'VideoOff'
+                | 'View'
+                | 'Voicemail'
+                | 'Volume'
+                | 'Volume1'
+                | 'Volume2'
+                | 'VolumeX'
+                | 'Wallet'
+                | 'Wand'
+                | 'Watch'
+                | 'Webcam'
+                | 'Wifi'
+                | 'WifiOff'
+                | 'Wind'
+                | 'WrapText'
+                | 'Wrench'
+                | 'X'
+                | 'XCircle'
+                | 'XOctagon'
+                | 'XSquare'
+                | 'Zap'
+                | 'ZapOff'
+                | 'ZoomIn'
+                | 'ZoomOut'
+              )
+            | null;
+          /**
+           * Choose where to place the icon.
+           */
+          iconPlacement?: ('left' | 'right') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'servicePlans';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProcessStepsBlock".
+ */
+export interface ProcessStepsBlock {
+  backgroundVariant: 'color' | 'image';
+  colorTheme?:
+    | (
+        | 'slate'
+        | 'gray'
+        | 'zinc'
+        | 'neutral'
+        | 'stone'
+        | 'blue'
+        | 'indigo'
+        | 'violet'
+        | 'emerald'
+        | 'teal'
+        | 'rose'
+        | 'default'
+      )
+    | null;
+  backgroundImage?: (string | null) | Media;
+  /**
+   * Choose the text color to use over the background image to ensure readability.
+   */
+  imageTextColor?: ('white' | 'black') | null;
+  /**
+   * Enter a unique ID for this block to link to it (e.g., "about-us").
+   */
+  blockId?: string | null;
+  title: string;
+  description?: string | null;
+  steps?:
+    | {
+        title: string;
+        description: string;
+        icon?: 'Activity' | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'processSteps';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "KineticCTABlock".
+ */
+export interface KineticCTABlock {
+  backgroundVariant: 'color' | 'image';
+  colorTheme?:
+    | (
+        | 'slate'
+        | 'gray'
+        | 'zinc'
+        | 'neutral'
+        | 'stone'
+        | 'blue'
+        | 'indigo'
+        | 'violet'
+        | 'emerald'
+        | 'teal'
+        | 'rose'
+        | 'default'
+      )
+    | null;
+  backgroundImage?: (string | null) | Media;
+  /**
+   * Choose the text color to use over the background image to ensure readability.
+   */
+  imageTextColor?: ('white' | 'black') | null;
+  /**
+   * Enter a unique ID for this block to link to it (e.g., "about-us").
+   */
+  blockId?: string | null;
+  headline: string;
+  description?: string | null;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null)
+            | ({
+                relationTo: 'services';
+                value: string | Service;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+          /**
+           * Choose an icon to display with the link.
+           */
+          icon?:
+            | (
+                | ''
+                | 'Activity'
+                | 'Airplay'
+                | 'AlarmClock'
+                | 'AlertCircle'
+                | 'AlertOctagon'
+                | 'AlertTriangle'
+                | 'AlignCenter'
+                | 'AlignJustify'
+                | 'AlignLeft'
+                | 'AlignRight'
+                | 'Anchor'
+                | 'Aperture'
+                | 'Archive'
+                | 'ArrowBigDown'
+                | 'ArrowBigLeft'
+                | 'ArrowBigRight'
+                | 'ArrowBigUp'
+                | 'ArrowDown'
+                | 'ArrowLeft'
+                | 'ArrowRight'
+                | 'ArrowUp'
+                | 'Asterisk'
+                | 'AtSign'
+                | 'Award'
+                | 'Baby'
+                | 'BadgeCheck'
+                | 'Badge'
+                | 'Banknote'
+                | 'BarChart'
+                | 'BatteryCharging'
+                | 'BatteryFull'
+                | 'BatteryLow'
+                | 'BatteryMedium'
+                | 'Battery'
+                | 'Bell'
+                | 'Bike'
+                | 'Binary'
+                | 'Bluetooth'
+                | 'Bold'
+                | 'BookOpen'
+                | 'Book'
+                | 'Bookmark'
+                | 'Box'
+                | 'Briefcase'
+                | 'Brush'
+                | 'Bug'
+                | 'Building'
+                | 'Bus'
+                | 'Cable'
+                | 'Calendar'
+                | 'Camera'
+                | 'Car'
+                | 'Check'
+                | 'CheckCircle'
+                | 'ChevronDown'
+                | 'ChevronLeft'
+                | 'ChevronRight'
+                | 'ChevronUp'
+                | 'ChevronsUpDown'
+                | 'CircuitBoard'
+                | 'Clipboard'
+                | 'Clock'
+                | 'Cloud'
+                | 'Code'
+                | 'Coffee'
+                | 'Cog'
+                | 'Columns'
+                | 'Command'
+                | 'Compass'
+                | 'Computer'
+                | 'Contact'
+                | 'Contrast'
+                | 'Cookie'
+                | 'Copy'
+                | 'Cpu'
+                | 'CreditCard'
+                | 'Crop'
+                | 'Crosshair'
+                | 'Database'
+                | 'Delete'
+                | 'Disc'
+                | 'DollarSign'
+                | 'Download'
+                | 'DownloadCloud'
+                | 'Droplet'
+                | 'Edit'
+                | 'Euro'
+                | 'Eye'
+                | 'EyeOff'
+                | 'Factory'
+                | 'Fan'
+                | 'FastForward'
+                | 'Feather'
+                | 'File'
+                | 'Filter'
+                | 'Fingerprint'
+                | 'Flag'
+                | 'Flame'
+                | 'Flashlight'
+                | 'Folder'
+                | 'FormInput'
+                | 'Forward'
+                | 'Frame'
+                | 'Framer'
+                | 'Frown'
+                | 'Fuel'
+                | 'FunctionSquare'
+                | 'Gamepad'
+                | 'Gauge'
+                | 'Gavel'
+                | 'Gem'
+                | 'Ghost'
+                | 'Gift'
+                | 'GitBranch'
+                | 'GitCommit'
+                | 'GitMerge'
+                | 'GitPullRequest'
+                | 'Globe'
+                | 'Grid'
+                | 'GripHorizontal'
+                | 'GripVertical'
+                | 'Hammer'
+                | 'Hand'
+                | 'HandMetal'
+                | 'HardDrive'
+                | 'HardHat'
+                | 'Hash'
+                | 'Haze'
+                | 'Headphones'
+                | 'Heart'
+                | 'HelpCircle'
+                | 'Hexagon'
+                | 'Highlighter'
+                | 'History'
+                | 'Home'
+                | 'Hourglass'
+                | 'Image'
+                | 'Inbox'
+                | 'Infinity'
+                | 'Info'
+                | 'Italic'
+                | 'Key'
+                | 'Laptop'
+                | 'Layers'
+                | 'Layout'
+                | 'Library'
+                | 'LifeBuoy'
+                | 'Lightbulb'
+                | 'Link'
+                | 'List'
+                | 'Loader'
+                | 'Locate'
+                | 'Lock'
+                | 'LogIn'
+                | 'LogOut'
+                | 'Mail'
+                | 'Map'
+                | 'MapPin'
+                | 'Martini'
+                | 'Maximize'
+                | 'Medal'
+                | 'Megaphone'
+                | 'Meh'
+                | 'Menu'
+                | 'MessageCircle'
+                | 'MessageSquare'
+                | 'Mic'
+                | 'Minimize'
+                | 'Minus'
+                | 'Monitor'
+                | 'Moon'
+                | 'MoreHorizontal'
+                | 'MoreVertical'
+                | 'Mountain'
+                | 'MousePointer'
+                | 'Move'
+                | 'Music'
+                | 'Navigation'
+                | 'Network'
+                | 'Octagon'
+                | 'Option'
+                | 'Package'
+                | 'Palette'
+                | 'Paperclip'
+                | 'ParkingCircle'
+                | 'Pause'
+                | 'PenTool'
+                | 'Pencil'
+                | 'Percent'
+                | 'Phone'
+                | 'PhoneCall'
+                | 'PieChart'
+                | 'PiggyBank'
+                | 'Pilcrow'
+                | 'Pin'
+                | 'Pipette'
+                | 'Plane'
+                | 'Play'
+                | 'Plug'
+                | 'PlugZap'
+                | 'Plus'
+                | 'Pocket'
+                | 'Podcast'
+                | 'PoundSterling'
+                | 'Power'
+                | 'PowerOff'
+                | 'Printer'
+                | 'Puzzle'
+                | 'QrCode'
+                | 'Quote'
+                | 'Radio'
+                | 'RadioReceiver'
+                | 'RadioTower'
+                | 'Redo'
+                | 'RefreshCcw'
+                | 'RefreshCw'
+                | 'Regex'
+                | 'Repeat'
+                | 'Reply'
+                | 'Rewind'
+                | 'RotateCcw'
+                | 'RotateCw'
+                | 'Rss'
+                | 'Ruler'
+                | 'RussianRuble'
+                | 'Save'
+                | 'Scale'
+                | 'Scan'
+                | 'School'
+                | 'Scissors'
+                | 'ScreenShare'
+                | 'Scroll'
+                | 'Search'
+                | 'Send'
+                | 'SeparatorHorizontal'
+                | 'SeparatorVertical'
+                | 'Server'
+                | 'Settings'
+                | 'Share'
+                | 'Shield'
+                | 'Shirt'
+                | 'ShoppingBag'
+                | 'ShoppingCart'
+                | 'Shovel'
+                | 'ShowerHead'
+                | 'Shrink'
+                | 'Shrub'
+                | 'Shuffle'
+                | 'Sidebar'
+                | 'SkipBack'
+                | 'SkipForward'
+                | 'Skull'
+                | 'Slash'
+                | 'Sliders'
+                | 'Smartphone'
+                | 'Smile'
+                | 'Snowflake'
+                | 'SortAsc'
+                | 'SortDesc'
+                | 'Sparkles'
+                | 'Speaker'
+                | 'Square'
+                | 'Star'
+                | 'Sticker'
+                | 'StickyNote'
+                | 'StopCircle'
+                | 'Strikethrough'
+                | 'Sun'
+                | 'Sunrise'
+                | 'Sunset'
+                | 'Superscript'
+                | 'SwissFranc'
+                | 'SwitchCamera'
+                | 'Sword'
+                | 'Swords'
+                | 'Table'
+                | 'Tablet'
+                | 'Tag'
+                | 'Target'
+                | 'Tent'
+                | 'Terminal'
+                | 'TextCursor'
+                | 'TextCursorInput'
+                | 'ThumbsDown'
+                | 'ThumbsUp'
+                | 'Ticket'
+                | 'Timer'
+                | 'TimerOff'
+                | 'TimerReset'
+                | 'ToggleLeft'
+                | 'ToggleRight'
+                | 'Tornado'
+                | 'ToyBrick'
+                | 'Train'
+                | 'Trash'
+                | 'TreeDeciduous'
+                | 'TreePine'
+                | 'Trello'
+                | 'TrendingDown'
+                | 'TrendingUp'
+                | 'Trophy'
+                | 'Truck'
+                | 'Tv'
+                | 'Twitch'
+                | 'Twitter'
+                | 'Type'
+                | 'Underline'
+                | 'Undo'
+                | 'Unlink'
+                | 'Unlock'
+                | 'Upload'
+                | 'UploadCloud'
+                | 'Usb'
+                | 'User'
+                | 'UserCheck'
+                | 'UserMinus'
+                | 'UserPlus'
+                | 'UserX'
+                | 'Users'
+                | 'Utensils'
+                | 'Variable'
+                | 'Video'
+                | 'VideoOff'
+                | 'View'
+                | 'Voicemail'
+                | 'Volume'
+                | 'Volume1'
+                | 'Volume2'
+                | 'VolumeX'
+                | 'Wallet'
+                | 'Wand'
+                | 'Watch'
+                | 'Webcam'
+                | 'Wifi'
+                | 'WifiOff'
+                | 'Wind'
+                | 'WrapText'
+                | 'Wrench'
+                | 'X'
+                | 'XCircle'
+                | 'XOctagon'
+                | 'XSquare'
+                | 'Zap'
+                | 'ZapOff'
+                | 'ZoomIn'
+                | 'ZoomOut'
+              )
+            | null;
+          /**
+           * Choose where to place the icon.
+           */
+          iconPlacement?: ('left' | 'right') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'kineticCTA';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CompanyStatsBlock".
+ */
+export interface CompanyStatsBlock {
+  backgroundVariant: 'color' | 'image';
+  colorTheme?:
+    | (
+        | 'slate'
+        | 'gray'
+        | 'zinc'
+        | 'neutral'
+        | 'stone'
+        | 'blue'
+        | 'indigo'
+        | 'violet'
+        | 'emerald'
+        | 'teal'
+        | 'rose'
+        | 'default'
+      )
+    | null;
+  backgroundImage?: (string | null) | Media;
+  /**
+   * Choose the text color to use over the background image to ensure readability.
+   */
+  imageTextColor?: ('white' | 'black') | null;
+  /**
+   * Enter a unique ID for this block to link to it (e.g., "about-us").
+   */
+  blockId?: string | null;
+  /**
+   * Optional visually hidden title, or small overline.
+   */
+  title?: string | null;
+  stats?:
+    | {
+        /**
+         * E.g., "15+", "99.9%", "10k"
+         */
+        value: string;
+        label: string;
+        icon?: 'Activity' | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'companyStats';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "partnerships".
  */
 export interface Partnership {
@@ -5200,6 +6248,12 @@ export interface PagesSelect<T extends boolean = true> {
         techServiceCards?: T | TechServiceCardsBlockSelect<T>;
         featuresChecklist?: T | FeaturesChecklistBlockSelect<T>;
         emergencyPulse?: T | EmergencyPulseBlockSelect<T>;
+        kineticTestimonials?: T | KineticTestimonialsBlockSelect<T>;
+        kineticFAQ?: T | KineticFAQBlockSelect<T>;
+        servicePlans?: T | ServicePlansBlockSelect<T>;
+        processSteps?: T | ProcessStepsBlockSelect<T>;
+        kineticCTA?: T | KineticCTABlockSelect<T>;
+        companyStats?: T | CompanyStatsBlockSelect<T>;
       };
   meta?:
     | T
@@ -5733,6 +6787,169 @@ export interface EmergencyPulseBlockSelect<T extends boolean = true> {
               icon?: T;
               iconPlacement?: T;
             };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "KineticTestimonialsBlock_select".
+ */
+export interface KineticTestimonialsBlockSelect<T extends boolean = true> {
+  backgroundVariant?: T;
+  colorTheme?: T;
+  backgroundImage?: T;
+  imageTextColor?: T;
+  blockId?: T;
+  sectionTitle?: T;
+  subtitle?: T;
+  testimonials?:
+    | T
+    | {
+        quote?: T;
+        authorName?: T;
+        authorRole?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "KineticFAQBlock_select".
+ */
+export interface KineticFAQBlockSelect<T extends boolean = true> {
+  backgroundVariant?: T;
+  colorTheme?: T;
+  backgroundImage?: T;
+  imageTextColor?: T;
+  blockId?: T;
+  title?: T;
+  faqs?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServicePlansBlock_select".
+ */
+export interface ServicePlansBlockSelect<T extends boolean = true> {
+  backgroundVariant?: T;
+  colorTheme?: T;
+  backgroundImage?: T;
+  imageTextColor?: T;
+  blockId?: T;
+  title?: T;
+  subtitle?: T;
+  plans?:
+    | T
+    | {
+        name?: T;
+        price?: T;
+        description?: T;
+        isPopular?: T;
+        features?:
+          | T
+          | {
+              feature?: T;
+              id?: T;
+            };
+        actionLink?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+              icon?: T;
+              iconPlacement?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProcessStepsBlock_select".
+ */
+export interface ProcessStepsBlockSelect<T extends boolean = true> {
+  backgroundVariant?: T;
+  colorTheme?: T;
+  backgroundImage?: T;
+  imageTextColor?: T;
+  blockId?: T;
+  title?: T;
+  description?: T;
+  steps?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        icon?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "KineticCTABlock_select".
+ */
+export interface KineticCTABlockSelect<T extends boolean = true> {
+  backgroundVariant?: T;
+  colorTheme?: T;
+  backgroundImage?: T;
+  imageTextColor?: T;
+  blockId?: T;
+  headline?: T;
+  description?: T;
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+              icon?: T;
+              iconPlacement?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CompanyStatsBlock_select".
+ */
+export interface CompanyStatsBlockSelect<T extends boolean = true> {
+  backgroundVariant?: T;
+  colorTheme?: T;
+  backgroundImage?: T;
+  imageTextColor?: T;
+  blockId?: T;
+  title?: T;
+  stats?:
+    | T
+    | {
+        value?: T;
+        label?: T;
+        icon?: T;
         id?: T;
       };
   id?: T;

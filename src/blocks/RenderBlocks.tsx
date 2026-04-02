@@ -21,6 +21,12 @@ import { KineticHeroComponent } from '@/blocks/KineticHero/Component'
 import { TechServiceCardsComponent } from '@/blocks/TechServiceCards/Component'
 import { FeaturesChecklistComponent } from '@/blocks/FeaturesChecklist/Component'
 import { EmergencyPulseComponent } from '@/blocks/EmergencyPulse/Component'
+import { KineticTestimonialsComponent } from '@/blocks/KineticTestimonials/Component'
+import { KineticFAQComponent } from '@/blocks/KineticFAQ/Component'
+import { ServicePlansComponent } from '@/blocks/ServicePlans/Component'
+import { ProcessStepsComponent } from '@/blocks/ProcessSteps/Component'
+import { KineticCTAComponent } from '@/blocks/KineticCTA/Component'
+import { CompanyStatsComponent } from '@/blocks/CompanyStats/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -42,6 +48,12 @@ const blockComponents = {
   techServiceCards: TechServiceCardsComponent,
   featuresChecklist: FeaturesChecklistComponent,
   emergencyPulse: EmergencyPulseComponent,
+  kineticTestimonials: KineticTestimonialsComponent,
+  kineticFAQ: KineticFAQComponent,
+  servicePlans: ServicePlansComponent,
+  processSteps: ProcessStepsComponent,
+  kineticCTA: KineticCTAComponent,
+  companyStats: CompanyStatsComponent,
 }
 
 export const RenderBlocks: React.FC<{
