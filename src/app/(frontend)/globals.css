@@ -47,6 +47,26 @@
     --success: 196 52% 74%;
     --warning: 34 89% 85%;
     --error: 10 100% 86%;
+
+    /* Kinetic Circuit Theme - Light Mode */
+    --theme-primary: #0066FF;
+    --theme-on-primary: #FFFFFF;
+    --theme-on-primary-container: #001F4D;
+    
+    --theme-tertiary: #F59E0B; /* Amber (Electric/Energy) */
+
+    --theme-surface-container-lowest: #FFFFFF;
+    --theme-surface-container-low: #F8FAFC;
+    --theme-surface: #F1F5F9;
+    --theme-surface-container: #E2E8F0;
+    --theme-surface-container-high: #CBD5E1;
+    --theme-surface-container-highest: #94A3B8;
+
+    --theme-on-surface: #0F172A;
+    --theme-on-surface-variant: #475569;
+
+    --theme-outline-variant: #CBD5E1;
+    --theme-secondary-container: #DBEAFE;
   }
 
   [data-theme='dark'] {
@@ -81,6 +101,26 @@
     --success: 196 100% 14%;
     --warning: 34 51% 25%;
     --error: 10 39% 43%;
+
+    /* Kinetic Circuit Theme - Dark Mode */
+    --theme-primary: #3B82F6;
+    --theme-on-primary: #FFFFFF;
+    --theme-on-primary-container: #BFDBFE;
+
+    --theme-tertiary: #FDE047; /* Bright Yellow */
+
+    --theme-surface-container-lowest: #020617; /* Deepest black/blue */
+    --theme-surface-container-low: #0F172A;
+    --theme-surface: #1E293B;
+    --theme-surface-container: #334155;
+    --theme-surface-container-high: #475569;
+    --theme-surface-container-highest: #64748B;
+
+    --theme-on-surface: #F8FAFC;
+    --theme-on-surface-variant: #94A3B8;
+
+    --theme-outline-variant: #334155;
+    --theme-secondary-container: #1E3A8A;
   }
 }
 
