@@ -6,6 +6,7 @@ import type { Footer } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
 import { Logo } from '@/components/Logo/Logo'
+import { WhatsAppPopup } from './WhatsAppPopup'
 
 export async function Footer() {
   const footerData: Footer = await getCachedGlobal('footer', 1)()
@@ -30,6 +31,10 @@ export async function Footer() {
           </nav>
         </div>
       </div>
+      
+      {footerData?.whatsappWidget && (
+        <WhatsAppPopup {...footerData.whatsappWidget} />
+      )}
     </footer>
   )
 }

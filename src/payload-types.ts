@@ -8231,6 +8231,15 @@ export interface Footer {
         id?: string | null;
       }[]
     | null;
+  whatsappWidget?: {
+    enabled?: boolean | null;
+    /**
+     * Enter number with country code (e.g., +2376...).
+     */
+    phoneNumber?: string | null;
+    defaultMessage?: string | null;
+    position?: ('bottom-right' | 'bottom-left') | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -8300,6 +8309,14 @@ export interface FooterSelect<T extends boolean = true> {
               iconPlacement?: T;
             };
         id?: T;
+      };
+  whatsappWidget?:
+    | T
+    | {
+        enabled?: T;
+        phoneNumber?: T;
+        defaultMessage?: T;
+        position?: T;
       };
   updatedAt?: T;
   createdAt?: T;
