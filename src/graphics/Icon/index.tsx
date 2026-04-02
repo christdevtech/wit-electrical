@@ -17,13 +17,13 @@ export const Icon = (props: Props) => {
   return (
     /* eslint-disable @next/next/no-img-element */
     <img
-      alt="GSC Logo"
+      alt="WIT Electrical Logo"
       width={150}
       height={150}
       loading={loading}
       fetchPriority={priority}
       decoding="async"
-      className={clsx('w-[150px] h-[150px]', 'object-contain')}
+      className={clsx('w-[150px] h-[150px]', 'object-contain', className)}
       src={'/favicon.png'}
     />
   )

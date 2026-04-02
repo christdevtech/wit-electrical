@@ -21,11 +21,11 @@ export type FormBlockType = {
   enableIntro?: boolean
   form: FormType
   introContent?: SerializedEditorState
-  layout?: 'default' | 'splitSidebar'
-  sidebarTitle?: string
-  sidebarDescription?: string
+  layout?: 'default' | 'splitSidebar' | null
+  sidebarTitle?: string | null
+  sidebarDescription?: string | null
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  sidebarContacts?: any[]
+  sidebarContacts?: any[] | null
 }
 
 export const FormBlock: React.FC<

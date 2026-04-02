@@ -10,7 +10,7 @@ type Props = {
 }
 
 export const StaffProfile: React.FC<Props> = ({ partner, className }) => {
-  const { media, name, position, founder, content } = partner
+  const { media, name, position, content } = partner
 
   return (
     <div className={cn('container', className)}>
@@ -27,6 +27,7 @@ export const StaffProfile: React.FC<Props> = ({ partner, className }) => {
               {position || 'Partner'}
             </p>
           </div>
+          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
           <RichText data={content as any} enableGutter={false} />
         </div>
       </div>

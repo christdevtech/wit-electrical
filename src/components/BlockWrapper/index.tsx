@@ -6,6 +6,7 @@ import { gradientByTheme } from '@/utilities/background'
 type Props = {
   backgroundVariant?: 'color' | 'image'
   colorTheme?: string | null
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   backgroundImage?: any
   imageTextColor?: 'white' | 'black' | null
   blockId?: string | null

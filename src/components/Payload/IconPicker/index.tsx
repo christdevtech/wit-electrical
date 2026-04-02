@@ -3,7 +3,6 @@
 import React, { useState, useMemo } from 'react'
 import { SelectFieldClientComponent } from 'payload'
 import { useField } from '@payloadcms/ui'
-import { FieldLabel } from '@payloadcms/ui'
 
 // Import icons exactly from the definitions
 import { lucideIcons, LucideIconName } from '@/utilities/lucideIcons'

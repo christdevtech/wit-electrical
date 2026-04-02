@@ -15,7 +15,7 @@ type Props = {
 
 export const StaffCard: React.FC<Props> = ({
   partner,
-  featured,
+
   className,
   aspectRatio = 'aspect-[3/4]',
 }) => {

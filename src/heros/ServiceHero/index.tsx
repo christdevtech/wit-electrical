@@ -1,4 +1,3 @@
-import { formatDateTime } from '@/utilities/formatDateTime'
 import React from 'react'
 
 import type { Service } from '@/payload-types'
@@ -8,7 +7,7 @@ import { Media } from '@/components/Media'
 export const ServiceHero: React.FC<{
   service: Service
 }> = ({ service }) => {
-  const { categories, heroImage, publishedAt, title } = service
+  const { heroImage, title } = service
 
   return (
     <div className="relative -mt-[10.6rem] md:-mt-[10.4rem] flex items-end">
